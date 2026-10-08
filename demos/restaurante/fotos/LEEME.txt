@@ -10,3 +10,5 @@ Guarda aquí las fotos con estos nombres exactos (formato .jpg) y aparecerán so
 Si falta alguna, la web muestra en su lugar un recuadro con el dibujo de la marca.
 Fotos gratuitas para la demo: unsplash.com o pexels.com (busca "tapas", "spanish food", "grilled lamb").
 Para un cliente real: usa sus propias fotos (Google Maps, Instagram) con su permiso.
+
+Fotos actuales de la demo: Unsplash (licencia gratuita, uso comercial permitido).
