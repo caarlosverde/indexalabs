@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bandeja Guadalajara</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Mismo estilo que la bandeja de tiendas: tarjetas por local, pasos numerados, botón Copiar. */
+:root{--t:#0f172a;--s:#64748b;--b:#e2e8f0;--f:#f8fafc;--v:#15803d;--fondo:#eef1f5;--blanco:#fff;
+  --rojo:#dc2626;--naranja:#d97706;--azul:#2563eb;--morado:#7c3aed;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);font:15px/1.5 Inter,system-ui,"Segoe UI",sans-serif;color:var(--t)}
+.w{max-width:880px;margin:0 auto;padding:28px 16px 60px}
+h1{margin:0;font-size:28px;text-wrap:balance}
+.sub{color:var(--s);margin:4px 0 20px}
+.ayuda{background:var(--blanco);border-left:4px solid var(--v);border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:14px}
+.ayuda ol{margin:6px 0 0;padding-left:20px}.ayuda li{margin-bottom:4px}
+.demo{background:var(--blanco);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:14px;display:grid;gap:8px}
+.demo label{font-weight:700}
+.demo small{color:var(--s)}
+.resumen{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.resumen span{background:var(--blanco);border:1px solid var(--b);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--s)}
+.resumen b{color:var(--t)}
+article{background:var(--blanco);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+article.ok{opacity:.5}
+.cab{display:flex;gap:14px;align-items:center}
+.info{flex:1;min-width:0}
+h2{margin:0;font-size:20px}
+.meta{color:var(--s);font-size:13px}
+.meta a{color:var(--s)}
+.num{width:32px;height:32px;border-radius:50%;background:var(--f);border:1px solid var(--b);display:grid;place-items:center;font-weight:700;color:var(--s);font-variant-numeric:tabular-nums}
+.lado{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.nota{color:#fff;font-weight:800;font-size:18px;border-radius:12px;padding:6px 12px;min-width:52px;text-align:center;background:var(--v);font-variant-numeric:tabular-nums}
+.nota small{display:block;font-size:10.5px;font-weight:600;opacity:.9}
+.tipo{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.t-rota{background:var(--rojo)}.t-ssl{background:var(--rojo)}.t-sin{background:var(--naranja)}.t-fb{background:var(--azul)}.t-ig{background:var(--morado)}.t-basica{background:#475569}
+.visto{margin:14px 0 4px;background:var(--f);border:1px solid var(--b);border-radius:10px;padding:10px 14px;font-size:14px}
+.visto b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--s);margin-bottom:2px}
+.pasos{margin:16px 0 8px;padding-left:20px}
+.pasos > li{margin-bottom:14px}
+.btn{display:inline-block;margin:2px 0 2px 6px;background:var(--v);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 12px;border-radius:8px}
+.btn.sec{background:#334155}
+.btn.wa{background:#128c4a}
+.campo{margin-top:8px}
+.campo label{font-size:12px;color:var(--s)}
+.fila{display:flex;gap:8px;align-items:flex-start}
+textarea,input[type=text],input[type=url]{flex:1;width:100%;min-width:0;font:14px/1.5 Inter,system-ui,sans-serif;border:1px solid var(--b);border-radius:10px;padding:10px 12px;background:var(--f);color:var(--t);resize:vertical}
+button.copiar{background:var(--blanco);border:1.5px solid var(--v);color:var(--v);font-weight:700;border-radius:8px;padding:8px 14px;cursor:pointer;white-space:nowrap;font:700 14px Inter,system-ui,sans-serif}
+button.copiado{background:var(--v);color:#fff}
+.hecho{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--s);cursor:pointer;margin-right:18px}
+.estado{display:flex;flex-wrap:wrap;gap:4px 0}
+:focus-visible{outline:2px solid var(--v);outline-offset:2px}
+@media(max-width:600px){.fila{flex-direction:column}button.copiar{width:100%}.cab{flex-wrap:wrap}.lado{flex-direction:row;align-items:center}}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Bandeja de contactos · Restaurantes Guadalajara</h1>
+<div class="sub" id="sub">Generado el 08/10/2026 · ordenados de más a menos urgente</div>
+
+<div class="ayuda"><b>Cómo usar esta página</b>
+<ol>
+<li><b>Llama o pásate por el local</b> con el guion de llamada. Mejor fuera de horas de servicio: de 11:00 a 12:30 o de 17:00 a 19:30.</li>
+<li><b>Si te dicen que les mandes el ejemplo</b>, copia el segundo mensaje y envíalo por WhatsApp o email. Así no les escribes en frío: la ley española (LSSI) no permite enviar publicidad por email, WhatsApp o mensaje privado a quien no lo ha pedido.</li>
+<li>Marca las casillas para llevar la cuenta. Si te dicen que no, márcalo y no vuelvas a insistir.</li>
+</ol>
+<p style="margin:8px 0 0">La nota, las reseñas, el teléfono y la web salen de su ficha de Google Maps. Antes de llamar, abre la ficha por si ha cambiado algo.</p>
+<p style="margin:6px 0 0"><b>Ritmo recomendado:</b> 8–10 llamadas al día. Si alguien no contesta, prueba otro día a otra hora.</p>
+</div>
+
+<div class="demo">
+<label for="demo-url">Enlace a tu web de ejemplo</label>
+<input type="url" id="demo-url" placeholder="Pega aquí el enlace público de la web de ejemplo">
+<small>Los mensajes se actualizan solos con este enlace. Compártelo antes como público, o súbelo a GitHub Pages, para que los restaurantes puedan abrirlo.</small>
+</div>
+
+<div class="resumen" id="resumen"></div>
+<div id="lista"></div>
+</div>
+
+<script>
+var FIRMA = "Carlos Verde\nIndexa Labs";
+var L = [
+ {id:"perdigacho", n:"El Perdigacho", tipo:"rota", cocina:"bar y asador", nota:"4,5", res:"922", dir:"C. Bardales, 6", tel:"949 25 58 99", dominio:"elperdigacho.es",
+  visto:"Su ficha de Google enlaza a elperdigacho.es, pero ese dominio ya no existe: quien pulsa «Sitio web» llega a un error.",
+  obs:["En vuestra ficha de Google aparece la web elperdigacho.es, pero esa dirección ya no funciona: quien pulsa en «Sitio web» llega a una página de error. Parece que el dominio ha caducado.","Con un 4,5 y 922 reseñas tenéis la reputación hecha, y ese enlace roto da sensación de negocio cerrado justo a quien está decidiendo dónde comer."]},
+ {id:"casaredondo", n:"Mesón Casa Redondo", tipo:"rota", cocina:"mesón", nota:"4,5", res:"782", dir:"C. de la Virgen de la Soledad, 26", tel:"949 22 23 18", dominio:"mesoncasaredondo.es",
+  visto:"Su ficha de Google enlaza a mesoncasaredondo.shop, que ya no existe: el enlace da error.",
+  obs:["En vuestra ficha de Google aparece la web mesoncasaredondo.shop, pero esa dirección ya no existe: quien pulsa en «Sitio web» llega a un error.","Con un 4,5 y 782 reseñas, y siendo un local pequeño que se llena, una web con reservas os ayudaría a organizar los turnos de comida y cena."]},
+ {id:"bodegon", n:"El Bodegón de Sancho", tipo:"rota", cocina:"restaurante", nota:"4,0", res:"2.985", dir:"Av. de Venezuela, 17", tel:"949 12 11 91", dominio:"elbodegondesancho.com", fb:"https://www.facebook.com/El-Bodeg%C3%B3n-De-Sancho-126155017536729/",
+  visto:"Google enlaza a su Facebook como web. Los dominios elbodegondesancho.com y .es redirigen a una imagen de error del creador de webs.",
+  obs:["Vuestra ficha de Google enlaza a Facebook como web, y la dirección elbodegondesancho.com no muestra ninguna web: redirige a una página de error.","Sois de los restaurantes con más reseñas de Guadalajara (casi 3.000). Mucha de esa gente busca la carta o quiere reservar desde el móvil, y ahora no tiene dónde hacerlo."]},
+ {id:"nouba", n:"Asador La Nouba", tipo:"ssl", cocina:"asador", nota:"4,1", res:"1.002", dir:"C. San Roque, 18", tel:"949 49 29 72", dominio:"asadorlanouba.es",
+  visto:"Su web asadorlanouba.es tiene el certificado de seguridad caducado desde el 23/08/2026: el navegador avisa de «No seguro» antes de entrar.",
+  obs:["Vuestra web asadorlanouba.es tiene el certificado de seguridad caducado desde el 23 de agosto. Chrome y Safari muestran el aviso «La conexión no es privada» antes de entrar, y casi todo el mundo se da la vuelta ahí.","Con más de 1.000 reseñas en Google, cada visita que se pierde en ese aviso es una mesa que se va a otro asador."]},
+ {id:"gayola", n:"Puerta Gayola", tipo:"sin", cocina:"bar de tapas", nota:"4,0", res:"2.087", dir:"Pl. San Esteban, 5", tel:"654 10 43 05", movil:1, dominio:"puertagayola.es",
+  visto:"Más de 2.000 reseñas en Google y ninguna web enlazada.",
+  obs:["En Google Maps tenéis más de 2.000 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta de tapas y raciones ni reservar.","Estáis en plena plaza de San Esteban; con una web propia apareceríais también cuando alguien busca «tapas en Guadalajara centro»."]},
+ {id:"giovani", n:"Trattoria Giovani Fratelli", tipo:"sin", cocina:"restaurante italiano", nota:"4,7", res:"1.365", dir:"Bulevar Clara Campoamor, esq. C. Ana Mariscal, 1", tel:"697 19 57 14", movil:1, dominio:"giovanifratelli.es",
+  visto:"4,7 con 1.365 reseñas (de las mejores notas de la ciudad) y sin web.",
+  obs:["Tenéis un 4,7 con más de 1.300 reseñas, de las mejores notas de Guadalajara, pero vuestra ficha de Google no enlaza a ninguna web.","Quien compara italianos en la ciudad no puede ver vuestra carta de pizzas y pastas ni reservar online, y acaba eligiendo a quien sí lo pone fácil."]},
+ {id:"velero", n:"El Velero de Pacheco", tipo:"sin", cocina:"restaurante", nota:"4,1", res:"1.274", dir:"C. de María Pacheco, 112", tel:"949 38 12 36", dominio:"elvelerodepacheco.es",
+  visto:"1.274 reseñas en Google y sin web.",
+  obs:["Con más de 1.200 reseñas en Google sois muy conocidos, pero la ficha no enlaza a ninguna web.","Ahora mismo, para saber qué hay de menú o reservar, la gente tiene que llamar en pleno servicio. Una web con la carta y reservas online os quitaría muchas de esas llamadas."]},
+ {id:"herradura", n:"La Herradura de Chaplin", tipo:"sin", cocina:"restaurante", nota:"4,1", res:"1.087", dir:"C. San Quintín, 3", tel:"949 02 20 48", dominio:"laherraduradechaplin.es",
+  visto:"Más de 1.000 reseñas en Google y sin web.",
+  obs:["Tenéis más de 1.000 reseñas en Google, pero vuestra ficha no enlaza a ninguna web.","Sin web, en Google solo se ve lo que suben los clientes. Con una página propia decidís vosotros qué fotos, qué carta y qué horario ve la gente."]},
+ {id:"faro", n:"Bar El Faro (sidrería)", tipo:"fb", cocina:"sidrería", nota:"4,1", res:"890", dir:"C. del Cardenal González de Mendoza, 9", tel:"659 28 40 04", movil:1, dominio:"sidreriaelfaro.es", fb:"https://www.facebook.com/people/el-faro-sidreria/100026879594581/",
+  visto:"Google enlaza a un perfil personal de Facebook como web.",
+  obs:["Vuestra ficha de Google enlaza a un perfil de Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.","Los cachopos y la sidra son vuestro gancho: con una web con fotos y la carta asturiana, apareceríais cuando alguien busca «cachopo en Guadalajara»."]},
+ {id:"marlasca", n:"Café Marlasca", tipo:"sin", cocina:"café y restaurante", nota:"4,3", res:"729", dir:"C. Felipe Solano Antelo, 7", tel:"949 12 00 65", dominio:"cafemarlasca.es",
+  visto:"4,3 con 729 reseñas y sin web.",
+  obs:["Tenéis un 4,3 con más de 700 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","Una web sencilla con desayunos, menú y carta, y el horario siempre al día, ayuda a que os elijan antes de salir de casa."]},
+ {id:"mentacanela", n:"MentaCanela Café Bar", tipo:"fb", cocina:"café bar", nota:"4,0", res:"914", dir:"C. San Roque, 8", tel:"949 41 13 57", dominio:"mentacanela.es", fb:"https://www.facebook.com/MentaCanela.Guadalajara/",
+  visto:"Google enlaza a su página de Facebook como web.",
+  obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y mucha gente ya no lo usa.","Con más de 900 reseñas, una web propia con la carta de desayunos y meriendas y un formulario para encargos y celebraciones os daría más pedidos."]},
+ {id:"tostajo", n:"Don Tostajo", tipo:"sin", cocina:"restaurante", nota:"4,2", res:"672", dir:"La Carrera, 55", tel:"949 21 43 52", dominio:"dontostajo.es",
+  visto:"4,2 con 672 reseñas y sin web.",
+  obs:["Tenéis un 4,2 con casi 700 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","La gente que os busca no puede consultar la carta ni reservar online; con una web lo tendrían a un clic desde Google."]},
+ {id:"chuleton", n:"La Tasca del Chuletón", tipo:"sin", cocina:"restaurante", nota:"4,0", res:"678", dir:"C. Toledo, 13", tel:"695 61 30 27", movil:1, dominio:"latascadelchuleton.es",
+  visto:"678 reseñas en Google y sin web.",
+  obs:["Con casi 700 reseñas en Google, vuestra ficha no enlaza a ninguna web.","El chuletón se vende con fotos: una web con vuestra carta de carnes y reservas online os ayudaría a llenar más mesas."]},
+ {id:"bejanque", n:"Mesón Bejanque", tipo:"sin", cocina:"mesón castellano", nota:"4,2", res:"526", dir:"Pl. Bejanque, 12", tel:"949 21 97 97", dominio:"mesonbejanque.es",
+  visto:"Cocina castellana, 4,2 con 526 reseñas y sin web.",
+  obs:["Tenéis un 4,2 con más de 500 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","La cocina castellana es justo lo que busca quien visita Guadalajara: con una web propia apareceríais cuando buscan «dónde comer cocina tradicional en Guadalajara»."]},
+ {id:"canda", n:"La Canda", tipo:"fb", cocina:"cervecería", nota:"4,4", res:"450", dir:"C. Federico García Lorca", tel:"949 03 30 67", dominio:"cervecerialacanda.es", fb:"https://www.facebook.com/cerveceria.lacanda",
+  visto:"4,4 con 450 reseñas; Google enlaza a Facebook como web.",
+  obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.","Con un 4,4, una web con la carta de hamburguesas y raciones, y la opción de reservar mesa para grupos, os traería más gente nueva."]},
+ {id:"florentina", n:"Restaurante Florentina", tipo:"ig", cocina:"restaurante", nota:"4,3", res:"379", dir:"C. la Barca, 5", tel:"949 03 43 39", dominio:"restauranteflorentina.es", ig:"https://www.instagram.com/restauranteflorentina/",
+  visto:"Google enlaza a su Instagram (@restauranteflorentina) como web.",
+  obs:["En Google tenéis como web vuestro Instagram. Está genial para enseñar platos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.","Con un 4,3, una web propia que enlace a vuestro Instagram os daría lo mejor de los dos: las fotos y las reservas."]},
+ {id:"summer", n:"Summer", tipo:"basica", cocina:"restaurante y bar de tapas", nota:"4,1", res:"1.578", dir:"C. San Roque, 16", tel:"949 89 53 21", dominio:"summerguadalajara.es", web:"https://sites.google.com/view/summerguadalajara",
+  visto:"Su web es una página gratuita de Google Sites, sin dominio propio ni reservas.",
+  obs:["Vuestra web es una página de Google Sites (sites.google.com/view/summerguadalajara). Cumple, pero no tiene dominio propio, ni reservas, y en Google aparece por detrás de los directorios.","Con casi 1.600 reseñas tenéis mucho tráfico: una web propia con carta, menú del día y reservas lo aprovecharía mucho mejor."]}
+];
+
+var TIPOS = {rota:["Web caída","t-rota"], ssl:["Aviso «No seguro»","t-ssl"], sin:["Sin web","t-sin"], fb:["Solo Facebook","t-fb"], ig:["Solo Instagram","t-ig"], basica:["Web básica","t-basica"]};
+
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function demo(){var v=document.getElementById("demo-url").value.trim();return v||"[enlace a la web de ejemplo]"}
+function telLink(t){return "+34"+t.replace(/\D/g,"")}
+function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir+", Guadalajara")}
+
+function guion(x){
+  var gancho = {
+    rota:"he visto que en vuestra ficha de Google el enlace a la web ya no funciona: quien pulsa en «Sitio web» llega a un error",
+    ssl:"he visto que vuestra web sale con el aviso de «No seguro» en el navegador, porque el certificado de seguridad está caducado",
+    sin:"he visto que en Google tenéis "+x.nota+" de nota con "+x.res+" reseñas, pero no tenéis web enlazada",
+    fb:"he visto que en Google tenéis como web el Facebook, y desde el móvil casi no se ve la carta",
+    ig:"he visto que en Google tenéis como web el Instagram, y desde ahí no se puede ver la carta ni reservar",
+    basica:"he visto que vuestra web es una página gratuita de Google Sites, sin reservas ni dominio propio"
+  }[x.tipo];
+  return "Hola, buenos días. ¿Hablo con el responsable de "+x.n+"?\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago páginas web para restaurantes y bares de Guadalajara. Os llamo porque "+gancho+".\n\n"+
+  "He preparado un ejemplo de web para restaurantes, con la carta, el menú del día y reservas que llegan por WhatsApp. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
+  "(Si dicen que sí: apunta el número o email y envía el mensaje del paso 2.)\n"+
+  "(Si dicen que no: «Perfecto, gracias por vuestro tiempo». Y marca la casilla.)";
+}
+function mensaje(x){
+  return "Hola, soy Carlos Verde, de Indexa Labs. Como hablamos, os paso el ejemplo de web para restaurantes:\n"+demo()+"\n\n"+
+  "Lo que he visto de "+x.n+":\n• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
+  "Lo que tendría vuestra web:\n"+
+  "• Carta y menú del día siempre al día, fáciles de leer en el móvil y con alérgenos.\n"+
+  "• Reservas online a cualquier hora: os llegan por WhatsApp con día, hora y personas, sin coger el teléfono en pleno servicio.\n"+
+  "• Botones de llamar y cómo llegar, horario con «abierto ahora» y enlace a vuestras reseñas de Google.\n"+
+  ({rota:"• Vuestra web otra vez en marcha, con dominio propio ("+x.dominio+") y la ficha de Google bien enlazada.\n",
+    ssl:"• Certificado de seguridad que se renueva solo: nunca más el aviso de «No seguro» en "+x.dominio+".\n"}[x.tipo]||
+    "• Dominio propio (por ejemplo "+x.dominio+") y vuestra ficha de Google enlazando a la web.\n")+"\n"+
+  "La adapto a vuestra imagen, vuestras fotos y vuestros platos. Si os encaja, lo vemos en 15 minutos cuando os venga bien.\n\n"+
+  "Un saludo,\n"+FIRMA;
+}
+function asunto(x){return "Ejemplo de web para "+x.n}
+
+function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+function pintar(){
+  var cont=document.getElementById("lista"); cont.innerHTML="";
+  L.forEach(function(x,i){
+    var t=TIPOS[x.tipo], enlaces=[];
+    if(x.fb) enlaces.push('<a href="'+x.fb+'" target="_blank" rel="noopener">Facebook</a>');
+    if(x.ig) enlaces.push('<a href="'+x.ig+'" target="_blank" rel="noopener">Instagram</a>');
+    if(x.web) enlaces.push('<a href="'+x.web+'" target="_blank" rel="noopener">Web actual</a>');
+    var a=document.createElement("article"); a.id="r-"+x.id;
+    a.innerHTML=
+    '<div class="cab"><div class="num">'+(i+1)+'</div>'+
+      '<div class="info"><h2>'+esc(x.n)+'</h2><div class="meta">'+esc(x.cocina)+' · '+esc(x.dir)+' · <a href="'+mapa(x)+'" target="_blank" rel="noopener">Ficha de Google ↗</a>'+(enlaces.length?' · '+enlaces.join(' · '):'')+'</div></div>'+
+      '<div class="lado"><div class="nota">'+x.nota+'<small>'+x.res+' reseñas</small></div><span class="tipo '+t[1]+'">'+t[0]+'</span></div></div>'+
+    '<div class="visto"><b>Lo que he visto</b>'+esc(x.visto)+'</div>'+
+    '<ol class="pasos">'+
+      '<li><b>Llama</b> al <b>'+x.tel+'</b> <a class="btn" href="tel:'+telLink(x.tel)+'">Llamar ↗</a> o pásate por '+esc(x.dir)+'. Guion:'+
+        '<div class="campo"><div class="fila"><textarea readonly rows="9" id="g-'+x.id+'">'+esc(guion(x))+'</textarea><button class="copiar" type="button">Copiar</button></div></div></li>'+
+      '<li><b>Si te dicen que sí</b>, envía este mensaje por WhatsApp o email'+(x.movil?' <a class="btn wa" href="https://wa.me/34'+x.tel.replace(/\D/g,"")+'" target="_blank" rel="noopener">Abrir WhatsApp ↗</a>':'')+':'+
+        '<div class="campo"><label>Asunto (si va por email)</label><div class="fila"><input type="text" readonly value="'+esc(asunto(x))+'"><button class="copiar" type="button">Copiar</button></div></div>'+
+        '<div class="campo"><div class="fila"><textarea readonly rows="16" class="msg" data-id="'+x.id+'">'+esc(mensaje(x))+'</textarea><button class="copiar" type="button">Copiar</button></div></div></li>'+
+    '</ol>'+
+    '<div class="estado">'+
+      '<label class="hecho"><input type="checkbox" data-k="llamado:'+x.id+'"> Ya les he llamado</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="enviado:'+x.id+'"> Les he enviado el ejemplo</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="no:'+x.id+'"> No les interesa</label>'+
+    '</div>';
+    cont.appendChild(a);
+  });
+  cont.querySelectorAll(".hecho input").forEach(function(c){
+    c.checked=leer(c.dataset.k)==="1";
+    c.addEventListener("change",function(){guardar(c.dataset.k,c.checked?"1":"0");estado()});
+  });
+  estado();
+}
+function estado(){
+  var n={llamado:0,enviado:0,no:0};
+  L.forEach(function(x){
+    var art=document.getElementById("r-"+x.id);
+    var ll=leer("llamado:"+x.id)==="1", en=leer("enviado:"+x.id)==="1", no=leer("no:"+x.id)==="1";
+    if(ll)n.llamado++; if(en)n.enviado++; if(no)n.no++;
+    art.classList.toggle("ok",no||en);
+  });
+  document.getElementById("resumen").innerHTML='<span><b>'+L.length+'</b> locales</span><span><b>'+n.llamado+'</b> llamados</span><span><b>'+n.enviado+'</b> con el ejemplo enviado</span><span><b>'+n.no+'</b> no interesados</span>';
+}
+function actualizarMensajes(){document.querySelectorAll("textarea.msg").forEach(function(t){var x=L.filter(function(r){return r.id===t.dataset.id})[0];t.value=mensaje(x)})}
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button.copiar"); if(!b) return;
+  var c=b.parentElement.querySelector("textarea,input");
+  var ok=function(){b.textContent="¡Copiado!";b.classList.add("copiado");setTimeout(function(){b.textContent="Copiar";b.classList.remove("copiado")},1800)};
+  var fallback=function(){c.focus();c.select();try{document.execCommand("copy")}catch(_){}ok()};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.value).then(ok,fallback)}else fallback();
+});
+var di=document.getElementById("demo-url");
+di.value=leer("demo-url")||"https://claude.ai/artifact/4J7jpwr91fSX516Rr6rfgQ";
+di.addEventListener("input",function(){guardar("demo-url",di.value.trim());actualizarMensajes()});
+pintar();
+</script>
+</body>
+</html>
