@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bandeja Madrid</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Mismo estilo que la bandeja de tiendas: tarjetas por local, pasos numerados, botón Copiar. */
+:root{--t:#0f172a;--s:#64748b;--b:#e2e8f0;--f:#f8fafc;--v:#15803d;--fondo:#eef1f5;--blanco:#fff;
+  --rojo:#dc2626;--naranja:#d97706;--azul:#2563eb;--morado:#7c3aed;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);font:15px/1.5 Inter,system-ui,"Segoe UI",sans-serif;color:var(--t)}
+.w{max-width:880px;margin:0 auto;padding:28px 16px 60px}
+h1{margin:0;font-size:28px;text-wrap:balance}
+.sub{color:var(--s);margin:4px 0 20px}
+.ayuda{background:var(--blanco);border-left:4px solid var(--v);border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:14px}
+.ayuda ol{margin:6px 0 0;padding-left:20px}.ayuda li{margin-bottom:4px}
+.demo{background:var(--blanco);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:14px;display:grid;gap:8px}
+.demo label{font-weight:700}
+.demo small{color:var(--s)}
+.resumen{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.resumen span{background:var(--blanco);border:1px solid var(--b);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--s)}
+.resumen b{color:var(--t)}
+article{background:var(--blanco);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+article.ok{opacity:.5}
+.cab{display:flex;gap:14px;align-items:center}
+.info{flex:1;min-width:0}
+h2{margin:0;font-size:20px}
+.meta{color:var(--s);font-size:13px}
+.meta a{color:var(--s)}
+.num{width:32px;height:32px;border-radius:50%;background:var(--f);border:1px solid var(--b);display:grid;place-items:center;font-weight:700;color:var(--s);font-variant-numeric:tabular-nums}
+.lado{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.nota{color:#fff;font-weight:800;font-size:18px;border-radius:12px;padding:6px 12px;min-width:52px;text-align:center;background:var(--v);font-variant-numeric:tabular-nums}
+.nota small{display:block;font-size:10.5px;font-weight:600;opacity:.9}
+.tipo{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.t-rota{background:var(--rojo)}.t-ssl{background:var(--rojo)}.t-sin{background:var(--naranja)}.t-fb{background:var(--azul)}.t-ig{background:var(--morado)}.t-basica{background:#475569}
+.visto{margin:14px 0 4px;background:var(--f);border:1px solid var(--b);border-radius:10px;padding:10px 14px;font-size:14px}
+.visto b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--s);margin-bottom:2px}
+.pasos{margin:16px 0 8px;padding-left:20px}
+.pasos > li{margin-bottom:14px}
+.btn{display:inline-block;margin:2px 0 2px 6px;background:var(--v);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 12px;border-radius:8px}
+.btn.sec{background:#334155}
+.btn.wa{background:#128c4a}
+.btn.ig{background:#c13584}.btn.fb{background:#1877f2}.btn.mail{background:#0f766e}
+.canal{border:1px solid var(--b);border-radius:10px;padding:10px 14px;margin-top:10px}
+.canal h3{margin:0 0 4px;font-size:14px}
+.canal .dato{font-size:13px;color:var(--s)}
+details.llamar{margin-top:12px;font-size:14px}details.llamar summary{cursor:pointer;font-weight:600;color:var(--s)}
+.aviso{background:#fef3c7;border-radius:8px;padding:8px 12px;font-size:13px;margin-top:8px}
+.campo{margin-top:8px}
+.campo label{font-size:12px;color:var(--s)}
+.fila{display:flex;gap:8px;align-items:flex-start}
+textarea,input[type=text],input[type=url]{flex:1;width:100%;min-width:0;font:14px/1.5 Inter,system-ui,sans-serif;border:1px solid var(--b);border-radius:10px;padding:10px 12px;background:var(--f);color:var(--t);resize:vertical}
+button.copiar{background:var(--blanco);border:1.5px solid var(--v);color:var(--v);font-weight:700;border-radius:8px;padding:8px 14px;cursor:pointer;white-space:nowrap;font:700 14px Inter,system-ui,sans-serif}
+button.copiado{background:var(--v);color:#fff}
+.hecho{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--s);cursor:pointer;margin-right:18px}
+.estado{display:flex;flex-wrap:wrap;gap:4px 0}
+:focus-visible{outline:2px solid var(--v);outline-offset:2px}
+@media(max-width:600px){.fila{flex-direction:column}button.copiar{width:100%}.cab{flex-wrap:wrap}.lado{flex-direction:row;align-items:center}}
+</style>
+</head>
+<body>
+
+<div class="w">
+<h1>Bandeja de contactos · Restaurantes Madrid</h1>
+<div class="sub">Generado el 08/10/2026 · 50 locales · ordenados de más a menos urgente</div>
+
+<div class="ayuda"><b>Cómo usar esta página</b>
+<ol>
+<li><b>Escríbeles por el canal que tengan</b>, en este orden: email, Instagram o Facebook. Pulsa <b>Abrir</b>, copia el mensaje y pégalo. En Facebook, pulsa «Enviar mensaje» en su página.</li>
+<li><b>Si no tienen ninguno, o no contestan en 5 días</b>, llama o pásate con el guion de llamada (al final de cada local). Mejor de 11:00 a 12:30 o de 17:00 a 19:30.</li>
+<li>Escribe por un solo canal a cada local. Si no contestan, haz un único recordatorio corto. Si dicen que no, márcalo y no insistas.</li>
+</ol>
+<p style="margin:8px 0 0">Recuerda: escribir a quien no te lo ha pedido tiene algo de riesgo legal (LSSI). Por eso los mensajes son cortos, personales y llevan la opción de decir que no.</p>
+<p style="margin:6px 0 0">La nota y las reseñas salen de Google Maps. Los emails y redes, de sus páginas de Facebook e Instagram. Antes de escribir, abre su perfil por si ha cambiado algo.</p>
+<p style="margin:6px 0 0"><b>Ritmo recomendado:</b> unos 10 locales al día.</p>
+</div>
+
+<div class="demo">
+<label for="demo-url">Enlace a tu web de ejemplo</label>
+<input type="url" id="demo-url" placeholder="Pega aquí el enlace público de la web de ejemplo">
+<small>Los mensajes se actualizan solos con este enlace. Por defecto lleva la dirección de GitHub Pages. Comprueba que se abre antes de enviar nada.</small>
+</div>
+
+<div class="resumen" id="resumen"></div>
+<div id="lista"></div>
+</div>
+
+<script>
+var FIRMA = "Carlos Verde\nIndexa Labs";
+var L = [
+{
+"id": "entrecceresybada",
+"n": "Entre Cáceres y Badajoz",
+"tipo": "rota",
+"cocina": "bar de tapas",
+"nota": "3,9",
+"res": "5.886",
+"dir": "Calle de Don Ramón de la Cruz, 109 · Salamanca",
+"tel": "916 55 66 18",
+"dominio": "entrecaceresybadajoz.es",
+"visto": "Google enlaza a barentrecaceresybadajoz.shop, que no existe.",
+"obs": [
+"En vuestra ficha de Google aparece la web barentrecaceresybadajoz.shop, pero esa dirección ya no existe: quien pulsa en «Sitio web» llega a un error.",
+"Con casi 5.900 reseñas y fama de tener las tapas más grandes de Madrid, quien os busca en Google se encuentra un enlace roto."
+],
+"ig": "entrecaceresybadajoz",
+"fb": "https://www.facebook.com/entrecaceresybadajoz/",
+"email": "infoentrecaceresybadajoz@gmail.com",
+"aviso": "En su Facebook aparece un aviso de «Cerramos» (sin fecha). Comprueba en Google Maps que siguen abiertos antes de escribir."
+},
+{
+"id": "nomadecafe",
+"n": "Nomade Cafe",
+"tipo": "rota",
+"cocina": "café y brunch",
+"nota": "4,7",
+"res": "4.131",
+"dir": "Calle de los Tres Peces, 22 · Centro",
+"tel": "",
+"dominio": "nomadecafe.co",
+"visto": "Sin web en Google. Su Facebook anuncia nomadecafe.co, que no existe.",
+"obs": [
+"En vuestro Facebook aparece la web nomadecafe.co, pero esa dirección ya no existe, y en Google Maps no tenéis ninguna web enlazada.",
+"Tenéis un 4,7 con más de 4.100 reseñas. Una web con la carta de brunch y reservas para el fin de semana aprovecharía toda esa gente que os busca."
+],
+"fb": "https://www.facebook.com/nomadecafemadrid/"
+},
+{
+"id": "yerbabuena",
+"n": "Yerbabuena",
+"tipo": "rota",
+"cocina": "restaurante español",
+"nota": "4,5",
+"res": "1.933",
+"dir": "C. de Bordadores, 3 · Centro",
+"tel": "915 99 48 05",
+"dominio": "yerbabuenamadrid.es",
+"visto": "Google enlaza a una página de eatbu.com que da 404.",
+"obs": [
+"En vuestra ficha de Google la web es una página de eatbu.com que da «Page Not Found»: quien pulsa en «Sitio web» llega a un error.",
+"Con un 4,5 y casi 2.000 reseñas, junto a Sol, y con opciones sin gluten y halal: justo lo que mucha gente busca en Google y ahora no encuentra en vuestra web."
+]
+},
+{
+"id": "pastamore",
+"n": "Pastamore",
+"tipo": "rota",
+"cocina": "restaurante italiano",
+"nota": "4,6",
+"res": "1.536",
+"dir": "C. Alcalá, 191 · Salamanca",
+"tel": "919 91 54 74",
+"dominio": "pastamore.es",
+"visto": "Sin web en Google. Su Facebook anuncia pastamore.es, que no funciona.",
+"obs": [
+"En vuestro Facebook aparece la web pastamore.es, pero ya no funciona, y en Google Maps no tenéis ninguna web enlazada.",
+"Tenéis un 4,6 con más de 1.500 reseñas. Ahora reserváis por teléfono o WhatsApp; con una web, la carta y las reservas estarían a un clic desde Google."
+],
+"ig": "pastamore_madrid",
+"fb": "https://www.facebook.com/107119167320959"
+},
+{
+"id": "restaurantesalam",
+"n": "Restaurante Salamar",
+"tipo": "rota",
+"cocina": "arrocería y marisquería",
+"nota": "4,5",
+"res": "1.156",
+"dir": "C. de Cartagena, 103 · Chamartín",
+"tel": "914 15 44 66",
+"dominio": "restaurantesalamar.com",
+"visto": "Google enlaza a restaurantesalamar.com, que no existe.",
+"obs": [
+"En vuestra ficha de Google aparece la web restaurantesalamar.com, pero esa dirección ya no existe: quien pulsa en «Sitio web» llega a un error.",
+"Con un 4,5 y más de 1.100 reseñas, y haciendo reparto a domicilio, una web con la carta de arroces, pedidos y reservas os traería clientes directamente, sin comisiones."
+],
+"ig": "tabernasalamar"
+},
+{
+"id": "brownbearbakery",
+"n": "Brown Bear Bakery",
+"tipo": "rota",
+"cocina": "panadería y brunch neoyorquino",
+"nota": "4,3",
+"res": "1.137",
+"dir": "C. del León, 10 · Centro",
+"tel": "913 69 05 87",
+"dominio": "brownbearbakery.es",
+"visto": "Sin web en Google. Su Facebook anuncia brownbearbakery.es, que solo muestra la «Página por defecto» del hosting.",
+"obs": [
+"En vuestro Facebook aparece la web brownbearbakery.es, pero solo muestra la «Página por defecto» del hosting, y en Google Maps no tenéis ninguna web enlazada.",
+"Con más de 1.100 reseñas, una web con vuestros productos del día, el brunch y encargos de tartas os traería pedidos directos."
+],
+"fb": "https://www.facebook.com/BrownBearBakeryMadrid/",
+"email": "leon@brownbearbakery.es"
+},
+{
+"id": "beerhousechamber",
+"n": "Beerhouse Chamberí",
+"tipo": "rota",
+"cocina": "cervecería artesana",
+"nota": "4,5",
+"res": "1.025",
+"dir": "C. del Cardenal Cisneros, 16 · Chamberí",
+"tel": "648 869 907",
+"dominio": "beerhouse.es",
+"visto": "beerhouse.es muestra «Database Error».",
+"obs": [
+"Vuestra web beerhouse.es muestra ahora mismo un «Database Error» en lugar de la página: quien llega desde Google se encuentra un error.",
+"Con 1.025 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"ig": "beerhouse_chamberi",
+"fb": "https://www.facebook.com/cardenalcisneros16/"
+},
+{
+"id": "pantecucinaitali",
+"n": "Pante Cucina Italiana",
+"tipo": "rota",
+"cocina": "restaurante italiano",
+"nota": "4,3",
+"res": "793",
+"dir": "C. de Villanueva, 21 · Salamanca",
+"tel": "918 27 52 49",
+"dominio": "pantemadrid.com",
+"visto": "Google enlaza a pantemadrid.com/reservations, que no existe.",
+"obs": [
+"En vuestra ficha de Google aparece pantemadrid.com para reservar, pero esa dirección ya no existe: quien intenta reservar desde Google llega a un error.",
+"Con 793 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/pantemadrid/",
+"email": "reservations@pantehg.com"
+},
+{
+"id": "tabernaelsur",
+"n": "Taberna El Sur",
+"tipo": "ajena",
+"cocina": "taberna (3 locales)",
+"nota": "4,5",
+"res": "8.530",
+"dir": "C. de la Torrecilla del Leal, 12 · Centro",
+"tel": "915 27 83 40",
+"dominio": "tabernaelsur.es",
+"visto": "Google enlaza a tabernaelsur.shop, que redirige a placejoys.com (un directorio, no su web). Tienen 3 locales.",
+"obs": [
+"En vuestra ficha de Google aparece como web tabernaelsur.shop, pero no es vuestra: lleva a una página genérica de un directorio (placejoys.com) con información que no controláis. Y el Facebook que enlaza la ficha de Huertas es el de Moratín.",
+"Tenéis tres locales (Torrecilla, Huertas y Moratín) y más de 8.500 reseñas solo en este. Una web propia con los tres, su carta y reservas os daría un sitio único y vuestro, en lugar de depender de directorios."
+],
+"ig": "taberna.elsur",
+"fb": "https://www.facebook.com/Elsurdetorrecilla/"
+},
+{
+"id": "casatoni",
+"n": "Casa Toni",
+"tipo": "ajena",
+"cocina": "bar de tapas",
+"nota": "4,4",
+"res": "4.606",
+"dir": "C. de la Cruz, 14 · Centro",
+"tel": "915 32 25 80",
+"dominio": "casatonimadrid.es",
+"visto": "Google enlaza a casa-toni.shop, que redirige a grubbio.com (un directorio, no su web).",
+"obs": [
+"En vuestra ficha de Google aparece como web casa-toni.shop, pero no es vuestra: lleva a una página genérica de un directorio (grubbio.com) con información que no controláis.",
+"Con más de 4.600 reseñas, sois de los clásicos de la calle de la Cruz. Una web vuestra con la carta y las raciones os daría el control de lo que ve la gente, en vez de un directorio."
+],
+"fb": "https://www.facebook.com/casatonimadrid/"
+},
+{
+"id": "barelboquern",
+"n": "Bar El Boquerón",
+"tipo": "ajena",
+"cocina": "bar de tapas y pescaíto",
+"nota": "4,5",
+"res": "2.596",
+"dir": "C. de Valencia, 14 · Centro",
+"tel": "915 27 63 80",
+"dominio": "barelboqueron.es",
+"visto": "Google enlaza a barelboqueron.shop, que redirige a placejoys.com (un directorio, no su web).",
+"obs": [
+"En vuestra ficha de Google aparece como web barelboqueron.shop, pero no es vuestra: lleva a una página genérica de un directorio (placejoys.com) con información que no controláis.",
+"Con un 4,5 y casi 2.600 reseñas en Lavapiés, una web propia con la carta y fotos de vuestras raciones os traería más gente que esa página genérica."
+],
+"fb": "https://www.facebook.com/profile.php?id=138075486247394"
+},
+{
+"id": "casalabra",
+"n": "Casa Labra",
+"tipo": "ssl",
+"cocina": "taberna (desde 1860)",
+"nota": "4,3",
+"res": "15.744",
+"dir": "C. de Tetuán, 12 · Centro",
+"tel": "915 31 06 16",
+"dominio": "casalabra.es",
+"visto": "casalabra.es usa el certificado genérico del hosting (*.dinaserver.com): el navegador avisa de «No seguro».",
+"obs": [
+"Vuestra web casalabra.es no tiene un certificado de seguridad propio (usa el genérico del hosting), así que el navegador la marca como «No segura» y muchos clientes se van antes de entrar.",
+"Sois historia de Madrid: desde 1860 y con más de 15.000 reseñas. Merecéis una web a la altura, que cuente esa historia y no asuste con avisos de seguridad."
+],
+"ig": "casalabraoficial"
+},
+{
+"id": "bodegasrosell",
+"n": "Bodegas Rosell",
+"tipo": "ssl",
+"cocina": "taberna madrileña",
+"nota": "4,3",
+"res": "6.211",
+"dir": "Calle del Gral. Lacy, 14 · Arganzuela",
+"tel": "914 67 84 58",
+"dominio": "bodegasrosell.es",
+"visto": "bodegasrosell.es usa el certificado genérico del hosting (*.servidoresdns.net): aviso «No seguro».",
+"obs": [
+"Vuestra web bodegasrosell.es no tiene un certificado de seguridad propio (usa el genérico del hosting), así que el navegador la marca como «No segura» y muchos clientes se van antes de entrar.",
+"Con más de 6.200 reseñas, una web segura con la carta y reservas os ahorraría muchas llamadas."
+],
+"ig": "bodegasrosell",
+"fb": "https://www.facebook.com/BodegasRosell/"
+},
+{
+"id": "tabernalaconcha",
+"n": "Taberna La Concha",
+"tipo": "ssl",
+"cocina": "bar de tapas",
+"nota": "4,5",
+"res": "4.152",
+"dir": "C. de la Cava Baja, 7 · Centro",
+"tel": "616 910 671",
+"dominio": "laconchataberna.com",
+"visto": "Certificado de laconchataberna.com autofirmado y caducado en 2022.",
+"obs": [
+"Vuestra web laconchataberna.com tiene un certificado de seguridad caducado desde agosto de 2022, así que el navegador avisa de que «No es segura» antes de entrar.",
+"Con un 4,5 y más de 4.100 reseñas en plena Cava Baja, cada visita que se pierde en ese aviso es una mesa que se va al bar de al lado."
+],
+"fb": "https://www.facebook.com/tabernalaconcha/"
+},
+{
+"id": "barcasapaco",
+"n": "Bar Casa Paco",
+"tipo": "ssl",
+"cocina": "bar de tapas (desde 1954)",
+"nota": "4,4",
+"res": "3.703",
+"dir": "C. de Altamirano, 38 · Moncloa - Aravaca",
+"tel": "915 43 28 21",
+"dominio": "barcasapaco.es",
+"visto": "Sin web en Google. Tienen barcasapaco.es (anunciada en Facebook), con certificado que no coincide.",
+"obs": [
+"Tenéis la web barcasapaco.es, pero no aparece enlazada en vuestra ficha de Google Maps y su certificado de seguridad no es válido, así que el navegador avisa antes de entrar.",
+"Con un 4,4 y más de 3.700 reseñas, y desde 1954, solo os falta que esa web funcione bien y que la gente la encuentre en Google."
+],
+"fb": "https://www.facebook.com/Bar-Casa-Paco-46975799510/"
+},
+{
+"id": "lacasadelastorri",
+"n": "La Casa de las Torrijas",
+"tipo": "ssl",
+"cocina": "taberna",
+"nota": "4,2",
+"res": "2.523",
+"dir": "C. de la Paz, 4 · Centro",
+"tel": "916 20 22 10",
+"dominio": "lacasadelastorrijas.es",
+"visto": "lacasadelastorrijas.es muestra el certificado de una notaría; la web de su Facebook (…1907.com) no existe.",
+"obs": [
+"Vuestra web lacasadelastorrijas.es muestra un certificado de seguridad de otra empresa, así que el navegador avisa de que «No es segura». Y la web de vuestro Facebook (lacasadelastorrijas1907.com) ya no existe.",
+"Con 2.523 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/135309509859987"
+},
+{
+"id": "deldiego",
+"n": "Del Diego",
+"tipo": "ssl",
+"cocina": "coctelería",
+"nota": "4,5",
+"res": "1.794",
+"dir": "C. de la Reina, 12 · Centro",
+"tel": "915 23 31 06",
+"dominio": "deldiego.com",
+"visto": "deldiego.com usa el certificado genérico del hosting (*.servidoresdns.net): aviso «No seguro».",
+"obs": [
+"Vuestra web deldiego.com no tiene un certificado de seguridad propio (usa el genérico del hosting), así que el navegador la marca como «No segura».",
+"Sois una de las coctelerías clásicas de Madrid, con un 4,5. Una web segura con la carta de cócteles y reservas estaría a la altura."
+],
+"fb": "https://www.facebook.com/p/Del-Diego-Cocktail-Bar-100064269000144/"
+},
+{
+"id": "panambrasserie",
+"n": "Panam Brasserie",
+"tipo": "ssl",
+"cocina": "brasserie",
+"nota": "4,7",
+"res": "372",
+"dir": "Av. de Machupichu, 27 · Hortaleza",
+"tel": "918 18 50 44",
+"dominio": "panambrasserie.com",
+"visto": "Certificado de panambrasserie.com caducado el 17/06/2026. Su Instagram ahora se llama «La Bistrotaberna».",
+"obs": [
+"El certificado de seguridad de panambrasserie.com caducó el 17 de junio, así que Chrome y Safari muestran el aviso «La conexión no es privada» antes de entrar.",
+"Tenéis un 4,7 de nota. Ese aviso de seguridad es lo primero que ve quien quiere reservar."
+],
+"ig": "la_bistrotaberna_machupichu_27"
+},
+{
+"id": "trattoriavecchia",
+"n": "Trattoria Vecchia Milano",
+"tipo": "pdf",
+"cocina": "restaurante italiano",
+"nota": "4,2",
+"res": "463",
+"dir": "C. del Marqués de Urquijo, 21 · Moncloa - Aravaca",
+"tel": "915 42 44 52",
+"dominio": "vecchiamilano.com",
+"visto": "Google enlaza a un PDF en Google Drive; la web de su Facebook (vecchiamilano.com) no existe.",
+"obs": [
+"En vuestra ficha de Google la web es un PDF de la carta en Google Drive, y la web de vuestro Facebook (vecchiamilano.com) ya no existe.",
+"Con 463 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/169675463072482/"
+},
+{
+"id": "restaurantealham",
+"n": "Restaurante Alhambra",
+"tipo": "sin",
+"cocina": "restaurante andaluz",
+"nota": "4,4",
+"res": "6.685",
+"dir": "C. de la Victoria, 9 · Centro",
+"tel": "915 21 07 08",
+"dominio": "restaurantealhambra.es",
+"visto": "4,4 con 6.685 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,4 con 6.685 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con más de 6.600 reseñas, una web con la carta andaluza y reservas os haría aparecer cuando alguien busca «comida andaluza en Madrid»."
+]
+},
+{
+"id": "cafdelaluz",
+"n": "Café de la Luz",
+"tipo": "sin",
+"cocina": "café, cócteles y DJ",
+"nota": "4,3",
+"res": "4.282",
+"dir": "C. de la Puebla, 8 · Centro",
+"tel": "915 23 11 99",
+"dominio": "cafedelaluz.es",
+"visto": "4,3 con 4.282 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 4.282 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con más de 4.200 reseñas en Malasaña, una web con la carta de desayunos y cócteles y la agenda de DJs os traería más gente."
+],
+"ig": "cafede_laluz",
+"email": "cafedelaluz8@hotmail.com"
+},
+{
+"id": "matador",
+"n": "Matador",
+"tipo": "sin",
+"cocina": "bar de tapas",
+"nota": "4,6",
+"res": "4.126",
+"dir": "C. de la Cruz, 39 · Centro",
+"tel": "",
+"dominio": "matador.es",
+"visto": "4,6 con 4.126 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,6 con 4.126 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con un 4,6 y más de 4.100 reseñas, y sin teléfono en Google, ahora mismo no hay forma fácil de contactar con vosotros. Una web con carta y reservas lo arreglaría."
+],
+"fb": "https://www.facebook.com/p/Matador-Madrid-100080461010640/"
+},
+{
+"id": "laorejadejaime",
+"n": "La Oreja de Jaime",
+"tipo": "sin",
+"cocina": "bar de tapas",
+"nota": "4,2",
+"res": "3.349",
+"dir": "C. de la Cruz, 15 · Centro",
+"tel": "918 32 58 46",
+"dominio": "laorejadejaime.es",
+"visto": "4,2 con 3.349 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,2 con 3.349 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con 3.349 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+]
+},
+{
+"id": "lasanabresa",
+"n": "La Sanabresa",
+"tipo": "sin",
+"cocina": "casa de comidas",
+"nota": "4,6",
+"res": "3.172",
+"dir": "C. del Amor de Dios, 12 · Centro",
+"tel": "914 29 03 38",
+"dominio": "lasanabresa.es",
+"visto": "4,6 con 3.172 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,6 con 3.172 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Tenéis un 4,6 con más de 3.100 reseñas. Una web con el menú del día actualizado os traería aún más gente de la zona de Huertas."
+]
+},
+{
+"id": "ladolores",
+"n": "La Dolores",
+"tipo": "sin",
+"cocina": "taberna",
+"nota": "4,3",
+"res": "3.060",
+"dir": "Pl. de Jesús, 4 · Centro",
+"tel": "914 29 22 43",
+"dominio": "ladolores.es",
+"visto": "4,3 con 3.060 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 3.060 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con 3.060 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"ig": "tabernaladolores",
+"fb": "https://www.facebook.com/p/La-Dolores-100077206410750/"
+},
+{
+"id": "cafeterarocablan",
+"n": "Cafetería Rocablanca",
+"tipo": "sin",
+"cocina": "cafetería clásica",
+"nota": "4,3",
+"res": "2.779",
+"dir": "Calle de Fuencarral, 71 · Centro",
+"tel": "910 17 95 49",
+"dominio": "cafeteriarocablanca.es",
+"visto": "4,3 con 2.779 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 2.779 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con casi 2.800 reseñas en plena Fuencarral, una web con la carta de desayunos, churros y tapas os traería mucha gente que pasa por delante."
+],
+"ig": "rocablanca71",
+"fb": "https://www.facebook.com/p/Cafeter%C3%ADa-Rocablanca-100069685301230/"
+},
+{
+"id": "casacamacho",
+"n": "Casa Camacho",
+"tipo": "sin",
+"cocina": "bar clásico de Malasaña",
+"nota": "4,3",
+"res": "2.346",
+"dir": "Calle de San Andrés, 4 · Centro",
+"tel": "915 31 35 98",
+"dominio": "casacamacho.es",
+"visto": "4,3 con 2.346 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 2.346 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Sois la cuna del yayo y salisteis en Pantomima Full. Mucha gente os busca por eso, y no encuentra ninguna web vuestra."
+],
+"fb": "https://www.facebook.com/p/Casa-Camacho-100068082612690/"
+},
+{
+"id": "bcoffee",
+"n": "Bô Coffee",
+"tipo": "sin",
+"cocina": "café de especialidad y brunch",
+"nota": "4,2",
+"res": "2.130",
+"dir": "C. de Espronceda, 16 · Chamberí",
+"tel": "",
+"dominio": "bcoffee.es",
+"visto": "4,2 con 2.130 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,2 con 2.130 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con 2.130 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/p/B%C3%B4-Coffee-Madrid-100063477579844/"
+},
+{
+"id": "restaurantecompo",
+"n": "Restaurante Compostela",
+"tipo": "sin",
+"cocina": "restaurante gallego",
+"nota": "4,1",
+"res": "1.689",
+"dir": "C. de Serrano Jover, 6 · Centro",
+"tel": "915 42 73 32",
+"dominio": "restaurantecompostela.es",
+"visto": "4,1 con 1.689 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,1 con 1.689 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Una web con la carta gallega y reservas os haría aparecer cuando alguien busca «restaurante gallego en Argüelles»."
+],
+"ig": "compostelaarguelles",
+"fb": "https://www.facebook.com/RestauranteCompostelaMadrid/"
+},
+{
+"id": "barloscaracoles",
+"n": "Bar Los Caracoles",
+"tipo": "sin",
+"cocina": "bar castizo",
+"nota": "4,3",
+"res": "1.590",
+"dir": "C. de Toledo, 106 · Centro",
+"tel": "913 66 42 46",
+"dominio": "barloscaracoles.es",
+"visto": "4,3 con 1.590 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 1.590 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Sois «los mejores caracoles de Madrid», con más de 1.500 reseñas. Una web con la carta os haría aparecer cuando alguien lo busca en Google."
+],
+"fb": "https://www.facebook.com/loscaracolesmadrid/"
+},
+{
+"id": "bodegasalvaje",
+"n": "Bodega Salvaje",
+"tipo": "sin",
+"cocina": "taberna manchega con cerveza propia",
+"nota": "4,5",
+"res": "1.526",
+"dir": "C. de Jaime el Conquistador, 25 · Arganzuela",
+"tel": "",
+"dominio": "bodegasalvaje.es",
+"visto": "4,5 con 1.526 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,5 con 1.526 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Tenéis cerveza de elaboración propia y cocina manchega, con un 4,5. Una web lo contaría bien y os traería gente de fuera del barrio."
+],
+"ig": "bodegasalvaje",
+"fb": "https://www.facebook.com/ChegreSalvaje/"
+},
+{
+"id": "mesndelatortilla",
+"n": "Mesón de la Tortilla",
+"tipo": "sin",
+"cocina": "mesón",
+"nota": "4,3",
+"res": "1.305",
+"dir": "Cava de San Miguel, 15 · Centro",
+"tel": "915 47 10 08",
+"dominio": "mesondelatortilla.es",
+"visto": "4,3 con 1.305 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 1.305 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Sois el mesón más antiguo de la Cava de San Miguel. Una web que lo cuente, con la carta y reservas, os ayudaría a captar a quien pasea por la Plaza Mayor."
+],
+"ig": "mesondelatortilla"
+},
+{
+"id": "barsanturce",
+"n": "Bar Santurce",
+"tipo": "sin",
+"cocina": "bar (sardinas, Rastro)",
+"nota": "4,1",
+"res": "896",
+"dir": "Plaza del Gral. Vara de Rey, 14 · Centro",
+"tel": "646 238 303",
+"dominio": "barsanturce.es",
+"visto": "4,1 con 896 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,1 con 896 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con casi 900 reseñas junto al Rastro, una web con la carta y el horario de los domingos os ayudaría a captar a quien va al mercadillo."
+],
+"fb": "https://www.facebook.com/profile.php?id=196794833769039"
+},
+{
+"id": "trattoriadaalfre",
+"n": "Trattoria da Alfredo",
+"tipo": "sin",
+"cocina": "trattoria siciliana",
+"nota": "4,6",
+"res": "612",
+"dir": "C. de El Españoleto, 4 · Chamberí",
+"tel": "910 83 36 65",
+"dominio": "trattoriadaalfredo.es",
+"visto": "4,6 con 612 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,6 con 612 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con 612 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"ig": "trattoriadaalfredo"
+},
+{
+"id": "barcasamanolo",
+"n": "Bar Casa Manolo",
+"tipo": "sin",
+"cocina": "bar restaurante",
+"nota": "4,3",
+"res": "385",
+"dir": "C. de Jovellanos, 7 · Centro",
+"tel": "915 21 45 16",
+"dominio": "barcasamanolo.es",
+"visto": "4,3 con 385 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,3 con 385 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Al lado del Congreso, una web con la carta y reservas os ayudaría a captar comidas de trabajo."
+],
+"fb": "https://www.facebook.com/p/Casa-Manolo-Madrid-100065145594767/"
+},
+{
+"id": "barlagloria",
+"n": "Bar La Gloria",
+"tipo": "sin",
+"cocina": "bar de tapas y comida casera",
+"nota": "4,6",
+"res": "376",
+"dir": "C. de Ramos Carrión, 5 · Chamartín",
+"tel": "914 15 08 81",
+"dominio": "barlagloria.es",
+"visto": "4,6 con 376 reseñas en Google y sin web.",
+"obs": [
+"En Google Maps tenéis un 4,6 con 376 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta ni reservar.",
+"Con 376 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/p/BAR-La-Gloria-100050233525826/"
+},
+{
+"id": "eltigre",
+"n": "El Tigre",
+"tipo": "fb",
+"cocina": "sidrería y bar de tapas",
+"nota": "4,2",
+"res": "26.590",
+"dir": "C. de las Infantas, 23 · Centro",
+"tel": "915 32 02 59",
+"dominio": "eltigre.es",
+"visto": "4,2 con 26.590 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"Sois de los bares más conocidos de Madrid, con más de 26.000 reseñas. Una web propia, con vuestra carta y en varios idiomas, os quitaría muchas preguntas de turistas."
+],
+"ig": "tigrebarinfantas23",
+"fb": "https://www.facebook.com/Restaurante-Sidreria-El-Tigre-158330920891550/"
+},
+{
+"id": "tabernamalaspina",
+"n": "Taberna Malaspina",
+"tipo": "fb",
+"cocina": "taberna",
+"nota": "4,3",
+"res": "6.180",
+"dir": "C. de Cádiz, 9 · Centro",
+"tel": "915 23 40 24",
+"dominio": "tabernamalaspina.es",
+"visto": "4,3 con 6.180 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"Con más de 6.000 reseñas junto a Sol, una web propia con la carta de raciones y reservas para grupos os traería más gente nueva."
+],
+"ig": "tabernamalaspinamadrid",
+"fb": "https://www.facebook.com/taberna.malaspina.1"
+},
+{
+"id": "barpetisqueira",
+"n": "Bar Petisqueira",
+"tipo": "fb",
+"cocina": "bar de tapas",
+"nota": "4,0",
+"res": "2.942",
+"dir": "C. de Churruca, 6 · Centro",
+"tel": "914 45 54 19",
+"dominio": "barpetisqueira.es",
+"visto": "4,0 con 2.942 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"Con 2.942 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/pages/Bar-Restaurante-Petisqueira/175352615823381"
+},
+{
+"id": "elcogollodelades",
+"n": "El Cogollo de la Descarga",
+"tipo": "fb",
+"cocina": "restaurante asturiano",
+"nota": "4,6",
+"res": "1.766",
+"dir": "C. de las Hileras, 6 · Centro",
+"tel": "911 96 03 51",
+"dominio": "elcogollodeladescarga.es",
+"visto": "4,6 con 1.766 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"Ganasteis el Mejor Cachopo de España en 2019. Eso merece una web que lo cuente, con la carta y reservas, para aparecer cuando alguien busca «cachopo en Madrid»."
+],
+"ig": "el_cogollo_de_la_descarga",
+"fb": "https://www.facebook.com/elcogollo2013/"
+},
+{
+"id": "tabernatempranil",
+"n": "Taberna Tempranillo",
+"tipo": "fb",
+"cocina": "taberna de vinos y tapas",
+"nota": "4,3",
+"res": "1.404",
+"dir": "C. de la Cava Baja, 38 · Centro",
+"tel": "913 64 15 32",
+"dominio": "tabernatempranillo.es",
+"visto": "4,3 con 1.404 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"En plena Cava Baja y con más de 1.400 reseñas, una web con la carta de vinos y tapas os traería mucha gente que pasea por La Latina buscando dónde parar."
+],
+"fb": "https://m.facebook.com/pages/Taberna-El-Tempranillo/137536646301656"
+},
+{
+"id": "marisquerafide",
+"n": "Marisquería Fide",
+"tipo": "fb",
+"cocina": "marisquería",
+"nota": "4,1",
+"res": "1.289",
+"dir": "C/ de Ponzano, 8 · Chamberí",
+"tel": "914 46 58 33",
+"dominio": "marisqueriafide.es",
+"visto": "4,1 con 1.289 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"En Ponzano, la calle de tapas de moda, una web con la carta de marisco y reservas os ayudaría a destacar entre tanta oferta."
+],
+"fb": "https://www.facebook.com/CerveceriaFIDE"
+},
+{
+"id": "cafeteralaaustri",
+"n": "Cafetería La Austriaca",
+"tipo": "fb",
+"cocina": "cafetería",
+"nota": "4,5",
+"res": "1.020",
+"dir": "C. de San Onofre, 3 · Centro",
+"tel": "915 31 31 74",
+"dominio": "cafeterialaaustriaca.es",
+"visto": "4,5 con 1.020 reseñas; Google enlaza a Facebook como web.",
+"obs": [
+"Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.",
+"Con 1.020 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"fb": "https://www.facebook.com/Laustriaca/"
+},
+{
+"id": "lacampana",
+"n": "La Campana",
+"tipo": "ig",
+"cocina": "bocadillos de calamares y cervecería",
+"nota": "4,5",
+"res": "20.274",
+"dir": "C. de Botoneras, 6 · Centro",
+"tel": "911 03 49 32",
+"dominio": "lacampana.es",
+"visto": "4,5 con 20.274 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Con más de 20.000 reseñas sois parada obligatoria junto a la Plaza Mayor. Una web propia, con la carta en varios idiomas, os quitaría muchas preguntas de turistas."
+],
+"ig": "lacampana.oficial"
+},
+{
+"id": "locaobsesin",
+"n": "Loca Obsesión",
+"tipo": "ig",
+"cocina": "brunch",
+"nota": "4,9",
+"res": "9.127",
+"dir": "C. de Bordadores, 2 · Centro",
+"tel": "913 19 74 56",
+"dominio": "locaobsesion.es",
+"visto": "4,9 con 9.127 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Tenéis un 4,9 con más de 9.000 reseñas. Una web con el menú de brunch y reservas para el fin de semana os quitaría colas y mensajes."
+],
+"ig": "locaobsesion_brunch"
+},
+{
+"id": "distritovegano",
+"n": "Distrito Vegano",
+"tipo": "ig",
+"cocina": "restaurante vegano",
+"nota": "4,5",
+"res": "3.252",
+"dir": "Calle de Cervantes, 8 · Centro",
+"tel": "671 779 590",
+"dominio": "distritovegano.es",
+"visto": "4,5 con 3.252 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Con más de 3.200 reseñas, una web con la carta y los alérgenos bien claros os haría aparecer cuando alguien busca «restaurante vegano en Madrid»."
+],
+"ig": "distritovegano"
+},
+{
+"id": "tabernalamina",
+"n": "Taberna La Mina",
+"tipo": "ig",
+"cocina": "taberna",
+"nota": "4,3",
+"res": "3.223",
+"dir": "C/ del Gral. Álvarez de Castro, 8 · Chamberí",
+"tel": "",
+"dominio": "tabernalamina.es",
+"visto": "4,3 con 3.223 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Con 3.223 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"ig": "lamina_bar"
+},
+{
+"id": "elperrodepavlov",
+"n": "El Perro de Pavlov",
+"tipo": "ig",
+"cocina": "café y brunch",
+"nota": "4,7",
+"res": "1.201",
+"dir": "Costanilla de San Pedro, 5 · Centro",
+"tel": "",
+"dominio": "elperrodepavlov.es",
+"visto": "4,7 con 1.201 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Con 1.201 reseñas tenéis la reputación hecha. Con una web propia, quien os encuentra podría ver la carta y reservar en un minuto."
+],
+"ig": "perropavlov"
+},
+{
+"id": "marcelle",
+"n": "Marcelle",
+"tipo": "ig",
+"cocina": "restaurante de cocina casera",
+"nota": "4,9",
+"res": "442",
+"dir": "C. de Fúcar, 2 · Centro",
+"tel": "676 918 751",
+"dominio": "marcelle.es",
+"visto": "4,9 con 442 reseñas; Google enlaza a Instagram como web.",
+"obs": [
+"En Google tenéis como web vuestro Instagram. Está genial para fotos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.",
+"Tenéis un 4,9 de nota. Ahora las reservas van por TheFork, que cobra comisión; con una web propia podríais recibirlas directamente."
+],
+"ig": "marcelle_madrid"
+},
+{
+"id": "barlapaloma",
+"n": "Bar La Paloma",
+"tipo": "basica",
+"cocina": "marisquería y bar (desde 1960)",
+"nota": "4,4",
+"res": "1.648",
+"dir": "C. de Toledo, 85 · Centro",
+"tel": "913 65 31 31",
+"dominio": "barlapaloma.es",
+"visto": "Web gratuita de Wix (barlapaloma1960.wixsite.com).",
+"obs": [
+"Vuestra web es una página gratuita de Wix (barlapaloma1960.wixsite.com): sin dominio propio y con la publicidad de Wix.",
+"Con un 4,4 y más de 1.600 reseñas, una web con dominio propio y la carta de marisco os daría una imagen a la altura de vuestro bar."
+],
+"web": "http://barlapaloma1960.wixsite.com/website"
+}
+];
+
+var TIPOS = {rota:["Web caída","t-rota"], ajena:["Web de un directorio","t-rota"], pdf:["Carta en PDF","t-basica"], ssl:["Aviso «No seguro»","t-ssl"], sin:["Sin web","t-sin"], fb:["Solo Facebook","t-fb"], ig:["Solo Instagram","t-ig"], basica:["Web básica","t-basica"]};
+
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function demo(){var v=document.getElementById("demo-url").value.trim();return v||"[enlace a la web de ejemplo]"}
+function telLink(t){return "+34"+String(t).split("·")[0].replace(/\D/g,"")}
+function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir+", Guadalajara")}
+
+var MEJORAS =
+  "• Carta y menú del día siempre al día, fáciles de leer en el móvil y con alérgenos.\n"+
+  "• Reservas online a cualquier hora: os llegan por WhatsApp con día, hora y personas, sin coger el teléfono en pleno servicio.\n"+
+  "• Botones de llamar y cómo llegar, horario con «abierto ahora» y enlace a vuestras reseñas de Google.\n";
+function lineaDominio(x){
+  return ({rota:"• Vuestra web otra vez en marcha, con dominio propio ("+x.dominio+") y la ficha de Google bien enlazada.\n",
+    ajena:"• Vuestra propia web ("+x.dominio+") en lugar de la del directorio, con la ficha de Google bien enlazada.\n",
+    ssl:"• Certificado de seguridad que se renueva solo: nunca más el aviso de «No seguro» en "+x.dominio+".\n"}[x.tipo]||
+    "• Dominio propio (por ejemplo "+x.dominio+") y vuestra ficha de Google enlazando a la web.\n");
+}
+function asunto(x){
+  return ({rota:x.n+": el enlace a vuestra web da error", ajena:x.n+": la web de vuestra ficha de Google no es vuestra", ssl:x.n+": vuestra web sale como «No segura»", basica:"Una web propia para "+x.n, pdf:"Una web propia para "+x.n}[x.tipo]||"Una web para "+x.n);
+}
+function email(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos Verde, de Indexa Labs. Hago páginas web para restaurantes y bares de Madrid, y os escribo porque he visto un par de cosas que creo que os interesan:\n\n"+
+  "• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
+  "Os dejo un modelo de prueba que he preparado para que veáis cómo podría quedar. Es solo una muestra: se personaliza por completo a vuestro gusto (estilo, colores, fotos, carta y secciones):\n"+demo()+"\n\n"+
+  "Lo que tendría la vuestra:\n"+MEJORAS+lineaDominio(x)+"\n"+
+  "Si os encaja, os preparo una propuesta sin compromiso o lo vemos en 15 minutos cuando os venga bien.\n\n"+
+  "Un saludo,\n"+FIRMA+"\n\n"+
+  "Si no os interesa, respondedme «no, gracias» y no os vuelvo a escribir.";
+}
+function dm(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago webs para restaurantes y bares de Madrid. "+x.obs[0]+"\n\n"+
+  x.obs[1]+"\n\n"+
+  "Os dejo un modelo de prueba con carta, menú del día y reservas por WhatsApp. Es solo una muestra y se personaliza a vuestro gusto:\n"+demo()+"\n\n"+
+  "Si os interesa, os preparo una propuesta para "+x.n+" sin compromiso.\n\n"+
+  "Un saludo,\nCarlos Verde · Indexa Labs\n\n"+
+  "(Si no os interesa, decídmelo y no os vuelvo a escribir).";
+}
+function guion(x){
+  var gancho = {
+    rota:"he visto que el enlace a vuestra web ya no funciona: quien intenta entrar llega a un error",
+    ssl:"he visto que vuestra web sale con el aviso de «No seguro» en el navegador, porque el certificado de seguridad está caducado",
+    sin:"he visto que en Google tenéis "+x.nota+" de nota con "+x.res+" reseñas, pero no tenéis web enlazada",
+    fb:"he visto que en Google tenéis como web el Facebook, y desde el móvil casi no se ve la carta",
+    ig:"he visto que en Google tenéis como web el Instagram, y desde ahí no se puede ver la carta ni reservar",
+    basica:"he visto que vuestra web es una página gratuita, sin reservas ni dominio propio",
+    ajena:"he visto que la web que aparece en vuestra ficha de Google no es vuestra, sino una página genérica de un directorio",
+    pdf:"he visto que en Google vuestra web es un PDF de la carta en Google Drive"
+  }[x.tipo];
+  return "Hola, buenos días. ¿Hablo con el responsable de "+x.n+"?\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago páginas web para restaurantes y bares de Madrid. Os llamo porque "+gancho+".\n\n"+
+  "He preparado un modelo de prueba de web, con la carta, el menú del día y reservas que llegan por WhatsApp, que se personaliza a vuestro gusto. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
+  "(Si dicen que sí: apunta el número o email y envíales el email de arriba.)\n"+
+  "(Si dicen que no: «Perfecto, gracias por vuestro tiempo». Y marca la casilla.)";
+}
+
+function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function campo(label,valor,rows,cls,id){
+  var c=rows?'<textarea readonly rows="'+rows+'" class="'+(cls||'')+'" data-id="'+id+'">'+esc(valor)+'</textarea>':'<input type="text" readonly value="'+esc(valor)+'">';
+  return '<div class="campo">'+(label?'<label>'+label+'</label>':'')+'<div class="fila">'+c+'<button class="copiar" type="button">Copiar</button></div></div>';
+}
+
+function pintar(){
+  var cont=document.getElementById("lista"); cont.innerHTML="";
+  L.forEach(function(x,i){
+    var t=TIPOS[x.tipo], canales=[];
+    if(x.email) canales.push('<div class="canal"><h3>Email <a class="btn mail" href="mailto:'+x.email+'" target="_blank" rel="noopener">Abrir email ↗</a></h3><div class="dato">'+esc(x.email)+(x.nota_email?' · '+esc(x.nota_email):'')+'</div>'+
+      campo("Asunto",asunto(x))+campo("",email(x),18,"msg-email",x.id)+'</div>');
+    if(x.ig) canales.push('<div class="canal"><h3>Instagram <a class="btn ig" href="https://instagram.com/'+x.ig+'" target="_blank" rel="noopener">Abrir @'+x.ig+' ↗</a></h3><div class="dato">Mensaje directo. Pega el mensaje corto:</div>'+campo("",dm(x),13,"msg-dm",x.id)+'</div>');
+    if(x.fb) canales.push('<div class="canal"><h3>Facebook <a class="btn fb" href="'+x.fb+'" target="_blank" rel="noopener">Abrir página ↗</a></h3><div class="dato">Pulsa «Enviar mensaje» en su página y pega el mensaje corto'+(x.ig?' (el mismo que el de Instagram: usa solo uno de los dos)':'')+':</div>'+(x.ig?'':campo("",dm(x),13,"msg-dm",x.id))+'</div>');
+    var a=document.createElement("article"); a.id="r-"+x.id;
+    a.innerHTML=
+    '<div class="cab"><div class="num">'+(i+1)+'</div>'+
+      '<div class="info"><h2>'+esc(x.n)+'</h2><div class="meta">'+esc(x.cocina)+' · '+esc(x.dir)+' · <a href="'+mapa(x)+'" target="_blank" rel="noopener">Ficha de Google ↗</a>'+(x.web?' · <a href="'+x.web+'" target="_blank" rel="noopener">Web actual ↗</a>':'')+'</div></div>'+
+      '<div class="lado"><div class="nota">'+x.nota+'<small>'+x.res+' reseñas</small></div><span class="tipo '+t[1]+'">'+t[0]+'</span></div></div>'+
+    '<div class="visto"><b>Lo que he visto</b>'+esc(x.visto)+'</div>'+
+    (x.aviso?'<div class="aviso">⚠ '+esc(x.aviso)+'</div>':'')+
+    (canales.length?'<div style="margin-top:14px;font-weight:700">Escríbeles por aquí (elige un solo canal):</div>'+canales.join(""):'')+
+    '<details class="llamar"'+(canales.length?'':' open')+'><summary>'+(canales.length?'Si no contestan en 5 días: ':'No tienen email ni redes: ')+(x.tel?'llama al '+esc(x.tel)+' o ':'')+'pásate por '+esc(x.dir)+'</summary>'+
+      (x.tel?'<p style="margin:8px 0 0"><a class="btn" href="tel:'+telLink(x.tel)+'">Llamar ↗</a></p>':'')+campo("Guion de llamada",guion(x),9,"",x.id)+'</details>'+
+    '<div class="estado" style="margin-top:12px">'+
+      '<label class="hecho"><input type="checkbox" data-k="escrito:'+x.id+'"> Ya les he escrito</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="llamado:'+x.id+'"> Ya les he llamado</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="interesa:'+x.id+'"> Les interesa</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="no:'+x.id+'"> No les interesa</label>'+
+    '</div>';
+    cont.appendChild(a);
+  });
+  cont.querySelectorAll(".hecho input").forEach(function(c){
+    c.checked=leer(c.dataset.k)==="1";
+    c.addEventListener("change",function(){guardar(c.dataset.k,c.checked?"1":"0");estado()});
+  });
+  estado();
+}
+function estado(){
+  var n={escrito:0,llamado:0,interesa:0,no:0};
+  L.forEach(function(x){
+    var f={}; Object.keys(n).forEach(function(k){f[k]=leer(k+":"+x.id)==="1"; if(f[k])n[k]++});
+    document.getElementById("r-"+x.id).classList.toggle("ok",f.no||((f.escrito||f.llamado)&&!f.interesa));
+  });
+  document.getElementById("resumen").innerHTML='<span><b>'+L.length+'</b> locales</span><span><b>'+n.escrito+'</b> escritos</span><span><b>'+n.llamado+'</b> llamados</span><span><b>'+n.interesa+'</b> interesados</span><span><b>'+n.no+'</b> no interesados</span>';
+}
+function actualizarMensajes(){
+  document.querySelectorAll("textarea.msg-email,textarea.msg-dm").forEach(function(t){
+    var x=L.filter(function(r){return r.id===t.dataset.id})[0];
+    t.value=t.classList.contains("msg-email")?email(x):dm(x);
+  });
+}
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button.copiar"); if(!b) return;
+  var c=b.parentElement.querySelector("textarea,input");
+  var ok=function(){b.textContent="¡Copiado!";b.classList.add("copiado");setTimeout(function(){b.textContent="Copiar";b.classList.remove("copiado")},1800)};
+  var fallback=function(){c.focus();c.select();try{document.execCommand("copy")}catch(_){}ok()};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.value).then(ok,fallback)}else fallback();
+});
+var di=document.getElementById("demo-url");
+di.value=leer("demo-url")||"https://caarlosverde.github.io/indexalabs/";
+di.addEventListener("input",function(){guardar("demo-url",di.value.trim());actualizarMensajes()});
+pintar();
+</script>
+</body>
+</html>
