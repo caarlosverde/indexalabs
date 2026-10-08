@@ -273,7 +273,7 @@ document.addEventListener("click",function(e){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.value).then(ok,fallback)}else fallback();
 });
 var di=document.getElementById("demo-url");
-di.value=leer("demo-url")||"https://caarlosverde.github.io/indexalabs/demos/restaurante/";
+di.value=leer("demo-url")||"https://caarlosverde.github.io/indexalabs/";
 di.addEventListener("input",function(){guardar("demo-url",di.value.trim());actualizarMensajes()});
 pintar();
 </script>
