@@ -42,6 +42,12 @@ h2{margin:0;font-size:20px}
 .btn{display:inline-block;margin:2px 0 2px 6px;background:var(--v);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 12px;border-radius:8px}
 .btn.sec{background:#334155}
 .btn.wa{background:#128c4a}
+.btn.ig{background:#c13584}.btn.fb{background:#1877f2}.btn.mail{background:#0f766e}
+.canal{border:1px solid var(--b);border-radius:10px;padding:10px 14px;margin-top:10px}
+.canal h3{margin:0 0 4px;font-size:14px}
+.canal .dato{font-size:13px;color:var(--s)}
+details.llamar{margin-top:12px;font-size:14px}details.llamar summary{cursor:pointer;font-weight:600;color:var(--s)}
+.aviso{background:#fef3c7;border-radius:8px;padding:8px 12px;font-size:13px;margin-top:8px}
 .campo{margin-top:8px}
 .campo label{font-size:12px;color:var(--s)}
 .fila{display:flex;gap:8px;align-items:flex-start}
@@ -55,18 +61,20 @@ button.copiado{background:var(--v);color:#fff}
 </style>
 </head>
 <body>
+
 <div class="w">
 <h1>Bandeja de contactos · Restaurantes Guadalajara</h1>
-<div class="sub" id="sub">Generado el 08/10/2026 · ordenados de más a menos urgente</div>
+<div class="sub">Generado el 08/10/2026 · 16 locales · ordenados de más a menos urgente</div>
 
 <div class="ayuda"><b>Cómo usar esta página</b>
 <ol>
-<li><b>Llama o pásate por el local</b> con el guion de llamada. Mejor fuera de horas de servicio: de 11:00 a 12:30 o de 17:00 a 19:30.</li>
-<li><b>Si te dicen que les mandes el ejemplo</b>, copia el segundo mensaje y envíalo por WhatsApp o email. Así no les escribes en frío: la ley española (LSSI) no permite enviar publicidad por email, WhatsApp o mensaje privado a quien no lo ha pedido.</li>
-<li>Marca las casillas para llevar la cuenta. Si te dicen que no, márcalo y no vuelvas a insistir.</li>
+<li><b>Escríbeles por el canal que tengan</b>, en este orden: email, Instagram o Facebook. Pulsa <b>Abrir</b>, copia el mensaje y pégalo. En Facebook, pulsa «Enviar mensaje» en su página.</li>
+<li><b>Si no tienen ninguno, o no contestan en 5 días</b>, llama o pásate con el guion de llamada (al final de cada local). Mejor de 11:00 a 12:30 o de 17:00 a 19:30.</li>
+<li>Escribe por un solo canal a cada local. Si no contestan, haz un único recordatorio corto. Si dicen que no, márcalo y no insistas.</li>
 </ol>
-<p style="margin:8px 0 0">La nota, las reseñas, el teléfono y la web salen de su ficha de Google Maps. Antes de llamar, abre la ficha por si ha cambiado algo.</p>
-<p style="margin:6px 0 0"><b>Ritmo recomendado:</b> 8–10 llamadas al día. Si alguien no contesta, prueba otro día a otra hora.</p>
+<p style="margin:8px 0 0">Recuerda: escribir a quien no te lo ha pedido tiene algo de riesgo legal (LSSI). Por eso los mensajes son cortos, personales y llevan la opción de decir que no.</p>
+<p style="margin:6px 0 0">La nota y las reseñas salen de Google Maps. Los emails y redes, de sus páginas de Facebook e Instagram. Antes de escribir, abre su perfil por si ha cambiado algo.</p>
+<p style="margin:6px 0 0"><b>Ritmo recomendado:</b> unos 10 locales al día.</p>
 </div>
 
 <div class="demo">
@@ -82,69 +90,114 @@ button.copiado{background:var(--v);color:#fff}
 <script>
 var FIRMA = "Carlos Verde\nIndexa Labs";
 var L = [
- {id:"perdigacho", n:"El Perdigacho", tipo:"rota", cocina:"bar y asador", nota:"4,5", res:"922", dir:"C. Bardales, 6", tel:"949 25 58 99", dominio:"elperdigacho.es",
-  visto:"Su ficha de Google enlaza a elperdigacho.es, pero ese dominio ya no existe: quien pulsa «Sitio web» llega a un error.",
+ {id:"perdigacho", n:"El Perdigacho", tipo:"rota", cocina:"bar de tapas y restaurante", nota:"4,5", res:"922", dir:"C. Bardales, 6", tel:"949 25 58 99", dominio:"elperdigacho.es",
+  email:"mazuecos75@yahoo.es", ig:"elperdigacho", fb:"https://www.facebook.com/elperdigachoabemustas/",
+  visto:"Su ficha de Google y su Facebook enlazan a elperdigacho.es, pero ese dominio ya no existe: quien pulsa «Sitio web» llega a un error.",
+  nota_email:"Es el email que aparece en su Facebook. Parece personal (del dueño).",
   obs:["En vuestra ficha de Google aparece la web elperdigacho.es, pero esa dirección ya no funciona: quien pulsa en «Sitio web» llega a una página de error. Parece que el dominio ha caducado.","Con un 4,5 y 922 reseñas tenéis la reputación hecha, y ese enlace roto da sensación de negocio cerrado justo a quien está decidiendo dónde comer."]},
- {id:"casaredondo", n:"Mesón Casa Redondo", tipo:"rota", cocina:"mesón", nota:"4,5", res:"782", dir:"C. de la Virgen de la Soledad, 26", tel:"949 22 23 18", dominio:"mesoncasaredondo.es",
+ {id:"casaredondo", n:"Mesón Casa Redondo", tipo:"rota", cocina:"mesón", nota:"4,5", res:"782", dir:"C. de la Virgen de la Soledad, 26", tel:"949 22 23 18 · 680 70 30 88", dominio:"mesoncasaredondo.es",
+  ig:"mesoncasaredondo", fb:"https://www.facebook.com/p/Mes%C3%B3n-Casa-Redondo-100028608023781/",
   visto:"Su ficha de Google enlaza a mesoncasaredondo.shop, que ya no existe: el enlace da error.",
   obs:["En vuestra ficha de Google aparece la web mesoncasaredondo.shop, pero esa dirección ya no existe: quien pulsa en «Sitio web» llega a un error.","Con un 4,5 y 782 reseñas, y siendo un local pequeño que se llena, una web con reservas os ayudaría a organizar los turnos de comida y cena."]},
- {id:"bodegon", n:"El Bodegón de Sancho", tipo:"rota", cocina:"restaurante", nota:"4,0", res:"2.985", dir:"Av. de Venezuela, 17", tel:"949 12 11 91", dominio:"elbodegondesancho.com", fb:"https://www.facebook.com/El-Bodeg%C3%B3n-De-Sancho-126155017536729/",
-  visto:"Google enlaza a su Facebook como web. Los dominios elbodegondesancho.com y .es redirigen a una imagen de error del creador de webs.",
-  obs:["Vuestra ficha de Google enlaza a Facebook como web, y la dirección elbodegondesancho.com no muestra ninguna web: redirige a una página de error.","Sois de los restaurantes con más reseñas de Guadalajara (casi 3.000). Mucha de esa gente busca la carta o quiere reservar desde el móvil, y ahora no tiene dónde hacerlo."]},
  {id:"nouba", n:"Asador La Nouba", tipo:"ssl", cocina:"asador", nota:"4,1", res:"1.002", dir:"C. San Roque, 18", tel:"949 49 29 72", dominio:"asadorlanouba.es",
+  email:"lanouba@asadorlanouba.es", ig:"asadorlanouba", fb:"https://www.facebook.com/asadorlanouba",
   visto:"Su web asadorlanouba.es tiene el certificado de seguridad caducado desde el 23/08/2026: el navegador avisa de «No seguro» antes de entrar.",
   obs:["Vuestra web asadorlanouba.es tiene el certificado de seguridad caducado desde el 23 de agosto. Chrome y Safari muestran el aviso «La conexión no es privada» antes de entrar, y casi todo el mundo se da la vuelta ahí.","Con más de 1.000 reseñas en Google, cada visita que se pierde en ese aviso es una mesa que se va a otro asador."]},
- {id:"gayola", n:"Puerta Gayola", tipo:"sin", cocina:"bar de tapas", nota:"4,0", res:"2.087", dir:"Pl. San Esteban, 5", tel:"654 10 43 05", movil:1, dominio:"puertagayola.es",
-  visto:"Más de 2.000 reseñas en Google y ninguna web enlazada.",
-  obs:["En Google Maps tenéis más de 2.000 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta de tapas y raciones ni reservar.","Estáis en plena plaza de San Esteban; con una web propia apareceríais también cuando alguien busca «tapas en Guadalajara centro»."]},
- {id:"giovani", n:"Trattoria Giovani Fratelli", tipo:"sin", cocina:"restaurante italiano", nota:"4,7", res:"1.365", dir:"Bulevar Clara Campoamor, esq. C. Ana Mariscal, 1", tel:"697 19 57 14", movil:1, dominio:"giovanifratelli.es",
+ {id:"herradura", n:"La Herradura de Chaplin", tipo:"rota", cocina:"bar restaurante", nota:"4,1", res:"1.087", dir:"C. San Quintín, 3", tel:"949 02 20 48", dominio:"laherraduradechaplin.com",
+  email:"herradura.chaplin@gmail.com", fb:"https://www.facebook.com/laherraduradechaplin/",
+  visto:"Su Facebook anuncia la web laherraduradechaplin.com, pero ese dominio no existe. En Google Maps no tiene web.",
+  obs:["En vuestro Facebook aparece la web laherraduradechaplin.com, pero esa dirección no existe: quien intenta entrar llega a un error. Y en Google Maps no tenéis ninguna web enlazada.","Con más de 1.000 reseñas en Google sois muy conocidos. Con una web propia decidís vosotros qué carta, qué fotos y qué horario ve la gente, y pueden reservar sin llamar."]},
+ {id:"tostajo", n:"Don Tostajo", tipo:"rota", cocina:"cocina alcarreña", nota:"4,2", res:"672", dir:"La Carrera, 55", tel:"949 21 43 52", dominio:"dontostajo.es",
+  fb:"https://www.facebook.com/p/Don-Tostajo-100063543731480/",
+  visto:"Su Facebook anuncia la web dontostajo.es, pero ese dominio no existe. Tienen menú sin gluten avalado por FACE.",
+  obs:["En vuestro Facebook aparece la web dontostajo.es, pero esa dirección ya no funciona, y en Google Maps no tenéis ninguna web enlazada.","Tenéis menú para celíacos avalado por FACE, y eso es justo lo que mucha gente busca en Google («restaurante sin gluten en Guadalajara»). Sin web, ahora no os encuentran por ahí."]},
+ {id:"gayola", n:"Taberna Porta Gayola", tipo:"sin", cocina:"taberna de tapas", nota:"4,0", res:"2.087", dir:"Pl. San Esteban, 5", tel:"654 10 43 05", dominio:"portagayola.es",
+  ig:"taberna_portagayola", fb:"https://www.facebook.com/portagayola/",
+  visto:"Más de 2.000 reseñas en Google (aparece como «Puerta Gayola») y ninguna web enlazada.",
+  obs:["En Google Maps tenéis más de 2.000 reseñas, pero la ficha no enlaza a ninguna web. Quien os encuentra solo ve fotos de clientes: no puede ver la carta de tapas y raciones ni reservar.","Estáis en plena plaza de San Esteban. Con una web propia apareceríais también cuando alguien busca «tapas en Guadalajara centro»."]},
+ {id:"giovani", n:"Trattoria Giovani Fratelli", tipo:"sin", cocina:"restaurante italiano", nota:"4,7", res:"1.365", dir:"Bulevar Clara Campoamor, esq. C. Ana Mariscal, 1", tel:"697 19 57 14", dominio:"giovanifratelli.es",
+  email:"giovanifratelli1@gmail.com", ig:"giovanifratelli", fb:"https://www.facebook.com/GiovaniFratelliRistorante/",
   visto:"4,7 con 1.365 reseñas (de las mejores notas de la ciudad) y sin web.",
-  obs:["Tenéis un 4,7 con más de 1.300 reseñas, de las mejores notas de Guadalajara, pero vuestra ficha de Google no enlaza a ninguna web.","Quien compara italianos en la ciudad no puede ver vuestra carta de pizzas y pastas ni reservar online, y acaba eligiendo a quien sí lo pone fácil."]},
+  obs:["Tenéis un 4,7 con más de 1.300 reseñas, de las mejores notas de Guadalajara, pero vuestra ficha de Google no enlaza a ninguna web.","Quien compara italianos en la ciudad no puede ver vuestra carta de pizzas y pastas ni reservar online, y acaba eligiendo a quien se lo pone fácil."]},
  {id:"velero", n:"El Velero de Pacheco", tipo:"sin", cocina:"restaurante", nota:"4,1", res:"1.274", dir:"C. de María Pacheco, 112", tel:"949 38 12 36", dominio:"elvelerodepacheco.es",
-  visto:"1.274 reseñas en Google y sin web.",
-  obs:["Con más de 1.200 reseñas en Google sois muy conocidos, pero la ficha no enlaza a ninguna web.","Ahora mismo, para saber qué hay de menú o reservar, la gente tiene que llamar en pleno servicio. Una web con la carta y reservas online os quitaría muchas de esas llamadas."]},
- {id:"herradura", n:"La Herradura de Chaplin", tipo:"sin", cocina:"restaurante", nota:"4,1", res:"1.087", dir:"C. San Quintín, 3", tel:"949 02 20 48", dominio:"laherraduradechaplin.es",
-  visto:"Más de 1.000 reseñas en Google y sin web.",
-  obs:["Tenéis más de 1.000 reseñas en Google, pero vuestra ficha no enlaza a ninguna web.","Sin web, en Google solo se ve lo que suben los clientes. Con una página propia decidís vosotros qué fotos, qué carta y qué horario ve la gente."]},
- {id:"faro", n:"Bar El Faro (sidrería)", tipo:"fb", cocina:"sidrería", nota:"4,1", res:"890", dir:"C. del Cardenal González de Mendoza, 9", tel:"659 28 40 04", movil:1, dominio:"sidreriaelfaro.es", fb:"https://www.facebook.com/people/el-faro-sidreria/100026879594581/",
-  visto:"Google enlaza a un perfil personal de Facebook como web.",
-  obs:["Vuestra ficha de Google enlaza a un perfil de Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.","Los cachopos y la sidra son vuestro gancho: con una web con fotos y la carta asturiana, apareceríais cuando alguien busca «cachopo en Guadalajara»."]},
- {id:"marlasca", n:"Café Marlasca", tipo:"sin", cocina:"café y restaurante", nota:"4,3", res:"729", dir:"C. Felipe Solano Antelo, 7", tel:"949 12 00 65", dominio:"cafemarlasca.es",
-  visto:"4,3 con 729 reseñas y sin web.",
-  obs:["Tenéis un 4,3 con más de 700 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","Una web sencilla con desayunos, menú y carta, y el horario siempre al día, ayuda a que os elijan antes de salir de casa."]},
- {id:"mentacanela", n:"MentaCanela Café Bar", tipo:"fb", cocina:"café bar", nota:"4,0", res:"914", dir:"C. San Roque, 8", tel:"949 41 13 57", dominio:"mentacanela.es", fb:"https://www.facebook.com/MentaCanela.Guadalajara/",
+  email:"elvelerodepacheco@gmail.com", fb:"https://www.facebook.com/p/Restaurante-EL-VELERO-DE-PACHECO-Guadalajara-100051182305526/",
+  visto:"1.274 reseñas en Google y sin web.", aviso:"En su Facebook comentaron que el local está en venta, aunque siguen abiertos (el comentario no tiene fecha). Puede que no les interese invertir ahora.",
+  obs:["Con más de 1.200 reseñas en Google sois muy conocidos, pero la ficha no enlaza a ninguna web.","Ahora, para saber qué hay de menú o reservar, la gente tiene que llamar en pleno servicio. Una web con la carta y reservas online os quitaría muchas de esas llamadas."]},
+ {id:"faro", n:"El Faro Sidrería", tipo:"fb", cocina:"sidrería", nota:"4,1", res:"890", dir:"C. del Cardenal González de Mendoza, 9", tel:"659 28 40 04", dominio:"sidreriaelfaro.es",
+  fb:"https://www.facebook.com/p/El-FARO-Sidreria-100026879594581/",
+  visto:"Google enlaza a su perfil de Facebook como web.",
+  obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.","Los cachopos y la sidra son vuestro gancho. Con una web con fotos y la carta asturiana apareceríais cuando alguien busca «cachopo en Guadalajara»."]},
+ {id:"mentacanela", n:"MentaCanela Café Bar", tipo:"fb", cocina:"café bar", nota:"4,0", res:"914", dir:"C. San Roque, 8", tel:"949 41 13 57", dominio:"mentacanela.es",
+  fb:"https://www.facebook.com/MentaCanela.Guadalajara/",
   visto:"Google enlaza a su página de Facebook como web.",
-  obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y mucha gente ya no lo usa.","Con más de 900 reseñas, una web propia con la carta de desayunos y meriendas y un formulario para encargos y celebraciones os daría más pedidos."]},
- {id:"tostajo", n:"Don Tostajo", tipo:"sin", cocina:"restaurante", nota:"4,2", res:"672", dir:"La Carrera, 55", tel:"949 21 43 52", dominio:"dontostajo.es",
-  visto:"4,2 con 672 reseñas y sin web.",
-  obs:["Tenéis un 4,2 con casi 700 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","La gente que os busca no puede consultar la carta ni reservar online; con una web lo tendrían a un clic desde Google."]},
- {id:"chuleton", n:"La Tasca del Chuletón", tipo:"sin", cocina:"restaurante", nota:"4,0", res:"678", dir:"C. Toledo, 13", tel:"695 61 30 27", movil:1, dominio:"latascadelchuleton.es",
+  obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y mucha gente ya no lo usa.","Con más de 900 reseñas, una web propia con la carta de desayunos y meriendas, y un formulario para encargos y celebraciones, os daría más pedidos."]},
+ {id:"marlasca", n:"Café Marlasca (Marlasca Advanced)", tipo:"sin", cocina:"cafetería y restaurante", nota:"4,3", res:"729", dir:"C. Felipe Solano Antelo, 7", tel:"949 12 00 65", dominio:"cafemarlasca.es",
+  fb:"https://www.facebook.com/p/Marlasca-Advanced-100063806551183/",
+  visto:"4,3 con 729 reseñas y sin web. En Facebook anunciaron un local nuevo.",
+  obs:["Tenéis un 4,3 con más de 700 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","He visto que habéis abierto un local nuevo: una web con los dos sitios, sus horarios y la carta ayuda a que la gente os encuentre y no se líe."]},
+ {id:"chuleton", n:"La Tasca del Chuletón", tipo:"sin", cocina:"restaurante de carnes", nota:"4,0", res:"678", dir:"C. Toledo, 13", tel:"695 61 30 27", dominio:"latascadelchuleton.es",
+  fb:"https://www.facebook.com/p/La-Tasca-del-Chulet%C3%B3n-100057459668802/",
   visto:"678 reseñas en Google y sin web.",
-  obs:["Con casi 700 reseñas en Google, vuestra ficha no enlaza a ninguna web.","El chuletón se vende con fotos: una web con vuestra carta de carnes y reservas online os ayudaría a llenar más mesas."]},
+  obs:["Con casi 700 reseñas en Google, vuestra ficha no enlaza a ninguna web.","El chuletón se vende con fotos. Una web con vuestra carta de carnes y reservas online os ayudaría a llenar más mesas."]},
  {id:"bejanque", n:"Mesón Bejanque", tipo:"sin", cocina:"mesón castellano", nota:"4,2", res:"526", dir:"Pl. Bejanque, 12", tel:"949 21 97 97", dominio:"mesonbejanque.es",
-  visto:"Cocina castellana, 4,2 con 526 reseñas y sin web.",
-  obs:["Tenéis un 4,2 con más de 500 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","La cocina castellana es justo lo que busca quien visita Guadalajara: con una web propia apareceríais cuando buscan «dónde comer cocina tradicional en Guadalajara»."]},
- {id:"canda", n:"La Canda", tipo:"fb", cocina:"cervecería", nota:"4,4", res:"450", dir:"C. Federico García Lorca", tel:"949 03 30 67", dominio:"cervecerialacanda.es", fb:"https://www.facebook.com/cerveceria.lacanda",
+  fb:"https://www.facebook.com/p/Restaurante-Mes%C3%B3n-Bejanque-100057042832373/",
+  visto:"4,2 con 526 reseñas y sin web. Hacen bautizos, cumpleaños y menú diario y de fin de semana.",
+  obs:["Tenéis un 4,2 con más de 500 reseñas, pero vuestra ficha de Google no enlaza a ninguna web.","Hacéis bautizos, cumpleaños y menú diario y de fin de semana. Una web con esos menús y un formulario para pedir presupuesto de celebraciones os traería más eventos."]},
+ {id:"canda", n:"Cervecería La Canda", tipo:"fb", cocina:"cervecería", nota:"4,4", res:"450", dir:"C. Federico García Lorca, s/n", tel:"949 03 30 67", dominio:"cervecerialacanda.es",
+  ig:"cervecerialacanda", fb:"https://www.facebook.com/cerveceria.lacanda",
   visto:"4,4 con 450 reseñas; Google enlaza a Facebook como web.",
   obs:["Vuestra ficha de Google enlaza a Facebook como web. Desde el móvil, Facebook pide iniciar sesión y la carta no se ve bien.","Con un 4,4, una web con la carta de hamburguesas y raciones, y la opción de reservar mesa para grupos, os traería más gente nueva."]},
- {id:"florentina", n:"Restaurante Florentina", tipo:"ig", cocina:"restaurante", nota:"4,3", res:"379", dir:"C. la Barca, 5", tel:"949 03 43 39", dominio:"restauranteflorentina.es", ig:"https://www.instagram.com/restauranteflorentina/",
-  visto:"Google enlaza a su Instagram (@restauranteflorentina) como web.",
-  obs:["En Google tenéis como web vuestro Instagram. Está genial para enseñar platos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.","Con un 4,3, una web propia que enlace a vuestro Instagram os daría lo mejor de los dos: las fotos y las reservas."]},
- {id:"summer", n:"Summer", tipo:"basica", cocina:"restaurante y bar de tapas", nota:"4,1", res:"1.578", dir:"C. San Roque, 16", tel:"949 89 53 21", dominio:"summerguadalajara.es", web:"https://sites.google.com/view/summerguadalajara",
+ {id:"florentina", n:"Restaurante Florentina", tipo:"ig", cocina:"barra y cocina de producto", nota:"4,3", res:"379", dir:"C. la Barca, 5", tel:"949 03 43 39", dominio:"restauranteflorentina.es",
+  ig:"restauranteflorentina", fb:"https://www.facebook.com/FlorentinaRestaurante/",
+  visto:"Google enlaza a su Instagram como web. Se definen como «buena barra, picoteo y cocina de producto».",
+  obs:["En Google tenéis como web vuestro Instagram. Está genial para enseñar platos, pero no deja ver la carta ordenada, el horario ni reservar sin tener cuenta.","«Buena barra, picoteo y cocina de producto» se vende muy bien con fotos. Una web propia que enlace a vuestro Instagram os daría las dos cosas: las fotos y las reservas."]},
+ {id:"summer", n:"Summer Guadalajara", tipo:"basica", cocina:"restaurante, bar y terraza", nota:"4,1", res:"1.578", dir:"Paseo San Roque, 16", tel:"949 89 53 21", dominio:"summerguadalajara.es", web:"https://sites.google.com/view/summerguadalajara",
+  ig:"summerguadalajara", fb:"https://www.facebook.com/summerguadalajara/",
   visto:"Su web es una página gratuita de Google Sites, sin dominio propio ni reservas.",
-  obs:["Vuestra web es una página de Google Sites (sites.google.com/view/summerguadalajara). Cumple, pero no tiene dominio propio, ni reservas, y en Google aparece por detrás de los directorios.","Con casi 1.600 reseñas tenéis mucho tráfico: una web propia con carta, menú del día y reservas lo aprovecharía mucho mejor."]}
+  obs:["Vuestra web es una página de Google Sites (sites.google.com/view/summerguadalajara). Cumple, pero no tiene dominio propio ni reservas, y en Google aparece por detrás de los directorios.","Con casi 1.600 reseñas y más de 2.000 seguidores en Instagram tenéis mucho movimiento. Una web propia con carta, menú y reservas lo aprovecharía mucho mejor."]}
 ];
 
 var TIPOS = {rota:["Web caída","t-rota"], ssl:["Aviso «No seguro»","t-ssl"], sin:["Sin web","t-sin"], fb:["Solo Facebook","t-fb"], ig:["Solo Instagram","t-ig"], basica:["Web básica","t-basica"]};
 
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function demo(){var v=document.getElementById("demo-url").value.trim();return v||"[enlace a la web de ejemplo]"}
-function telLink(t){return "+34"+t.replace(/\D/g,"")}
+function telLink(t){return "+34"+t.split("·")[0].replace(/\D/g,"")}
 function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir+", Guadalajara")}
 
+var MEJORAS =
+  "• Carta y menú del día siempre al día, fáciles de leer en el móvil y con alérgenos.\n"+
+  "• Reservas online a cualquier hora: os llegan por WhatsApp con día, hora y personas, sin coger el teléfono en pleno servicio.\n"+
+  "• Botones de llamar y cómo llegar, horario con «abierto ahora» y enlace a vuestras reseñas de Google.\n";
+function lineaDominio(x){
+  return ({rota:"• Vuestra web otra vez en marcha, con dominio propio ("+x.dominio+") y la ficha de Google bien enlazada.\n",
+    ssl:"• Certificado de seguridad que se renueva solo: nunca más el aviso de «No seguro» en "+x.dominio+".\n"}[x.tipo]||
+    "• Dominio propio (por ejemplo "+x.dominio+") y vuestra ficha de Google enlazando a la web.\n");
+}
+function asunto(x){
+  return ({rota:x.n+": el enlace a vuestra web da error", ssl:x.n+": vuestra web sale como «No segura»", basica:"Una web propia para "+x.n}[x.tipo]||"Una web para "+x.n);
+}
+function email(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos Verde, de Indexa Labs. Hago páginas web para restaurantes y bares de Guadalajara, y os escribo porque he visto un par de cosas que creo que os interesan:\n\n"+
+  "• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
+  "Os dejo un ejemplo de web que he hecho para un restaurante, para que veáis cómo quedaría:\n"+demo()+"\n\n"+
+  "Lo que tendría la vuestra:\n"+MEJORAS+lineaDominio(x)+"\n"+
+  "La adapto a vuestra imagen, vuestras fotos y vuestros platos. Si os encaja, os preparo una propuesta sin compromiso o lo vemos en 15 minutos cuando os venga bien.\n\n"+
+  "Un saludo,\n"+FIRMA+"\n\n"+
+  "Si no os interesa, respondedme «no, gracias» y no os vuelvo a escribir.";
+}
+function dm(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago webs para restaurantes y bares de Guadalajara. "+x.obs[0]+"\n\n"+
+  x.obs[1]+"\n\n"+
+  "Os dejo un ejemplo de web que he hecho para un restaurante, con carta, menú del día y reservas por WhatsApp:\n"+demo()+"\n\n"+
+  "Si os interesa, os preparo una propuesta para "+x.n+" sin compromiso.\n\n"+
+  "Un saludo,\nCarlos Verde · Indexa Labs\n\n"+
+  "(Si no os interesa, decídmelo y no os vuelvo a escribir).";
+}
 function guion(x){
   var gancho = {
-    rota:"he visto que en vuestra ficha de Google el enlace a la web ya no funciona: quien pulsa en «Sitio web» llega a un error",
+    rota:"he visto que el enlace a vuestra web ya no funciona: quien intenta entrar llega a un error",
     ssl:"he visto que vuestra web sale con el aviso de «No seguro» en el navegador, porque el certificado de seguridad está caducado",
     sin:"he visto que en Google tenéis "+x.nota+" de nota con "+x.res+" reseñas, pero no tenéis web enlazada",
     fb:"he visto que en Google tenéis como web el Facebook, y desde el móvil casi no se ve la carta",
@@ -154,50 +207,39 @@ function guion(x){
   return "Hola, buenos días. ¿Hablo con el responsable de "+x.n+"?\n\n"+
   "Soy Carlos, de Indexa Labs. Hago páginas web para restaurantes y bares de Guadalajara. Os llamo porque "+gancho+".\n\n"+
   "He preparado un ejemplo de web para restaurantes, con la carta, el menú del día y reservas que llegan por WhatsApp. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
-  "(Si dicen que sí: apunta el número o email y envía el mensaje del paso 2.)\n"+
+  "(Si dicen que sí: apunta el número o email y envíales el email de arriba.)\n"+
   "(Si dicen que no: «Perfecto, gracias por vuestro tiempo». Y marca la casilla.)";
 }
-function mensaje(x){
-  return "Hola, soy Carlos Verde, de Indexa Labs. Como hablamos, os paso el ejemplo de web para restaurantes:\n"+demo()+"\n\n"+
-  "Lo que he visto de "+x.n+":\n• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
-  "Lo que tendría vuestra web:\n"+
-  "• Carta y menú del día siempre al día, fáciles de leer en el móvil y con alérgenos.\n"+
-  "• Reservas online a cualquier hora: os llegan por WhatsApp con día, hora y personas, sin coger el teléfono en pleno servicio.\n"+
-  "• Botones de llamar y cómo llegar, horario con «abierto ahora» y enlace a vuestras reseñas de Google.\n"+
-  ({rota:"• Vuestra web otra vez en marcha, con dominio propio ("+x.dominio+") y la ficha de Google bien enlazada.\n",
-    ssl:"• Certificado de seguridad que se renueva solo: nunca más el aviso de «No seguro» en "+x.dominio+".\n"}[x.tipo]||
-    "• Dominio propio (por ejemplo "+x.dominio+") y vuestra ficha de Google enlazando a la web.\n")+"\n"+
-  "La adapto a vuestra imagen, vuestras fotos y vuestros platos. Si os encaja, lo vemos en 15 minutos cuando os venga bien.\n\n"+
-  "Un saludo,\n"+FIRMA;
-}
-function asunto(x){return "Ejemplo de web para "+x.n}
 
 function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function campo(label,valor,rows,cls,id){
+  var c=rows?'<textarea readonly rows="'+rows+'" class="'+(cls||'')+'" data-id="'+id+'">'+esc(valor)+'</textarea>':'<input type="text" readonly value="'+esc(valor)+'">';
+  return '<div class="campo">'+(label?'<label>'+label+'</label>':'')+'<div class="fila">'+c+'<button class="copiar" type="button">Copiar</button></div></div>';
+}
 
 function pintar(){
   var cont=document.getElementById("lista"); cont.innerHTML="";
   L.forEach(function(x,i){
-    var t=TIPOS[x.tipo], enlaces=[];
-    if(x.fb) enlaces.push('<a href="'+x.fb+'" target="_blank" rel="noopener">Facebook</a>');
-    if(x.ig) enlaces.push('<a href="'+x.ig+'" target="_blank" rel="noopener">Instagram</a>');
-    if(x.web) enlaces.push('<a href="'+x.web+'" target="_blank" rel="noopener">Web actual</a>');
+    var t=TIPOS[x.tipo], canales=[];
+    if(x.email) canales.push('<div class="canal"><h3>Email <a class="btn mail" href="mailto:'+x.email+'" target="_blank" rel="noopener">Abrir email ↗</a></h3><div class="dato">'+esc(x.email)+(x.nota_email?' · '+esc(x.nota_email):'')+'</div>'+
+      campo("Asunto",asunto(x))+campo("",email(x),18,"msg-email",x.id)+'</div>');
+    if(x.ig) canales.push('<div class="canal"><h3>Instagram <a class="btn ig" href="https://instagram.com/'+x.ig+'" target="_blank" rel="noopener">Abrir @'+x.ig+' ↗</a></h3><div class="dato">Mensaje directo. Pega el mensaje corto:</div>'+campo("",dm(x),13,"msg-dm",x.id)+'</div>');
+    if(x.fb) canales.push('<div class="canal"><h3>Facebook <a class="btn fb" href="'+x.fb+'" target="_blank" rel="noopener">Abrir página ↗</a></h3><div class="dato">Pulsa «Enviar mensaje» en su página y pega el mensaje corto'+(x.ig?' (el mismo que el de Instagram: usa solo uno de los dos)':'')+':</div>'+(x.ig?'':campo("",dm(x),13,"msg-dm",x.id))+'</div>');
     var a=document.createElement("article"); a.id="r-"+x.id;
     a.innerHTML=
     '<div class="cab"><div class="num">'+(i+1)+'</div>'+
-      '<div class="info"><h2>'+esc(x.n)+'</h2><div class="meta">'+esc(x.cocina)+' · '+esc(x.dir)+' · <a href="'+mapa(x)+'" target="_blank" rel="noopener">Ficha de Google ↗</a>'+(enlaces.length?' · '+enlaces.join(' · '):'')+'</div></div>'+
+      '<div class="info"><h2>'+esc(x.n)+'</h2><div class="meta">'+esc(x.cocina)+' · '+esc(x.dir)+' · <a href="'+mapa(x)+'" target="_blank" rel="noopener">Ficha de Google ↗</a>'+(x.web?' · <a href="'+x.web+'" target="_blank" rel="noopener">Web actual ↗</a>':'')+'</div></div>'+
       '<div class="lado"><div class="nota">'+x.nota+'<small>'+x.res+' reseñas</small></div><span class="tipo '+t[1]+'">'+t[0]+'</span></div></div>'+
     '<div class="visto"><b>Lo que he visto</b>'+esc(x.visto)+'</div>'+
-    '<ol class="pasos">'+
-      '<li><b>Llama</b> al <b>'+x.tel+'</b> <a class="btn" href="tel:'+telLink(x.tel)+'">Llamar ↗</a> o pásate por '+esc(x.dir)+'. Guion:'+
-        '<div class="campo"><div class="fila"><textarea readonly rows="9" id="g-'+x.id+'">'+esc(guion(x))+'</textarea><button class="copiar" type="button">Copiar</button></div></div></li>'+
-      '<li><b>Si te dicen que sí</b>, envía este mensaje por WhatsApp o email'+(x.movil?' <a class="btn wa" href="https://wa.me/34'+x.tel.replace(/\D/g,"")+'" target="_blank" rel="noopener">Abrir WhatsApp ↗</a>':'')+':'+
-        '<div class="campo"><label>Asunto (si va por email)</label><div class="fila"><input type="text" readonly value="'+esc(asunto(x))+'"><button class="copiar" type="button">Copiar</button></div></div>'+
-        '<div class="campo"><div class="fila"><textarea readonly rows="16" class="msg" data-id="'+x.id+'">'+esc(mensaje(x))+'</textarea><button class="copiar" type="button">Copiar</button></div></div></li>'+
-    '</ol>'+
-    '<div class="estado">'+
+    (x.aviso?'<div class="aviso">⚠ '+esc(x.aviso)+'</div>':'')+
+    '<div style="margin-top:14px;font-weight:700">Escríbeles por aquí (elige un solo canal):</div>'+canales.join("")+
+    '<details class="llamar"><summary>Si no contestan en 5 días: llama al '+esc(x.tel)+' o pásate por '+esc(x.dir)+'</summary>'+
+      '<p style="margin:8px 0 0"><a class="btn" href="tel:'+telLink(x.tel)+'">Llamar ↗</a></p>'+campo("Guion de llamada",guion(x),9,"",x.id)+'</details>'+
+    '<div class="estado" style="margin-top:12px">'+
+      '<label class="hecho"><input type="checkbox" data-k="escrito:'+x.id+'"> Ya les he escrito</label>'+
       '<label class="hecho"><input type="checkbox" data-k="llamado:'+x.id+'"> Ya les he llamado</label>'+
-      '<label class="hecho"><input type="checkbox" data-k="enviado:'+x.id+'"> Les he enviado el ejemplo</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="interesa:'+x.id+'"> Les interesa</label>'+
       '<label class="hecho"><input type="checkbox" data-k="no:'+x.id+'"> No les interesa</label>'+
     '</div>';
     cont.appendChild(a);
@@ -209,16 +251,19 @@ function pintar(){
   estado();
 }
 function estado(){
-  var n={llamado:0,enviado:0,no:0};
+  var n={escrito:0,llamado:0,interesa:0,no:0};
   L.forEach(function(x){
-    var art=document.getElementById("r-"+x.id);
-    var ll=leer("llamado:"+x.id)==="1", en=leer("enviado:"+x.id)==="1", no=leer("no:"+x.id)==="1";
-    if(ll)n.llamado++; if(en)n.enviado++; if(no)n.no++;
-    art.classList.toggle("ok",no||en);
+    var f={}; Object.keys(n).forEach(function(k){f[k]=leer(k+":"+x.id)==="1"; if(f[k])n[k]++});
+    document.getElementById("r-"+x.id).classList.toggle("ok",f.no||((f.escrito||f.llamado)&&!f.interesa));
   });
-  document.getElementById("resumen").innerHTML='<span><b>'+L.length+'</b> locales</span><span><b>'+n.llamado+'</b> llamados</span><span><b>'+n.enviado+'</b> con el ejemplo enviado</span><span><b>'+n.no+'</b> no interesados</span>';
+  document.getElementById("resumen").innerHTML='<span><b>'+L.length+'</b> locales</span><span><b>'+n.escrito+'</b> escritos</span><span><b>'+n.llamado+'</b> llamados</span><span><b>'+n.interesa+'</b> interesados</span><span><b>'+n.no+'</b> no interesados</span>';
 }
-function actualizarMensajes(){document.querySelectorAll("textarea.msg").forEach(function(t){var x=L.filter(function(r){return r.id===t.dataset.id})[0];t.value=mensaje(x)})}
+function actualizarMensajes(){
+  document.querySelectorAll("textarea.msg-email,textarea.msg-dm").forEach(function(t){
+    var x=L.filter(function(r){return r.id===t.dataset.id})[0];
+    t.value=t.classList.contains("msg-email")?email(x):dm(x);
+  });
+}
 
 document.addEventListener("click",function(e){
   var b=e.target.closest("button.copiar"); if(!b) return;
