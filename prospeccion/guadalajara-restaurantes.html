@@ -80,7 +80,7 @@ button.copiado{background:var(--v);color:#fff}
 <div class="demo">
 <label for="demo-url">Enlace a tu web de ejemplo</label>
 <input type="url" id="demo-url" placeholder="Pega aquí el enlace público de la web de ejemplo">
-<small>Los mensajes se actualizan solos con este enlace. Compártelo antes como público, o súbelo a GitHub Pages, para que los restaurantes puedan abrirlo.</small>
+<small>Los mensajes se actualizan solos con este enlace. Por defecto lleva la dirección de GitHub Pages. Comprueba que se abre antes de enviar nada.</small>
 </div>
 
 <div class="resumen" id="resumen"></div>
@@ -180,9 +180,9 @@ function email(x){
   return "Hola, equipo de "+x.n+":\n\n"+
   "Soy Carlos Verde, de Indexa Labs. Hago páginas web para restaurantes y bares de Guadalajara, y os escribo porque he visto un par de cosas que creo que os interesan:\n\n"+
   "• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
-  "Os dejo un ejemplo de web que he hecho para un restaurante, para que veáis cómo quedaría:\n"+demo()+"\n\n"+
+  "Os dejo un modelo de prueba que he preparado para que veáis cómo podría quedar. Es solo una muestra: se personaliza por completo a vuestro gusto (estilo, colores, fotos, carta y secciones):\n"+demo()+"\n\n"+
   "Lo que tendría la vuestra:\n"+MEJORAS+lineaDominio(x)+"\n"+
-  "La adapto a vuestra imagen, vuestras fotos y vuestros platos. Si os encaja, os preparo una propuesta sin compromiso o lo vemos en 15 minutos cuando os venga bien.\n\n"+
+  "Si os encaja, os preparo una propuesta sin compromiso o lo vemos en 15 minutos cuando os venga bien.\n\n"+
   "Un saludo,\n"+FIRMA+"\n\n"+
   "Si no os interesa, respondedme «no, gracias» y no os vuelvo a escribir.";
 }
@@ -190,7 +190,7 @@ function dm(x){
   return "Hola, equipo de "+x.n+":\n\n"+
   "Soy Carlos, de Indexa Labs. Hago webs para restaurantes y bares de Guadalajara. "+x.obs[0]+"\n\n"+
   x.obs[1]+"\n\n"+
-  "Os dejo un ejemplo de web que he hecho para un restaurante, con carta, menú del día y reservas por WhatsApp:\n"+demo()+"\n\n"+
+  "Os dejo un modelo de prueba con carta, menú del día y reservas por WhatsApp. Es solo una muestra y se personaliza a vuestro gusto:\n"+demo()+"\n\n"+
   "Si os interesa, os preparo una propuesta para "+x.n+" sin compromiso.\n\n"+
   "Un saludo,\nCarlos Verde · Indexa Labs\n\n"+
   "(Si no os interesa, decídmelo y no os vuelvo a escribir).";
@@ -206,7 +206,7 @@ function guion(x){
   }[x.tipo];
   return "Hola, buenos días. ¿Hablo con el responsable de "+x.n+"?\n\n"+
   "Soy Carlos, de Indexa Labs. Hago páginas web para restaurantes y bares de Guadalajara. Os llamo porque "+gancho+".\n\n"+
-  "He preparado un ejemplo de web para restaurantes, con la carta, el menú del día y reservas que llegan por WhatsApp. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
+  "He preparado un modelo de prueba de web, con la carta, el menú del día y reservas que llegan por WhatsApp, que se personaliza a vuestro gusto. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
   "(Si dicen que sí: apunta el número o email y envíales el email de arriba.)\n"+
   "(Si dicen que no: «Perfecto, gracias por vuestro tiempo». Y marca la casilla.)";
 }
@@ -273,7 +273,7 @@ document.addEventListener("click",function(e){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.value).then(ok,fallback)}else fallback();
 });
 var di=document.getElementById("demo-url");
-di.value=leer("demo-url")||"https://claude.ai/artifact/4J7jpwr91fSX516Rr6rfgQ";
+di.value=leer("demo-url")||"https://caarlosverde.github.io/indexalabs/demos/restaurante/";
 di.addEventListener("input",function(){guardar("demo-url",di.value.trim());actualizarMensajes()});
 pintar();
 </script>
