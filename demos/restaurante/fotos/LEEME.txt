@@ -1,0 +1,12 @@
+Fotos de la web de ejemplo
+==========================
+Guarda aquí las fotos con estos nombres exactos (formato .jpg) y aparecerán solas en la web:
+
+  portada.jpg    -> foto principal, vertical (por ejemplo 1200 x 1500 px)
+  sala.jpg       -> el comedor o el local (horizontal)
+  galeria-1.jpg  -> plato estrella (cuadrada o vertical)
+  galeria-2.jpg  ... galeria-6.jpg -> platos, terraza, barra, vinos
+
+Si falta alguna, la web muestra en su lugar un recuadro con el dibujo de la marca.
+Fotos gratuitas para la demo: unsplash.com o pexels.com (busca "tapas", "spanish food", "grilled lamb").
+Para un cliente real: usa sus propias fotos (Google Maps, Instagram) con su permiso.
