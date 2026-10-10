@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Taller Pistón</title>
+<meta name="description" content="Taller Pistón, taller mecánico multimarca en Tetuán (Madrid). Cambio de aceite, pre-ITV, frenos, diagnosis, distribución y neumáticos. Presupuesto por escrito y garantía de 12 meses. Cita online.">
+<link rel="alternate" type="text/plain" href="llms.txt" title="Información del taller para asistentes de IA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Taller Pistón",
+  "description": "Taller mecánico multimarca en Tetuán (Madrid): mantenimiento, pre-ITV, frenos, diagnosis electrónica, distribución, embrague, aire acondicionado y neumáticos. Presupuesto por escrito antes de cualquier reparación y garantía de 12 meses.",
+  "url": "https://caarlosverde.github.io/indexalabs/demos/taller/",
+  "telephone": "+34910000000",
+  "image": "https://caarlosverde.github.io/indexalabs/demos/taller/fotos/taller.jpg",
+  "priceRange": "€€",
+  "address": {"@type": "PostalAddress", "streetAddress": "Calle Ejemplo, 00", "postalCode": "28039", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES"},
+  "areaServed": ["Tetuán", "Cuatro Caminos", "Bravo Murillo", "Valdeacederas", "Chamartín", "Madrid"],
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "08:30", "closes": "19:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:30", "closes": "15:00"}
+  ],
+  "paymentAccepted": "Efectivo, tarjeta, Bizum",
+  "knowsAbout": ["Mecánica general", "Diagnosis electrónica", "Pre-ITV", "Frenos", "Kit de distribución", "Embrague", "Aire acondicionado", "Neumáticos", "Revisiones oficiales sin perder la garantía del fabricante"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios y precios orientativos (IVA incluido)",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cambio de aceite y filtros"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 79, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pre-ITV"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 25, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pastillas de freno (un eje)"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 89, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnosis electrónica"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 39, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kit de distribución"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 290, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carga de aire acondicionado"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 59, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Embrague"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 390, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Revisión oficial según el fabricante"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 149, "priceCurrency": "EUR"}}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "¿Pierdo la garantía del fabricante si hago la revisión fuera del concesionario?", "acceptedAnswer": {"@type": "Answer", "text": "No. La normativa europea permite hacer el mantenimiento en un taller independiente sin perder la garantía, siempre que se sigan las indicaciones del fabricante y se usen piezas de calidad equivalente. Sellamos tu libro de mantenimiento y te damos la factura detallada."}},
+    {"@type": "Question", "name": "¿Cuánto cuesta una pre-ITV?", "acceptedAnswer": {"@type": "Answer", "text": "25 € en turismos pequeños y compactos. Revisamos luces, frenos, suspensión, neumáticos, emisiones y todo lo que mira la ITV, y te decimos qué hay que arreglar antes de ir."}},
+    {"@type": "Question", "name": "¿Me dais presupuesto antes de reparar?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, siempre por escrito y sin compromiso. No tocamos el coche hasta que lo apruebas, y si aparece algo nuevo durante la reparación te llamamos antes."}},
+    {"@type": "Question", "name": "¿Qué garantía tienen las reparaciones?", "acceptedAnswer": {"@type": "Answer", "text": "La ley exige un mínimo de 3 meses o 2.000 km. Nosotros damos 12 meses en mano de obra y piezas."}},
+    {"@type": "Question", "name": "¿Tenéis coche de sustitución o recogida a domicilio?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Recogemos y devolvemos el coche gratis en Tetuán y Chamartín, y para reparaciones de más de un día tenemos coche de cortesía bajo reserva."}},
+    {"@type": "Question", "name": "¿Trabajáis con todas las marcas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, somos un taller multimarca con equipo de diagnosis para la mayoría de fabricantes europeos, asiáticos y americanos, incluidos híbridos."}}
+  ]
+}
+</script>
+<style>
+/* Layout: columna de 1160px; bloques que alternan papel claro y azul mono de trabajo; datos y precios en mono.
+   Motivo: la matrícula española y la franja de señalización amarilla. */
+:root{
+  --mono:#16324f;        /* azul mono de trabajo */
+  --mono-2:#1d4268;
+  --mono-3:#24507d;
+  --papel:#f2f1ec;
+  --papel-2:#e7e5dd;
+  --blanco:#ffffff;
+  --tinta:#141a21;
+  --gris:#58616b;
+  --linea:#d8d5cb;
+  --linea-osc:#2f5683;
+  --senal:#ffc21a;       /* amarillo señalización */
+  --senal-osc:#e0a800;
+  --claro:#eef2f6;
+  --claro-2:#b6c3d1;
+  --ok:#2f9e5b;
+  --f-titulo:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-texto:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-dato:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ancho:1160px;
+  --r:8px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.6 var(--f-texto);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-titulo);font-stretch:112%;font-weight:800;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+.cont{max-width:var(--ancho);margin:0 auto;padding-inline:20px}
+.etiqueta{font:600 12px/1 var(--f-dato);letter-spacing:.12em;text-transform:uppercase;color:var(--mono-3)}
+.osc .etiqueta,.portada .etiqueta{color:var(--senal)}
+:focus-visible{outline:3px solid var(--senal);outline-offset:2px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:700 15px/1 var(--f-texto);padding:15px 22px;border-radius:var(--r);border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-senal{background:var(--senal);color:var(--tinta)}
+.btn-senal:hover{background:var(--senal-osc)}
+.btn-linea{border-color:currentColor;color:inherit;background:transparent}
+.btn-linea:hover{background:var(--claro);color:var(--mono);border-color:var(--claro)}
+.btn-mono{background:var(--mono);color:#fff}
+.btn-mono:hover{background:var(--mono-2)}
+.btn svg{width:18px;height:18px;flex:none}
+
+.demo{background:var(--tinta);color:#fff;font-size:13.5px;text-align:center;padding:8px 44px 8px 16px;position:relative}
+.demo b{color:var(--senal)}
+.demo button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:20px;cursor:pointer;padding:6px 10px}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--blanco);border-bottom:1px solid var(--linea)}
+.top .cont{display:flex;align-items:center;gap:24px;height:70px}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none}
+.marca .logo{width:38px;height:38px;border-radius:8px;background:var(--mono);display:grid;place-items:center}
+.marca .logo svg{width:24px;height:24px}
+.marca b{display:block;font-family:var(--f-titulo);font-stretch:125%;font-weight:900;font-size:20px;letter-spacing:.02em;line-height:1}
+.marca small{display:block;font:500 11px/1.2 var(--f-dato);color:var(--gris);letter-spacing:.06em;margin-top:3px}
+nav.menu{display:flex;gap:26px;margin-left:auto}
+nav.menu a{text-decoration:none;font-weight:500;font-size:15px;color:var(--gris)}
+nav.menu a:hover{color:var(--tinta)}
+.estado{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--f-dato);color:var(--gris);white-space:nowrap}
+.estado i{width:8px;height:8px;border-radius:50%;background:#b0b6bc}
+.estado.abierto i{background:var(--ok);box-shadow:0 0 0 4px rgba(47,158,91,.18)}
+.top .btn{padding:12px 18px;font-size:14px}
+@media (max-width:960px){nav.menu{display:none}.top .estado{margin-left:auto}}
+@media (max-width:560px){.top .btn{display:none}.estado span{display:none}}
+
+/* Portada */
+.portada{background:var(--mono);color:var(--claro);position:relative;overflow:hidden}
+.portada .cont{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;padding-block:68px 76px}
+.portada h1{font-size:clamp(40px,6vw,74px);text-transform:uppercase}
+.portada h1 span{color:var(--senal)}
+.portada .entrada{font-size:18.5px;color:var(--claro-2);max-width:33em;margin-top:22px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.sellos{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;font:500 14px var(--f-dato);color:var(--claro-2)}
+.sellos b{color:#fff;font-size:17px;margin-right:6px}
+.foto{position:relative;border-radius:var(--r);overflow:hidden;background:var(--mono-2);max-width:100%}
+.foto img{width:100%;height:100%;object-fit:cover}
+.portada .foto{aspect-ratio:5/6;box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+.marco{position:relative}
+.ficha{position:absolute;left:-28px;bottom:30px;background:var(--blanco);color:var(--tinta);border-radius:var(--r);padding:14px 16px;box-shadow:0 16px 34px -12px rgba(0,0,0,.45);display:grid;gap:8px;max-width:250px}
+.ficha small{font:600 11px var(--f-dato);letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.ficha b{font-family:var(--f-titulo);font-stretch:112%;font-size:19px;line-height:1.1}
+.franja{height:10px;background:repeating-linear-gradient(-45deg,var(--senal) 0 14px,var(--tinta) 14px 28px)}
+@media (max-width:880px){.portada .cont{grid-template-columns:1fr;gap:40px;padding-block:48px 56px}.portada .foto{aspect-ratio:4/3}.ficha{left:12px;bottom:12px}}
+
+/* Matrícula */
+.matricula{display:flex;align-items:stretch;border:2.5px solid var(--tinta);border-radius:7px;overflow:hidden;background:#fff;width:100%;max-width:300px}
+.matricula .ue{background:#003399;color:#fff;width:38px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:5px 0;font:700 15px var(--f-texto)}
+.matricula .ue svg{width:22px;height:22px;margin-bottom:auto}
+.matricula input{border:0;outline:0;flex:1;min-width:0;font:600 26px/1 var(--f-dato);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;background:transparent;color:var(--tinta)}
+.matricula:focus-within{box-shadow:0 0 0 3px var(--senal)}
+
+/* Presupuesto */
+.presu{background:var(--blanco);border-bottom:1px solid var(--linea)}
+.presu .cont{padding-block:56px}
+.presu-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:44px;align-items:start}
+.presu h2{font-size:clamp(28px,3.4vw,40px);margin-top:10px}
+.presu-lado p{color:var(--gris);margin-top:14px;max-width:30em}
+.calc{display:grid;gap:18px;background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:24px}
+.campo{display:flex;flex-direction:column;gap:7px;min-width:0}
+.campo > label,.campo > .lbl{font-size:13px;font-weight:700;color:var(--tinta)}
+select,input.txt,textarea{font:16px/1.4 var(--f-texto);color:var(--tinta);background:var(--blanco);border:1.5px solid var(--linea);border-radius:var(--r);padding:12px 14px;width:100%}
+select:focus,input.txt:focus,textarea:focus{outline:none;border-color:var(--mono);box-shadow:0 0 0 3px rgba(22,50,79,.15)}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tamanos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tam{border:1.5px solid var(--linea);background:var(--blanco);border-radius:var(--r);padding:10px 8px;cursor:pointer;text-align:left;font:600 13.5px/1.25 var(--f-texto);color:var(--tinta)}
+.tam small{display:block;font:400 11.5px/1.3 var(--f-texto);color:var(--gris);margin-top:3px}
+.tam[aria-pressed="true"]{border-color:var(--mono);background:var(--mono);color:#fff}
+.tam[aria-pressed="true"] small{color:var(--claro-2)}
+.resultado{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--mono);color:#fff;border-radius:var(--r);padding:16px 18px}
+.resultado small{display:block;font:500 12px var(--f-dato);color:var(--claro-2);letter-spacing:.06em;text-transform:uppercase}
+.resultado b{font:600 30px/1.1 var(--f-dato);font-variant-numeric:tabular-nums}
+.resultado span.t{font:500 13px var(--f-dato);color:var(--claro-2)}
+.nota{font-size:12.5px;color:var(--gris)}
+@media (max-width:880px){.presu-grid{grid-template-columns:1fr;gap:28px}}
+@media (max-width:560px){.tamanos{grid-template-columns:1fr 1fr}.fila{grid-template-columns:1fr}}
+
+section.bloque{padding-block:90px}
+@media (max-width:700px){section.bloque{padding-block:62px}}
+.osc{background:var(--mono);color:var(--claro)}
+.cabeza{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.cabeza h2{font-size:clamp(32px,4.2vw,50px);margin-top:10px;text-transform:uppercase}
+.cabeza p{max-width:32em;color:var(--gris)}
+.osc .cabeza p{color:var(--claro-2)}
+
+/* Servicios */
+.servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.serv{background:var(--blanco);border:1px solid var(--linea);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.serv .foto{border-radius:0;aspect-ratio:16/9}
+.serv .cuerpo{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.serv h3{font-size:20px;font-stretch:105%;text-transform:none}
+.serv p{color:var(--gris);font-size:15px}
+.serv .pie{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--linea);font-family:var(--f-dato)}
+.serv .pie b{font-size:19px;font-variant-numeric:tabular-nums}
+.serv .pie span{font-size:13px;color:var(--gris)}
+.lista-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;margin-top:22px}
+.lista-serv div{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--linea);font-size:15px;min-width:0}
+.lista-serv b{font:600 15px var(--f-dato);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:900px){.servicios,.lista-serv{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.servicios,.lista-serv{grid-template-columns:1fr}}
+
+/* Proceso */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:p;list-style:none;margin:0;padding:0}
+.pasos li{background:var(--mono-2);border-radius:12px;padding:22px;position:relative}
+.pasos li::before{counter-increment:p;content:"0" counter(p);font:600 13px var(--f-dato);color:var(--senal);letter-spacing:.1em}
+.pasos h3{font-size:21px;margin:12px 0 8px;font-stretch:105%}
+.pasos p{color:var(--claro-2);font-size:15px}
+@media (max-width:900px){.pasos{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pasos{grid-template-columns:1fr}}
+
+/* Ventajas */
+.ventajas{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ventajas .foto{aspect-ratio:4/3}
+.vlista{display:grid;gap:18px;margin-top:26px}
+.v{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start}
+.v .ico{width:42px;height:42px;border-radius:10px;background:var(--mono);display:grid;place-items:center}
+.v .ico svg{width:22px;height:22px}
+.v h3{font-size:18px;font-stretch:100%;margin-bottom:3px}
+.v p{color:var(--gris);font-size:15px}
+.marcas{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.marcas span{font:500 13px var(--f-dato);border:1px solid var(--linea);border-radius:999px;padding:6px 12px;background:var(--blanco);color:var(--gris)}
+@media (max-width:880px){.ventajas{grid-template-columns:1fr;gap:34px}}
+
+/* Opiniones */
+.opiniones{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.op{background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.estrellas{color:var(--senal-osc);letter-spacing:2px}
+.op blockquote{margin:0;font-size:16.5px;line-height:1.55}
+.op footer{margin-top:auto;font-size:14px;color:var(--gris)}
+.op footer b{color:var(--tinta)}
+@media (max-width:880px){.opiniones{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{display:grid;gap:10px;max-width:860px}
+.faq details{background:var(--blanco);border:1px solid var(--linea);border-radius:10px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 34px 18px 0;font-weight:600;font-size:17px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font:600 22px var(--f-dato);color:var(--mono-3)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--gris);max-width:62ch}
+
+/* Cita */
+.cita{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.cita .lado p{color:var(--claro-2);margin-top:16px;max-width:28em}
+.contacto{display:grid;gap:12px;margin-top:28px}
+.contacto div{display:flex;gap:12px;align-items:baseline;font-size:15px}
+.contacto b{font:600 12px var(--f-dato);letter-spacing:.08em;text-transform:uppercase;color:var(--senal);min-width:88px}
+.contacto span{font-family:var(--f-dato)}
+form.caja,.confirmada{background:var(--blanco);color:var(--tinta);border-radius:12px;padding:28px;display:grid;gap:18px;box-shadow:0 24px 50px -26px rgba(0,0,0,.5)}
+.franjas{display:flex;gap:8px;flex-wrap:wrap}
+.franjas button{border:1.5px solid var(--linea);background:var(--papel);border-radius:var(--r);padding:10px 14px;font:600 14px var(--f-texto);cursor:pointer;color:var(--tinta)}
+.franjas button[aria-pressed="true"]{background:var(--mono);color:#fff;border-color:var(--mono)}
+.legal{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--gris)}
+.legal input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--mono)}
+.error{font-size:13.5px;color:#b42318}
+.aviso{font-size:14px;background:#fff4d6;border-radius:var(--r);padding:11px 13px;color:#7a5200}
+.confirmada h3{font-size:28px;text-transform:none}
+.confirmada dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;padding:16px 0;border-block:1px solid var(--linea);font-size:15px}
+.confirmada dt{color:var(--gris)}
+.confirmada dd{margin:0;font-weight:600}
+.wasap{background:#e7ddd0;border-radius:10px;padding:14px}
+.wasap small{display:block;font-size:12px;color:var(--gris);margin-bottom:8px}
+.burbuja{background:#dcf7c5;color:#1b2a1d;border-radius:8px 8px 8px 2px;padding:10px 12px;font-size:14px;white-space:pre-line;max-width:440px}
+@media (max-width:880px){.cita{grid-template-columns:1fr;gap:32px}}
+
+/* Dónde */
+.donde{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.horario{width:100%;border-collapse:collapse;font-family:var(--f-dato);font-size:15px}
+.horario td{padding:12px 0;border-bottom:1px solid var(--linea)}
+.horario td:last-child{text-align:right;color:var(--gris)}
+.horario tr.hoy td{font-weight:600;color:var(--tinta)}
+.horario tr.hoy td:first-child::after{content:"HOY";margin-left:10px;font-size:11px;background:var(--senal);padding:2px 7px;border-radius:4px}
+.mapa{border-radius:12px;overflow:hidden;border:1px solid var(--linea);background:var(--blanco)}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa .pie{padding:18px 20px;display:grid;gap:6px}
+.mapa .pie b{font-family:var(--f-titulo);font-stretch:110%;font-size:20px}
+.mapa .pie span{color:var(--gris);font-size:15px}
+@media (max-width:880px){.donde{grid-template-columns:1fr;gap:36px}}
+
+footer.pie{background:var(--tinta);color:#aab3bd;font-size:14px;padding-block:52px 110px}
+footer.pie .cont{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer.pie h4{margin:0 0 12px;color:#fff;font:600 12px var(--f-dato);letter-spacing:.1em;text-transform:uppercase}
+footer.pie ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer.pie a{text-decoration:none}
+footer.pie a:hover{color:#fff}
+.firma{grid-column:1/-1;border-top:1px solid #2a323c;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--f-dato);font-size:12.5px}
+@media (max-width:760px){footer.pie .cont{grid-template-columns:1fr 1fr}footer.pie .cont > div:first-child{grid-column:1/-1}}
+@media (min-width:761px){footer.pie{padding-block:52px}}
+
+.barra{display:none}
+@media (max-width:760px){
+  .barra{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--tinta);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))}
+  .barra a{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r);padding:13px 6px;font:700 14px/1 var(--f-texto);text-decoration:none;color:#fff;border:1.5px solid #39424d}
+  .barra a.cita-b{background:var(--senal);border-color:var(--senal);color:var(--tinta)}
+  .barra svg{width:17px;height:17px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><b>Modelo de prueba</b> de Indexa Labs: se personaliza con los servicios, precios y fotos de tu taller. El taller y sus datos son ficticios. <button type="button" aria-label="Cerrar aviso" onclick="this.parentElement.hidden=true">×</button></div>
+
+<header class="top">
+  <div class="cont">
+    <a class="marca" href="#inicio" aria-label="Taller Pistón, inicio">
+      <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><rect x="7" y="3" width="10" height="9" rx="1.5"/><path d="M7 7h10M12 12v4M9 21l3-5 3 5"/></svg></span>
+      <span><b>PISTÓN</b><small>TALLER MECÁNICO · TETUÁN</small></span>
+    </a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#servicios">Servicios y precios</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#donde">Dónde estamos</a>
+    </nav>
+    <span class="estado" id="estado"><i></i><span>Horario</span></span>
+    <a class="btn btn-senal" href="#cita">Pedir cita</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="cont">
+      <div>
+        <div class="etiqueta">Taller multimarca · Madrid · Desde 2004</div>
+        <h1 style="margin-top:16px">Tu taller de <span>confianza</span> en Tetuán</h1>
+        <p class="entrada">Mecánica, diagnosis, pre-ITV y neumáticos. Te damos el presupuesto por escrito antes de tocar tu coche, y te enseñamos las piezas que cambiamos.</p>
+        <div class="acciones">
+          <a class="btn btn-senal" href="#cita">Pedir cita</a>
+          <a class="btn btn-linea" href="#presupuesto">Calcular presupuesto</a>
+        </div>
+        <div class="sellos">
+          <span><b>4,8 ★</b>640 reseñas en Google</span>
+          <span><b>12 meses</b>de garantía</span>
+          <span><b>22 años</b>en el barrio</span>
+        </div>
+      </div>
+      <div class="marco">
+        <figure class="foto" style="margin:0"><img src="fotos/portada.jpg" alt="Mecánico revisando el motor de un coche en el taller"></figure>
+        <div class="ficha"><small>Hoy en el taller</small><b>Cambio de aceite en 45 minutos, sin cita previa por la mañana</b></div>
+      </div>
+    </div>
+  </section>
+  <div class="franja" aria-hidden="true"></div>
+
+  <section class="presu" id="presupuesto">
+    <div class="cont presu-grid">
+      <div class="presu-lado">
+        <div class="etiqueta">Presupuesto orientativo</div>
+        <h2>¿Cuánto me va a costar?</h2>
+        <p>Elige tu tipo de coche y lo que necesitas. Te damos un precio orientativo al momento, con IVA incluido. El precio final te lo confirmamos por escrito antes de empezar.</p>
+      </div>
+      <div class="calc">
+        <div class="campo"><span class="lbl" id="lbl-tam">Tipo de coche</span>
+          <div class="tamanos" role="group" aria-labelledby="lbl-tam" id="tamanos"></div>
+        </div>
+        <div class="campo"><label for="p-serv">¿Qué necesitas?</label><select id="p-serv"></select></div>
+        <div class="resultado" aria-live="polite">
+          <div><small>Precio orientativo</small><b id="p-precio">—</b></div>
+          <span class="t" id="p-tiempo"></span>
+        </div>
+        <a class="btn btn-mono" href="#cita" id="p-cita">Pedir cita con este presupuesto</a>
+        <p class="nota">Precios orientativos para modelos habituales. Algunos coches (híbridos, gama alta) pueden variar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="servicios">
+    <div class="cont">
+      <div class="cabeza">
+        <div><div class="etiqueta">Servicios y precios</div><h2>Lo que hacemos</h2></div>
+        <p>Precios «desde» con IVA incluido para un turismo pequeño. Sin letra pequeña: si hay que cambiar algo más, te llamamos antes.</p>
+      </div>
+      <div class="servicios">
+        <article class="serv"><figure class="foto" style="margin:0"><img src="fotos/aceite.jpg" alt="Cambio de aceite del motor"></figure><div class="cuerpo"><h3>Cambio de aceite y filtros</h3><p>Aceite homologado por tu fabricante, filtro y revisión de 25 puntos.</p><div class="pie"><b>desde 79 €</b><span>45 min</span></div></div></article>
+        <article class="serv"><figure class="foto" style="margin:0"><img src="fotos/diagnosis.jpg" alt="Diagnosis eléctrica del coche"></figure><div class="cuerpo"><h3>Diagnosis electrónica</h3><p>Leemos las averías con equipo multimarca y te explicamos qué pasa, sin tecnicismos.</p><div class="pie"><b>39 €</b><span>30 min</span></div></div></article>
+        <article class="serv"><figure class="foto" style="margin:0"><img src="fotos/neumaticos.jpg" alt="Montaje de una rueda"></figure><div class="cuerpo"><h3>Neumáticos</h3><p>Montaje, válvula y equilibrado. Te buscamos el neumático al mejor precio.</p><div class="pie"><b>desde 15 €</b><span>por rueda</span></div></div></article>
+      </div>
+      <div class="lista-serv">
+        <div><span>Pre-ITV</span><b>25 €</b></div>
+        <div><span>Pastillas de freno (un eje)</span><b>desde 89 €</b></div>
+        <div><span>Carga de aire acondicionado</span><b>desde 59 €</b></div>
+        <div><span>Revisión oficial del fabricante</span><b>desde 149 €</b></div>
+        <div><span>Kit de distribución</span><b>desde 290 €</b></div>
+        <div><span>Embrague completo</span><b>desde 390 €</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque osc">
+    <div class="cont">
+      <div class="cabeza">
+        <div><div class="etiqueta">Cómo trabajamos</div><h2>Sin sorpresas</h2></div>
+        <p>Así es cualquier reparación, de un cambio de aceite a un embrague.</p>
+      </div>
+      <ol class="pasos">
+        <li><h3>Diagnóstico</h3><p>Revisamos el coche y te contamos qué le pasa, con fotos si hace falta.</p></li>
+        <li><h3>Presupuesto escrito</h3><p>Precio cerrado de piezas y mano de obra, sin compromiso.</p></li>
+        <li><h3>Tú decides</h3><p>No tocamos nada sin tu aprobación. Si surge algo nuevo, te llamamos.</p></li>
+        <li><h3>Entrega</h3><p>Te devolvemos el coche limpio, con factura detallada y las piezas cambiadas.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="cont ventajas">
+      <figure class="foto" style="margin:0"><img src="fotos/taller.jpg" alt="Interior del taller con un coche en el elevador"></figure>
+      <div>
+        <div class="etiqueta">Por qué Pistón</div>
+        <h2 style="font-size:clamp(30px,4vw,46px);margin-top:10px;text-transform:uppercase">Un taller de barrio con medios de concesionario</h2>
+        <div class="vlista">
+          <div class="v"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h3>12 meses de garantía</h3><p>La ley exige 3 meses o 2.000 km. Nosotros damos un año en piezas y mano de obra.</p></div></div>
+          <div class="v"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/><rect x="3" y="16" width="18" height="4" rx="1"/><circle cx="7.5" cy="20" r="1"/><circle cx="16.5" cy="20" r="1"/></svg></span><div><h3>Recogida y coche de cortesía</h3><p>Recogemos y devolvemos tu coche gratis en Tetuán y Chamartín.</p></div></div>
+          <div class="v"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><path d="M9 11V6a3 3 0 0 1 6 0v5"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg></span><div><h3>Mantienes la garantía del fabricante</h3><p>Hacemos la revisión oficial según tu libro de mantenimiento y te lo sellamos.</p></div></div>
+          <div class="v"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><path d="M13 3L4 14h7l-1 7 9-11h-7z"/></svg></span><div><h3>Híbridos y eléctricos</h3><p>Personal formado en alta tensión y equipo de diagnosis actualizado.</p></div></div>
+        </div>
+        <div class="marcas" aria-label="Marcas con las que trabajamos">
+          <span>Seat</span><span>Volkswagen</span><span>Renault</span><span>Peugeot</span><span>Citroën</span><span>Toyota</span><span>Ford</span><span>Opel</span><span>Kia</span><span>Hyundai</span><span>BMW</span><span>Mercedes</span><span>Audi</span><span>Dacia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top:0">
+    <div class="cont">
+      <div class="cabeza">
+        <div><div class="etiqueta">Opiniones de ejemplo</div><h2>Lo que dicen los clientes</h2></div>
+        <p>En la web real se muestran las reseñas de Google del taller, enlazadas a su ficha.</p>
+      </div>
+      <div class="opiniones">
+        <article class="op"><span class="estrellas" aria-label="5 de 5">★★★★★</span><blockquote>“Me dieron el presupuesto por WhatsApp con fotos de las pastillas gastadas. Precio cerrado y el coche listo en el día.”</blockquote><footer><b>Álvaro P.</b> · hace 3 semanas</footer></article>
+        <article class="op"><span class="estrellas" aria-label="5 de 5">★★★★★</span><blockquote>“En el concesionario me pedían el doble por la revisión. Aquí me sellaron el libro y mantengo la garantía.”</blockquote><footer><b>Nuria G.</b> · hace 1 mes</footer></article>
+        <article class="op"><span class="estrellas" aria-label="5 de 5">★★★★★</span><blockquote>“Pasé la pre-ITV aquí, me dijeron que fallaba una luz y la cambiaron en 5 minutos. A la ITV, a la primera.”</blockquote><footer><b>Jorge M.</b> · hace 2 meses</footer></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="preguntas" style="background:var(--papel-2)">
+    <div class="cont">
+      <div class="cabeza">
+        <div><div class="etiqueta">Preguntas frecuentes</div><h2>Antes de venir</h2></div>
+        <p>Las dudas que más nos preguntan en el taller y por teléfono.</p>
+      </div>
+      <div class="faq">
+        <details open><summary>¿Pierdo la garantía del fabricante si hago la revisión fuera del concesionario?</summary><p>No. La normativa europea permite hacer el mantenimiento en un taller independiente sin perder la garantía, siempre que se sigan las indicaciones del fabricante y se usen piezas de calidad equivalente. Sellamos tu libro de mantenimiento y te damos la factura detallada.</p></details>
+        <details><summary>¿Cuánto cuesta una pre-ITV?</summary><p>25 € en turismos pequeños y compactos. Revisamos luces, frenos, suspensión, neumáticos, emisiones y todo lo que mira la ITV, y te decimos qué hay que arreglar antes de ir.</p></details>
+        <details><summary>¿Me dais presupuesto antes de reparar?</summary><p>Sí, siempre por escrito y sin compromiso. No tocamos el coche hasta que lo apruebas, y si aparece algo nuevo durante la reparación te llamamos antes.</p></details>
+        <details><summary>¿Qué garantía tienen las reparaciones?</summary><p>La ley exige un mínimo de 3 meses o 2.000 km. Nosotros damos 12 meses en mano de obra y piezas.</p></details>
+        <details><summary>¿Tenéis coche de sustitución o recogida a domicilio?</summary><p>Sí. Recogemos y devolvemos el coche gratis en Tetuán y Chamartín, y para reparaciones de más de un día tenemos coche de cortesía bajo reserva.</p></details>
+        <details><summary>¿Trabajáis con todas las marcas?</summary><p>Sí, somos un taller multimarca con equipo de diagnosis para la mayoría de fabricantes europeos, asiáticos y americanos, incluidos híbridos.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque osc" id="cita">
+    <div class="cont cita">
+      <div class="lado">
+        <div class="etiqueta">Cita online</div>
+        <h2 style="font-size:clamp(32px,4.2vw,50px);margin-top:10px;text-transform:uppercase">Pide tu cita</h2>
+        <p>Elige día y franja, dinos tu matrícula y qué le pasa al coche. Te confirmamos por WhatsApp en menos de una hora.</p>
+        <div class="contacto">
+          <div><b>Teléfono</b><span>910 00 00 00</span></div>
+          <div><b>WhatsApp</b><span>600 00 00 00</span></div>
+          <div><b>Dirección</b><span>C/ Ejemplo, 00 · 28039 Madrid</span></div>
+        </div>
+      </div>
+      <div>
+        <form class="caja" id="form-cita" novalidate>
+          <div class="campo"><label for="c-mat">Matrícula</label>
+            <div class="matricula"><span class="ue"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="#ffcc00"><circle cx="12" cy="4" r="1.2"/><circle cx="16" cy="5.1" r="1.2"/><circle cx="18.9" cy="8" r="1.2"/><circle cx="20" cy="12" r="1.2"/><circle cx="18.9" cy="16" r="1.2"/><circle cx="16" cy="18.9" r="1.2"/><circle cx="12" cy="20" r="1.2"/><circle cx="8" cy="18.9" r="1.2"/><circle cx="5.1" cy="16" r="1.2"/><circle cx="4" cy="12" r="1.2"/><circle cx="5.1" cy="8" r="1.2"/><circle cx="8" cy="5.1" r="1.2"/></g></svg>E</span><input id="c-mat" maxlength="9" autocomplete="off" placeholder="1234 KLM" aria-describedby="c-mat-ayuda"></div>
+            <small class="nota" id="c-mat-ayuda">Con la matrícula sabemos el modelo exacto y las piezas que lleva.</small>
+          </div>
+          <div class="fila">
+            <div class="campo"><label for="c-fecha">Día</label><input class="txt" type="date" id="c-fecha"></div>
+            <div class="campo"><span class="lbl" id="lbl-franja">Franja</span><div class="franjas" role="group" aria-labelledby="lbl-franja" id="franjas"></div></div>
+          </div>
+          <div class="campo"><label for="c-serv">Servicio</label><select id="c-serv"></select></div>
+          <div class="fila">
+            <div class="campo"><label for="c-nombre">Nombre</label><input class="txt" id="c-nombre" autocomplete="name" placeholder="Tu nombre"></div>
+            <div class="campo"><label for="c-tel">Teléfono</label><input class="txt" id="c-tel" type="tel" autocomplete="tel" placeholder="600 000 000"></div>
+          </div>
+          <div class="campo"><label for="c-notas">¿Qué le pasa al coche? (opcional)</label><textarea id="c-notas" rows="3" placeholder="Ruido al frenar, testigo encendido, necesito recogida…"></textarea></div>
+          <label class="legal"><input type="checkbox" id="c-legal"><span>Acepto que Taller Pistón use estos datos solo para gestionar mi cita, según su política de privacidad.</span></label>
+          <p class="error" id="c-error" hidden></p>
+          <button class="btn btn-senal" type="submit" style="width:100%;padding:17px">Solicitar cita</button>
+        </form>
+        <div class="confirmada" id="confirmada" hidden>
+          <div class="etiqueta" style="color:var(--mono-3)">Solicitud recibida</div>
+          <h3>¡Gracias, <span id="cf-nombre"></span>!</h3>
+          <p style="color:var(--gris)">Te confirmamos la cita por WhatsApp en menos de una hora.</p>
+          <dl id="cf-resumen"></dl>
+          <div class="wasap"><small>Así le llega la cita al taller:</small><div class="burbuja" id="cf-msg"></div></div>
+          <button class="btn btn-linea" type="button" id="otra" style="color:var(--mono)">Pedir otra cita</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="donde">
+    <div class="cont donde">
+      <div>
+        <div class="etiqueta">Horario</div>
+        <h2 style="font-size:clamp(30px,4vw,46px);margin:10px 0 24px;text-transform:uppercase">Cuándo venir</h2>
+        <table class="horario" id="horario"><tbody></tbody></table>
+        <p class="nota" style="margin-top:14px">Recepción de coches sin cita de 8:30 a 10:00. Sábados, solo urgencias con cita.</p>
+      </div>
+      <div class="mapa">
+        <svg viewBox="0 0 560 290" role="img" aria-label="Plano de situación del taller en Tetuán">
+          <rect width="560" height="290" fill="#e7e5dd"/>
+          <g stroke="#ffffff" stroke-width="16" fill="none" stroke-linecap="round"><path d="M200 -10 L230 300"/><path d="M-10 120 L570 96"/></g>
+          <g stroke="#ffffff" stroke-width="8" fill="none" stroke-linecap="round"><path d="M-10 220 L570 200"/><path d="M380 -10 L360 300"/><path d="M90 -10 L60 300"/><path d="M470 -10 L500 300"/></g>
+          <text x="214" y="40" fill="#58616b" font-family="IBM Plex Mono, monospace" font-size="12" transform="rotate(84 214 40)">C/ Bravo Murillo</text>
+          <text x="420" y="88" fill="#58616b" font-family="IBM Plex Mono, monospace" font-size="12">C/ General Perón</text>
+          <rect x="248" y="128" width="20" height="20" rx="4" fill="#003399"/><text x="258" y="143" fill="#fff" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="700" text-anchor="middle">M</text>
+          <text x="274" y="143" fill="#58616b" font-family="IBM Plex Mono, monospace" font-size="12">Tetuán</text>
+          <circle cx="300" cy="182" r="26" fill="#ffc21a" opacity=".35"/>
+          <path d="M300 152c-12 0-21 9-21 21 0 15 21 34 21 34s21-19 21-34c0-12-9-21-21-21z" fill="#16324f"/>
+          <circle cx="300" cy="172" r="7" fill="#ffc21a"/>
+        </svg>
+        <div class="pie">
+          <b>C/ Ejemplo, 00 · 28039 Madrid</b>
+          <span>A 4 minutos del metro Tetuán (línea 1). Aparcamiento para clientes en la puerta.</span>
+          <div class="acciones" style="margin-top:12px">
+            <a class="btn btn-mono" href="https://www.google.com/maps/search/?api=1&amp;query=Metro+Tetuan+Madrid" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btn-linea" href="tel:+34910000000" style="color:var(--mono)">Llamar · 910 00 00 00</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="cont">
+    <div>
+      <a class="marca" href="#inicio" style="color:#fff"><span class="logo" style="background:#24507d"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc21a" stroke-width="2" aria-hidden="true"><rect x="7" y="3" width="10" height="9" rx="1.5"/><path d="M7 7h10M12 12v4M9 21l3-5 3 5"/></svg></span><span><b>PISTÓN</b><small style="color:#aab3bd">TALLER MECÁNICO · TETUÁN</small></span></a>
+      <p style="margin-top:16px;max-width:28em">Taller mecánico multimarca en Tetuán, Madrid. Mecánica general, diagnosis, pre-ITV, frenos, distribución, embrague, aire acondicionado y neumáticos.</p>
+    </div>
+    <div><h4>Contacto</h4><ul><li>C/ Ejemplo, 00</li><li>28039 Madrid</li><li>910 00 00 00</li><li>WhatsApp 600 00 00 00</li></ul></div>
+    <div><h4>Servicios</h4><ul><li><a href="#servicios">Mantenimiento</a></li><li><a href="#servicios">Pre-ITV</a></li><li><a href="#servicios">Frenos y embrague</a></li><li><a href="#servicios">Neumáticos</a></li></ul></div>
+    <div><h4>Información</h4><ul><li><a href="#inicio">Aviso legal</a></li><li><a href="#inicio">Privacidad</a></li><li><a href="#inicio">Cookies</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ul></div>
+    <div class="firma"><span>© <span id="anio">2026</span> Taller Pistón · Nº Registro Industrial 28/00000 (ejemplo) · Hojas de reclamaciones a disposición del cliente</span><span>Web y GEO: Indexa Labs</span></div>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Accesos rápidos">
+  <a href="tel:+34910000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Llamar</a>
+  <a href="#presupuesto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>Precio</a>
+  <a class="cita-b" href="#cita">Pedir cita</a>
+</nav>
+
+<script>
+(function(){
+  /* ---------- Datos del taller: editar aquí ---------- */
+  var H=function(h,m){return h*60+(m||0)};
+  // 0 = domingo
+  var HORARIO={0:[],1:[[H(8,30),H(19)]],2:[[H(8,30),H(19)]],3:[[H(8,30),H(19)]],4:[[H(8,30),H(19)]],5:[[H(8,30),H(15)]],6:[]};
+  // Festivos (mes-día) en los que el taller cierra
+  var FESTIVOS=["01-01","01-06","05-01","05-02","05-15","08-15","10-12","11-01","11-09","12-06","12-08","12-25"];
+  function festivo(iso){return FESTIVOS.indexOf(iso.slice(5))>-1}
+  var DIAS=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  var ORDEN=[1,2,3,4,5,6,0];
+  var TAMANOS=[
+    {n:"Pequeño",e:"Ibiza, Corsa, 208"},
+    {n:"Compacto",e:"Golf, León, Megane"},
+    {n:"SUV / berlina",e:"Qashqai, Tucson, Passat"},
+    {n:"Furgoneta / 4x4",e:"Berlingo, Vito, Land Cruiser"}
+  ];
+  // precio base por tamaño (€ IVA incl.) y tiempo
+  var SERVICIOS=[
+    {id:"aceite",n:"Cambio de aceite y filtros",p:[79,99,119,129],t:"45 min"},
+    {id:"preitv",n:"Pre-ITV",p:[25,25,30,35],t:"30 min",fijo:1},
+    {id:"frenos",n:"Pastillas de freno (un eje)",p:[89,109,129,149],t:"1 hora"},
+    {id:"diagnosis",n:"Diagnosis electrónica",p:[39,39,49,49],t:"30 min",fijo:1},
+    {id:"aire",n:"Carga de aire acondicionado",p:[59,69,79,89],t:"1 hora"},
+    {id:"revision",n:"Revisión oficial del fabricante",p:[149,179,219,249],t:"2 horas"},
+    {id:"distribucion",n:"Kit de distribución",p:[290,360,420,480],t:"4–6 horas"},
+    {id:"embrague",n:"Embrague completo",p:[390,490,590,690],t:"1 día"},
+    {id:"neumaticos",n:"Montaje de 4 neumáticos (sin neumático)",p:[60,72,88,100],t:"45 min",fijo:1},
+    {id:"otro",n:"Otra avería / no lo sé",p:null,t:"Diagnóstico previo"}
+  ];
+
+  function ahora(){
+    try{var f=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23",year:"numeric",month:"2-digit",day:"2-digit"});
+      var o={};f.formatToParts(new Date()).forEach(function(p){o[p.type]=p.value});
+      return {dia:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],min:(+o.hour)*60+(+o.minute),iso:o.year+"-"+o.month+"-"+o.day};
+    }catch(e){var d=new Date();return {dia:d.getDay(),min:d.getHours()*60+d.getMinutes(),iso:d.toISOString().slice(0,10)}}
+  }
+  function hhmm(m){return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0")}
+  function tramos(d){var t=HORARIO[d];return t.length?t.map(function(x){return hhmm(x[0])+" – "+hhmm(x[1])}).join(" · "):"Cerrado"}
+  function eur(n){return n.toLocaleString("es-ES")+" €"}
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  var A=ahora();
+
+  // Estado abierto / cerrado
+  (function(){
+    var el=document.getElementById("estado"),t=HORARIO[A.dia].filter(function(x){return A.min>=x[0]&&A.min<x[1]})[0];
+    if(t){el.classList.add("abierto");el.lastChild.textContent="Abierto · hasta las "+hhmm(t[1]);return}
+    var txt="Cerrado";var hoy=HORARIO[A.dia].filter(function(x){return x[0]>A.min})[0];
+    if(hoy)txt="Cerrado · abre a las "+hhmm(hoy[0]);
+    else for(var i=1;i<=7;i++){var d=(A.dia+i)%7;if(HORARIO[d].length){txt="Cerrado · abre "+(i===1?"mañana":DIAS[d].toLowerCase())+" "+hhmm(HORARIO[d][0][0]);break}}
+    el.lastChild.textContent=txt;
+  })();
+  (function(){var tb=document.querySelector("#horario tbody");ORDEN.forEach(function(d){var tr=document.createElement("tr");if(d===A.dia)tr.className="hoy";tr.innerHTML="<td>"+DIAS[d]+"</td><td>"+tramos(d)+"</td>";tb.appendChild(tr)})})();
+  document.getElementById("anio").textContent=A.iso.slice(0,4);
+
+  /* ---------- Presupuesto ---------- */
+  var tam=1, cont=document.getElementById("tamanos"), sel=document.getElementById("p-serv"), selC=document.getElementById("c-serv");
+  TAMANOS.forEach(function(t,i){var b=document.createElement("button");b.type="button";b.className="tam";b.setAttribute("aria-pressed",i===tam?"true":"false");b.innerHTML=esc(t.n)+"<small>"+esc(t.e)+"</small>";b.addEventListener("click",function(){tam=i;cont.querySelectorAll(".tam").forEach(function(x,j){x.setAttribute("aria-pressed",j===i?"true":"false")});calc()});cont.appendChild(b)});
+  SERVICIOS.forEach(function(s){[sel,selC].forEach(function(S){var o=document.createElement("option");o.value=s.id;o.textContent=s.n;S.appendChild(o)})});
+  function rango(s){if(!s.p)return null;var b=s.p[tam];if(s.fijo)return [b,b];return [b,Math.round(b*1.2/5)*5]}
+  function calc(){
+    var s=SERVICIOS.filter(function(x){return x.id===sel.value})[0],r=rango(s);
+    document.getElementById("p-precio").textContent=r?(r[0]===r[1]?eur(r[0]):eur(r[0])+" – "+eur(r[1])):"Diagnosis 39 €";
+    document.getElementById("p-tiempo").textContent="⏱ "+s.t;
+  }
+  sel.addEventListener("change",calc);calc();
+  document.getElementById("p-cita").addEventListener("click",function(){selC.value=sel.value});
+
+  /* ---------- Cita ---------- */
+  var fecha=document.getElementById("c-fecha"),franja=null,fr=document.getElementById("franjas");
+  fecha.min=A.iso;
+  (function(){var d=new Date(A.iso+"T12:00:00");for(var i=0;i<12;i++){d.setDate(d.getDate()+1);if(HORARIO[d.getDay()].length&&!festivo(d.toISOString().slice(0,10)))break}fecha.value=d.toISOString().slice(0,10);fecha.defaultValue=fecha.value})();
+  function pintarFranjas(){
+    fr.innerHTML="";franja=null;
+    if(!fecha.value)return;
+    var d=new Date(fecha.value+"T12:00:00").getDay();
+    if(!HORARIO[d].length||festivo(fecha.value)){fr.innerHTML='<p class="aviso">'+(festivo(fecha.value)?'Ese día es festivo y el taller está cerrado.':'Ese día está cerrado.')+' Elige otro día de lunes a viernes.</p>';return}
+    var ops=["Mañana (8:30–13:00)"];if(HORARIO[d][0][1]>H(16))ops.push("Tarde (15:00–19:00)");
+    ops.forEach(function(o){var b=document.createElement("button");b.type="button";b.textContent=o;b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){fr.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");franja=o});fr.appendChild(b)});
+  }
+  fecha.addEventListener("change",pintarFranjas);pintarFranjas();
+  var mat=document.getElementById("c-mat");
+  mat.addEventListener("input",function(){var v=mat.value.toUpperCase().replace(/[^0-9A-Z]/g,"");var m=v.match(/^(\d{1,4})([A-Z]{0,3})/);mat.value=m&&m[2]?m[1]+" "+m[2]:v});
+  var form=document.getElementById("form-cita"),err=document.getElementById("c-error"),conf=document.getElementById("confirmada");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var nombre=document.getElementById("c-nombre").value.trim(),tel=document.getElementById("c-tel").value.trim(),notas=document.getElementById("c-notas").value.trim(),m=mat.value.trim();
+    var falta=[];
+    if(m.replace(/\s/g,"").length<6)falta.push("la matrícula");
+    if(!fecha.value)falta.push("el día");
+    if(!franja)falta.push("la franja");
+    if(!nombre)falta.push("tu nombre");
+    if(tel.replace(/\D/g,"").length<9)falta.push("un teléfono válido");
+    if(falta.length){err.textContent="Para pedir la cita falta "+falta.join(", ").replace(/, ([^,]*)$/," y $1")+".";err.hidden=false;return}
+    if(!document.getElementById("c-legal").checked){err.textContent="Marca la casilla de privacidad para poder enviar la cita.";err.hidden=false;return}
+    err.hidden=true;
+    var f=new Date(fecha.value+"T12:00:00"),M=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    var fTxt=DIAS[f.getDay()]+" "+f.getDate()+" de "+M[f.getMonth()],s=SERVICIOS.filter(function(x){return x.id===selC.value})[0];
+    document.getElementById("cf-nombre").textContent=nombre.split(" ")[0];
+    document.getElementById("cf-resumen").innerHTML="<dt>Matrícula</dt><dd>"+esc(m)+"</dd><dt>Día</dt><dd>"+esc(fTxt)+"</dd><dt>Franja</dt><dd>"+esc(franja)+"</dd><dt>Servicio</dt><dd>"+esc(s.n)+"</dd><dt>Teléfono</dt><dd>"+esc(tel)+"</dd>"+(notas?"<dt>Notas</dt><dd>"+esc(notas)+"</dd>":"");
+    document.getElementById("cf-msg").textContent="Nueva cita web\n"+m+" · "+s.n+"\n"+fTxt+" · "+franja+"\n"+nombre+" · Tel. "+tel+(notas?"\nNotas: "+notas:"");
+    form.hidden=true;conf.hidden=false;conf.scrollIntoView({behavior:"smooth",block:"center"});
+  });
+  document.getElementById("otra").addEventListener("click",function(){form.reset();pintarFranjas();conf.hidden=true;form.hidden=false;mat.focus()});
+})();
+</script>
+</body>
+</html>

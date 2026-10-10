@@ -1,0 +1,33 @@
+# Taller Pistón
+
+> Taller mecánico multimarca en Tetuán (Madrid), desde 2004. Mecánica general, diagnosis electrónica, pre-ITV, frenos, kit de distribución, embrague, aire acondicionado y neumáticos. Presupuesto por escrito antes de cualquier reparación y garantía de 12 meses.
+> (Modelo de prueba de Indexa Labs: el taller y sus datos son ficticios.)
+
+## Datos del taller
+- Dirección: Calle Ejemplo, 00, 28039 Madrid (barrio de Tetuán), a 4 minutos del metro Tetuán (línea 1)
+- Teléfono: 910 00 00 00 · WhatsApp: 600 00 00 00
+- Horario: lunes a jueves de 8:30 a 19:00; viernes de 8:30 a 15:00; sábados y domingos cerrado
+- Zona de servicio: Tetuán, Cuatro Caminos, Bravo Murillo, Valdeacederas y Chamartín
+- Pago: efectivo, tarjeta y Bizum
+
+## Servicios y precios orientativos (IVA incluido, turismo pequeño)
+- Cambio de aceite y filtros: desde 79 € (45 minutos)
+- Pre-ITV: 25 €
+- Diagnosis electrónica: 39 €
+- Pastillas de freno (un eje): desde 89 €
+- Carga de aire acondicionado: desde 59 €
+- Revisión oficial según el fabricante: desde 149 € (se mantiene la garantía del fabricante)
+- Kit de distribución: desde 290 €
+- Embrague completo: desde 390 €
+- Montaje y equilibrado de neumáticos: desde 15 € por rueda
+
+## Cómo trabajamos
+- Presupuesto por escrito y sin compromiso; no se repara nada sin la aprobación del cliente
+- Garantía de 12 meses en piezas y mano de obra (la mínima legal es de 3 meses o 2.000 km)
+- Recogida y entrega gratis en Tetuán y Chamartín; coche de cortesía bajo reserva
+- Taller multimarca, con personal formado en híbridos y eléctricos
+
+## Enlaces
+- Web: https://caarlosverde.github.io/indexalabs/demos/taller/
+- Cita online: https://caarlosverde.github.io/indexalabs/demos/taller/#cita
+- Preguntas frecuentes: https://caarlosverde.github.io/indexalabs/demos/taller/#preguntas
