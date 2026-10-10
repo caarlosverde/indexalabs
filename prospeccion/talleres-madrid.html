@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bandeja Talleres Madrid</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Mismo estilo que la bandeja de tiendas: tarjetas por local, pasos numerados, botón Copiar. */
+:root{--t:#0f172a;--s:#64748b;--b:#e2e8f0;--f:#f8fafc;--v:#15803d;--fondo:#eef1f5;--blanco:#fff;
+  --rojo:#dc2626;--naranja:#d97706;--azul:#2563eb;--morado:#7c3aed;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);font:15px/1.5 Inter,system-ui,"Segoe UI",sans-serif;color:var(--t)}
+.w{max-width:880px;margin:0 auto;padding:28px 16px 60px}
+h1{margin:0;font-size:28px;text-wrap:balance}
+.sub{color:var(--s);margin:4px 0 20px}
+.ayuda{background:var(--blanco);border-left:4px solid var(--v);border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:14px}
+.ayuda ol{margin:6px 0 0;padding-left:20px}.ayuda li{margin-bottom:4px}
+.demo{background:var(--blanco);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:14px;display:grid;gap:8px}
+.demo label{font-weight:700}
+.demo small{color:var(--s)}
+.resumen{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.resumen span{background:var(--blanco);border:1px solid var(--b);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--s)}
+.resumen b{color:var(--t)}
+article{background:var(--blanco);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+article.ok{opacity:.5}
+.cab{display:flex;gap:14px;align-items:center}
+.info{flex:1;min-width:0}
+h2{margin:0;font-size:20px}
+.meta{color:var(--s);font-size:13px}
+.meta a{color:var(--s)}
+.num{width:32px;height:32px;border-radius:50%;background:var(--f);border:1px solid var(--b);display:grid;place-items:center;font-weight:700;color:var(--s);font-variant-numeric:tabular-nums}
+.lado{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.nota{color:#fff;font-weight:800;font-size:18px;border-radius:12px;padding:6px 12px;min-width:52px;text-align:center;background:var(--v);font-variant-numeric:tabular-nums}
+.nota small{display:block;font-size:10.5px;font-weight:600;opacity:.9}
+.tipo{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.t-rota{background:var(--rojo)}.t-ssl{background:var(--rojo)}.t-sin{background:var(--naranja)}.t-fb{background:var(--azul)}.t-ig{background:var(--morado)}.t-basica{background:#475569}.t-azul{background:var(--azul)}
+.visto{margin:14px 0 4px;background:var(--f);border:1px solid var(--b);border-radius:10px;padding:10px 14px;font-size:14px}
+.visto b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--s);margin-bottom:2px}
+.pasos{margin:16px 0 8px;padding-left:20px}
+.pasos > li{margin-bottom:14px}
+.btn{display:inline-block;margin:2px 0 2px 6px;background:var(--v);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 12px;border-radius:8px}
+.btn.sec{background:#334155}
+.btn.wa{background:#128c4a}
+.btn.ig{background:#c13584}.btn.fb{background:#1877f2}.btn.mail{background:#0f766e}
+.canal{border:1px solid var(--b);border-radius:10px;padding:10px 14px;margin-top:10px}
+.canal h3{margin:0 0 4px;font-size:14px}
+.canal .dato{font-size:13px;color:var(--s)}
+details.llamar{margin-top:12px;font-size:14px}details.llamar summary{cursor:pointer;font-weight:600;color:var(--s)}
+.aviso{background:#fef3c7;border-radius:8px;padding:8px 12px;font-size:13px;margin-top:8px}
+.campo{margin-top:8px}
+.campo label{font-size:12px;color:var(--s)}
+.fila{display:flex;gap:8px;align-items:flex-start}
+textarea,input[type=text],input[type=url]{flex:1;width:100%;min-width:0;font:14px/1.5 Inter,system-ui,sans-serif;border:1px solid var(--b);border-radius:10px;padding:10px 12px;background:var(--f);color:var(--t);resize:vertical}
+button.copiar{background:var(--blanco);border:1.5px solid var(--v);color:var(--v);font-weight:700;border-radius:8px;padding:8px 14px;cursor:pointer;white-space:nowrap;font:700 14px Inter,system-ui,sans-serif}
+button.copiado{background:var(--v);color:#fff}
+.hecho{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--s);cursor:pointer;margin-right:18px}
+.estado{display:flex;flex-wrap:wrap;gap:4px 0}
+:focus-visible{outline:2px solid var(--v);outline-offset:2px}
+@media(max-width:600px){.fila{flex-direction:column}button.copiar{width:100%}.cab{flex-wrap:wrap}.lado{flex-direction:row;align-items:center}}
+</style>
+</head>
+<body>
+
+<div class="w">
+<h1>Bandeja de contactos · Talleres Madrid</h1>
+<div class="sub">Generado el 10/10/2026 · 28 talleres · primero los que tienen web con problemas</div>
+
+<div class="ayuda"><b>Cómo usar esta página</b>
+<ol>
+<li><b>Escríbeles por el canal que tengan</b>, en este orden: email, Instagram o Facebook. Muchos talleres solo tienen teléfono: en ese caso, llama o pásate. Pulsa <b>Abrir</b>, copia el mensaje y pégalo. En Facebook, pulsa «Enviar mensaje» en su página.</li>
+<li><b>Si no tienen ninguno, o no contestan en 5 días</b>, llama o pásate con el guion de llamada (al final de cada local). Mejor a primera hora (8:30–9:30) o después de comer (15:00–16:00).</li>
+<li>Escribe por un solo canal a cada local. Si no contestan, haz un único recordatorio corto. Si dicen que no, márcalo y no insistas.</li>
+</ol>
+<p style="margin:8px 0 0">Recuerda: escribir a quien no te lo ha pedido tiene algo de riesgo legal (LSSI). Por eso los mensajes son cortos, personales y llevan la opción de decir que no.</p>
+<p style="margin:6px 0 0">Los emails salen de la propia web de cada taller; la revisión de su web la hice el 10/10/2026. Para los talleres sin teléfono aquí, ábrelo en su «Ficha de Google». Antes de escribir, comprueba la ficha por si ha cambiado algo.</p>
+<p style="margin:6px 0 0"><b>Ritmo recomendado:</b> unos 10 locales al día.</p>
+</div>
+
+<div class="ayuda" style="border-left-color:#2563eb"><b>Si te preguntan qué es eso del GEO</b>
+<p style="margin:6px 0 0">GEO (<i>Generative Engine Optimization</i>) es preparar la web para que ChatGPT, Gemini, Perplexity y el buscador de Google con IA entiendan el negocio y lo recomienden cuando alguien pregunta «¿qué taller de confianza hay en Tetuán?». Es como el SEO de siempre, pero pensado para las IA.</p>
+<p style="margin:6px 0 0"><b>Qué incluye:</b> datos estructurados de taller (dirección, horario, servicios y precios en un formato que leen las máquinas), preguntas frecuentes, un archivo <code>llms.txt</code> con la información clave, una web que se pueda leer sin JavaScript, y la ficha de Google completa y enlazada.</p>
+<p style="margin:6px 0 0"><b>Sé honesto:</b> nadie puede garantizar que una IA te recomiende. Lo que sí se puede prometer es que la web les dé toda la información para hacerlo, igual que la del modelo de prueba.</p>
+</div>
+<div class="demo">
+<label for="demo-url">Enlace a tu web de ejemplo</label>
+<input type="url" id="demo-url" placeholder="Pega aquí el enlace público de la web de ejemplo">
+<small>Los mensajes se actualizan solos con este enlace. Por defecto lleva la dirección de GitHub Pages. Comprueba que se abre antes de enviar nada.</small>
+</div>
+
+<div class="resumen" id="resumen"></div>
+<div id="lista"></div>
+</div>
+
+<script>
+var FIRMA = "Carlos Verde\nIndexa Labs";
+var L = [
+{
+"id": "tallereshnez",
+"n": "Talleres H. Núñez",
+"tipo": "js",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "Paseo de Yeserías · Arganzuela",
+"tel": "",
+"dominio": "tallerhnunez.com",
+"visto": "Su web (tallerhnunez.com) se carga entera con JavaScript: el HTML que leen las IA solo tiene el título y la descripción.",
+"obs": [
+"Vuestra web tallerhnunez.com se ve bien en el navegador, pero se carga entera con JavaScript. Los rastreadores de ChatGPT y otras IA no ejecutan ese código, así que de vuestra web solo leen el título: no ven vuestros servicios ni vuestros datos.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Arganzuela?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "prezillnautomoci",
+"n": "Pérez-Illán Automoción",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C. de Antonio López · Carabanchel",
+"tel": "",
+"dominio": "perezillanautomocion.es",
+"visto": "Web sin descripción para Google, sin datos estructurados ni botón de llamar; © 2020.",
+"obs": [
+"En vuestra web perezillanautomocion.es faltan cosas básicas para Google y las IA: no tiene descripción para el buscador, ni datos estructurados de taller, ni un botón para llamar desde el móvil, y el pie de página sigue en 2020.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Carabanchel?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "perezillan@yahoo.es",
+"fb": "https://www.facebook.com/perezillanautomocion"
+},
+{
+"id": "talleresfj",
+"n": "Talleres FJ",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Carmen Portones, 9 · Tetuán",
+"tel": "",
+"dominio": "talleresfj.es",
+"visto": "Web cuidada, pero sin datos estructurados de taller, sin preguntas frecuentes, sin llms.txt y sin botón de llamar.",
+"obs": [
+"Vuestra web talleresfj.es está bien hecha, pero no tiene los datos estructurados que dicen a Google y a las IA que sois un taller, en qué calle y con qué horario. Tampoco tiene preguntas frecuentes ni un botón de llamar desde el móvil.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "taller@talleresfj.es"
+},
+{
+"id": "tallerjoaqunpala",
+"n": "Taller Joaquín Palau",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Vicente Caballero, 2 · Retiro",
+"tel": "915 73 80 22",
+"dominio": "tallerjoaquinpalau.com",
+"visto": "Sin datos estructurados de taller ni botón de llamar en la web.",
+"obs": [
+"Vuestra web tallerjoaquinpalau.com no tiene datos estructurados de taller ni un botón de llamar desde el móvil, así que Google y las IA tienen que adivinar qué hacéis y dónde estáis.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Retiro?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "talleresjcaldern",
+"n": "Talleres J. Calderón",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C. de Santoña · Usera",
+"tel": "",
+"dominio": "talleresjcalderon.es",
+"visto": "Sin descripción para Google, sin datos estructurados de taller y sin botón de llamar.",
+"obs": [
+"Vuestra web talleresjcalderon.es no tiene descripción para Google (el texto que sale bajo vuestro nombre en el buscador), ni datos estructurados de taller, ni botón de llamar desde el móvil.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Usera?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "info@talleresjcalderon.com"
+},
+{
+"id": "talleresdecamovi",
+"n": "Talleres Decamovil",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Manuel Luna, 8 y 13 · Tetuán",
+"tel": "915 79 37 75",
+"dominio": "talleresdecamovil.es",
+"visto": "Servicio oficial Citroën. Web sin descripción para Google, sin datos estructurados y sin botón de llamar.",
+"obs": [
+"Sois servicio oficial Citroën, pero vuestra web talleresdecamovil.es no tiene descripción para Google, ni datos estructurados de taller, ni botón de llamar desde el móvil. Para las IA es difícil saber qué hacéis y recomendaros.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "talleresdecamovil@gmail.com"
+},
+{
+"id": "tallerlopedeharo",
+"n": "Taller Lope de Haro",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Lope de Haro, 23 · Tetuán",
+"tel": "",
+"dominio": "tallerlopedeharo.com",
+"visto": "La portada tiene 6 títulos principales (H1) y no tiene datos estructurados de taller.",
+"obs": [
+"Vuestra web tallerlopedeharo.com tiene seis títulos principales en la portada, lo que confunde a Google sobre de qué trata la página, y no tiene datos estructurados de taller para las IA.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "tallerlopedeharo@gmail.com"
+},
+{
+"id": "talleresfgg",
+"n": "Talleres FGG",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de las Margaritas, 17 · Tetuán",
+"tel": "917 33 75 70",
+"dominio": "talleresfgg.es",
+"visto": "Chapa y pintura. Web sin datos estructurados de taller, sin preguntas frecuentes y sin llms.txt.",
+"obs": [
+"Vuestra web talleresfgg.es no tiene los datos estructurados que usan Google y las IA para saber que sois un taller de chapa y pintura, dónde estáis y cuándo abrís, ni preguntas frecuentes que puedan citar.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "talleresfgg@gmail.com"
+},
+{
+"id": "talleresstuttgar",
+"n": "Talleres Stuttgart",
+"tipo": "plantilla",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "Av. del Dr. Federico Rubio y Galí, 110 · Moncloa",
+"tel": "914 50 60 13",
+"dominio": "talleresstuttgart.es",
+"visto": "Web de plantilla de una sola página (8 KB), sin título principal, sin servicios detallados ni preguntas frecuentes. La misma plantilla la usan otros talleres.",
+"obs": [
+"Vuestra web talleresstuttgart.es es una plantilla de una sola página, la misma que usan otros talleres de Madrid: no tiene título principal, ni vuestros servicios explicados, ni preguntas frecuentes. Para Google y las IA es casi igual que la de vuestra competencia.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Moncloa?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "isra074@gmail.com"
+},
+{
+"id": "talleresjurado",
+"n": "Talleres Jurado",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Infanta María Teresa, 12 · Chamartín",
+"tel": "914 57 76 37",
+"dominio": "talleresjurado.com",
+"visto": "Sin datos estructurados de taller ni botón de llamar.",
+"obs": [
+"Vuestra web talleresjurado.com no tiene datos estructurados de taller ni un botón de llamar desde el móvil, que es como entra la mayoría de clientes.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Chamartín?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "web@talleresjurado.com"
+},
+{
+"id": "talleresjimnezsa",
+"n": "Talleres Jiménez Sancho",
+"tipo": "plantilla",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "Av. de San Diego, 31 · Puente de Vallecas",
+"tel": "914 78 79 05",
+"dominio": "talleresjimenezsancho.es",
+"visto": "Web de plantilla de una sola página, igual que la de otros talleres, sin título principal ni servicios detallados.",
+"obs": [
+"Vuestra web talleresjimenezsancho.es es una plantilla de una sola página, la misma que usan otros talleres: sin título principal, sin vuestros servicios explicados y sin preguntas frecuentes. Para Google y las IA cuesta distinguiros de la competencia.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Puente de Vallecas?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "tjimenezsancho1@hotmail.com"
+},
+{
+"id": "tallerescisancar",
+"n": "Talleres Cisan Car",
+"tipo": "plantilla",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de la Mejorana, 8 · Puente de Vallecas",
+"tel": "914 78 56 17",
+"dominio": "tallerescisancar.es",
+"visto": "Web de plantilla de una sola página, igual que la de otros talleres, sin título principal ni servicios detallados.",
+"obs": [
+"Vuestra web tallerescisancar.es es una plantilla de una sola página, la misma que usan otros talleres: sin título principal, sin vuestros servicios explicados y sin preguntas frecuentes.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Puente de Vallecas?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "cisancarsll@gmail.com"
+},
+{
+"id": "tallerpetersen",
+"n": "Taller Petersen",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de Pedro Villar, 11 · Tetuán",
+"tel": "915 99 37 88",
+"dominio": "tallerespetersen.es",
+"visto": "«Mecánica honesta desde 2017». Web sin datos estructurados de taller, sin botón de llamar ni preguntas frecuentes.",
+"obs": [
+"Vuestra web tallerespetersen.es transmite bien lo de «mecánica honesta», pero no tiene datos estructurados de taller, ni botón de llamar desde el móvil, ni preguntas frecuentes, que es justo lo que leen las IA para recomendar un taller.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "info@tallerespetersen.es"
+},
+{
+"id": "talleresbase2",
+"n": "Talleres Base 2",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Luisa Andrés, 6 · Moncloa",
+"tel": "913 73 61 28",
+"dominio": "talleresbase2.com",
+"visto": "Sin descripción para Google ni datos estructurados; © 2020.",
+"obs": [
+"Vuestra web talleresbase2.com no tiene descripción para Google, ni datos estructurados de taller, y el pie de página sigue en 2020.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Moncloa?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "contacto@talleresbase2.com"
+},
+{
+"id": "talleresmoreno",
+"n": "Talleres Moreno",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de los Yébenes, 150 · Latina",
+"tel": "",
+"dominio": "tallermoreno.es",
+"visto": "Web © 2019, sin datos estructurados de taller ni botón de llamar.",
+"obs": [
+"Vuestra web tallermoreno.es se quedó en 2019: no tiene datos estructurados de taller, ni botón de llamar desde el móvil, ni preguntas frecuentes.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Latina?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "talleresmoreno@cgacarservice.com",
+"fb": "https://www.facebook.com/talleresmoreno.moreno"
+},
+{
+"id": "gtaautotechnical",
+"n": "GTA Autotechnical",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Emilio Carrere, 10 · Chamberí",
+"tel": "",
+"dominio": "gtauto.es",
+"visto": "Plantilla con © 2005 en el pie y un email de ejemplo de la plantilla (agency@yourwebsite.com) olvidado en el código.",
+"obs": [
+"En vuestra web gtauto.es el pie de página dice © 2005 y en el código sigue un email de ejemplo de la plantilla (agency@yourwebsite.com). Son detalles que Google y las IA leen, y restan confianza.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Chamberí?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "info@gtauto.es"
+},
+{
+"id": "talleresalpi",
+"n": "Talleres Alpi",
+"tipo": "movil",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Juan Álvarez Mendizábal, 58 · Moncloa",
+"tel": "",
+"dominio": "talleresalpisa.es",
+"visto": "Web de IONOS sin adaptar a móvil (sin etiqueta viewport), sin descripción para Google ni datos estructurados.",
+"obs": [
+"Vuestra web talleresalpisa.es no está adaptada al móvil: en un teléfono se ve en pequeño y hay que hacer zoom. Tampoco tiene descripción para Google ni datos estructurados de taller.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Moncloa?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "atencioncliente@alpisa.net"
+},
+{
+"id": "talleresamzvalle",
+"n": "Talleres AMZ Vallekas",
+"tipo": "antigua",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Cerámica, 48 · Puente de Vallecas",
+"tel": "915 01 01 68",
+"dominio": "talleresvallekas.es",
+"visto": "Web © 2019, sin descripción para Google ni datos estructurados de taller.",
+"obs": [
+"Vuestra web talleresvallekas.es se quedó en 2019: no tiene descripción para Google ni datos estructurados de taller, así que las IA tienen poca información para recomendaros.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Puente de Vallecas?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "talleresamz1@gmail.com",
+"fb": "https://www.facebook.com/TalleresVallekas"
+},
+{
+"id": "cristautosport",
+"n": "Cristauto Sport",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de la Virgen de la Roca · Ciudad Lineal",
+"tel": "910 25 39 42",
+"dominio": "cristauto.com",
+"visto": "Especialistas en extracción de inyectores. Web sin datos estructurados ni preguntas frecuentes.",
+"obs": [
+"Sois especialistas en extracción de inyectores y calentadores, algo que la gente busca mucho, pero vuestra web cristauto.com no tiene datos estructurados ni preguntas frecuentes que Google y las IA puedan usar para recomendaros.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Ciudad Lineal?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "cristauto@gmail.com"
+},
+{
+"id": "tallerflix",
+"n": "Taller Félix",
+"tipo": "plantilla",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de Ardemans, 83 · Salamanca",
+"tel": "913 56 48 13",
+"dominio": "tallerfelix.es",
+"visto": "Web de plantilla de una sola página, igual que la de otros talleres, sin título principal ni servicios detallados.",
+"obs": [
+"Vuestra web tallerfelix.es es una plantilla de una sola página, la misma que usan otros talleres de Madrid: sin título principal, sin vuestros servicios explicados y sin preguntas frecuentes.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Salamanca?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"email": "tallerfelicisimojimenezsl@gmail.com"
+},
+{
+"id": "tallernatisa",
+"n": "Taller Natisa",
+"tipo": "geo",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Álvarez, 15 · Tetuán",
+"tel": "",
+"dominio": "natisatalleres.es",
+"visto": "Web de Wix sin datos estructurados de taller ni preguntas frecuentes.",
+"obs": [
+"Vuestra web es de Wix y no tiene datos estructurados de taller ni preguntas frecuentes, así que para Google y las IA es difícil saber qué hacéis y en qué zona.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+],
+"ig": "natisatalleres",
+"fb": "https://www.facebook.com/NatisaTalleres"
+},
+{
+"id": "talleresjulinibo",
+"n": "Talleres Julián Iborra",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Santa Amalia, 6 · Puente de Vallecas",
+"tel": "915 51 33 34",
+"dominio": "talleresiborra.es",
+"visto": "No he encontrado ninguna web suya ni perfil en redes.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Puente de Vallecas, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Puente de Vallecas?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "multitallerlosyb",
+"n": "Multitaller Los Yébenes",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de los Yébenes · Latina",
+"tel": "917 18 46 60",
+"dominio": "multitalleryebenes.es",
+"visto": "No he encontrado ninguna web suya ni perfil en redes.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Aluche, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Latina?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "talleresignacio",
+"n": "Talleres Ignacio",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de Mateo García, 41 · Ciudad Lineal",
+"tel": "913 26 21 11",
+"dominio": "talleresignaciomadrid.es",
+"visto": "No he encontrado ninguna web suya (talleresignacio.es es de otro taller, en Camas).",
+"obs": [
+"No he encontrado ninguna web vuestra. La web talleresignacio.es es de otro taller con el mismo nombre en Camas (Sevilla), y es fácil que quien os busca acabe allí.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Ciudad Lineal?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "talleresrc",
+"n": "Talleres RC",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ Martínez Corrochano, 14 · Retiro",
+"tel": "914 33 64 64",
+"dominio": "talleresrcmadrid.es",
+"visto": "No he encontrado ninguna web suya ni perfil en redes.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Retiro, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Retiro?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "talleressnchezeh",
+"n": "Talleres Sánchez e Hijos",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de San Raimundo · Tetuán",
+"tel": "",
+"dominio": "talleressanchezehijos.es",
+"visto": "No he encontrado web ni redes. El teléfono está en su ficha de Google.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Tetuán, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "tallerindianpoli",
+"n": "Taller Indianápolis",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de Tablada, 34 · Tetuán",
+"tel": "",
+"dominio": "tallerindianapolis.es",
+"visto": "No he encontrado web ni redes. El teléfono está en su ficha de Google.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Tetuán, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Tetuán?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+},
+{
+"id": "automecnicaromer",
+"n": "Automecánica Romero",
+"tipo": "sin",
+"cocina": "taller mecánico",
+"nota": "",
+"res": "",
+"dir": "C/ de Gabriel Ruiz · Usera",
+"tel": "",
+"dominio": "automecanicaromero.es",
+"visto": "No he encontrado web ni redes. El teléfono está en su ficha de Google.",
+"obs": [
+"No he encontrado ninguna web vuestra. Cuando alguien busca un taller en Usera, en Google o preguntando a una IA, solo aparecen los talleres que tienen web.",
+"Cada vez más gente pregunta a ChatGPT, Gemini o al buscador de Google con IA cosas como «¿qué taller de confianza hay en Usera?», y estas herramientas recomiendan los talleres cuya web les deja claro qué hacen, dónde, a qué precio y qué opinan sus clientes."
+]
+}
+];
+
+var TIPOS = {js:["Web invisible para las IA","t-rota"], movil:["No adaptada a móvil","t-rota"], antigua:["Web anticuada","t-sin"], plantilla:["Web de plantilla","t-basica"], geo:["Web sin GEO","t-azul"], sin:["Sin web","t-sin"]};
+
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function demo(){var v=document.getElementById("demo-url").value.trim();return v||"[enlace a la web de ejemplo]"}
+function telLink(t){return "+34"+String(t).split("·")[0].replace(/\D/g,"")}
+function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir.split(" · ")[0]+", Madrid")}
+
+var GEO =
+  "• Preparada para que ChatGPT, Gemini y Google os recomienden (GEO): datos estructurados de taller, servicios con precios, preguntas frecuentes y archivo llms.txt.\n";
+var MEJORAS =
+  "• Servicios con precios orientativos y un calculador de presupuesto por tipo de coche.\n"+
+  "• Cita online con matrícula: os llega por WhatsApp con el coche, el día y lo que le pasa.\n"+
+  "• Botones de llamar, WhatsApp y cómo llegar, y vuestras reseñas de Google.\n";
+function tieneWeb(x){return x.tipo!=="sin"}
+function lineaDominio(x){
+  return tieneWeb(x)?"• Podemos rehacer la web o mejorar la que tenéis en "+x.dominio+", sin cambiar de dominio.\n":"• Dominio propio (por ejemplo "+x.dominio+") y vuestra ficha de Google enlazando a la web.\n";
+}
+function asunto(x){
+  return ({js:x.n+": las IA no pueden leer vuestra web", movil:x.n+": vuestra web no se adapta al móvil", antigua:x.n+": cómo hacer que ChatGPT y Google os recomienden", plantilla:x.n+": vuestra web es igual que la de otros talleres", geo:x.n+": cómo hacer que ChatGPT y Google os recomienden", sin:"Una web para "+x.n}[x.tipo]);
+}
+function email(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos Verde, de Indexa Labs. Hago páginas web para talleres de Madrid y las preparo para que las recomienden Google y las IA. Os escribo porque he visto un par de cosas que creo que os interesan:\n\n"+
+  "• "+x.obs[0]+"\n• "+x.obs[1]+"\n\n"+
+  "Os dejo un modelo de prueba que he preparado para talleres. Es solo una muestra: se personaliza por completo con vuestros servicios, precios, fotos y estilo:\n"+demo()+"\n\n"+
+  "Lo que tendría la vuestra:\n"+MEJORAS+GEO+lineaDominio(x)+"\n"+
+  "Si os encaja, os preparo una propuesta sin compromiso o me paso por el taller 15 minutos cuando os venga bien.\n\n"+
+  "Un saludo,\n"+FIRMA+"\n\n"+
+  "Si no os interesa, respondedme «no, gracias» y no os vuelvo a escribir.";
+}
+function dm(x){
+  return "Hola, equipo de "+x.n+":\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago webs para talleres de Madrid y las preparo para que las recomienden Google y las IA. "+x.obs[0]+"\n\n"+
+  x.obs[1]+"\n\n"+
+  "Os dejo un modelo de prueba para talleres, con precios, presupuesto orientativo y cita online. Es solo una muestra y se personaliza a vuestro gusto:\n"+demo()+"\n\n"+
+  "Si os interesa, os preparo una propuesta para "+x.n+" sin compromiso.\n\n"+
+  "Un saludo,\nCarlos Verde · Indexa Labs\n\n"+
+  "(Si no os interesa, decídmelo y no os vuelvo a escribir).";
+}
+function guion(x){
+  var gancho = {
+    js:"he visto que vuestra web se carga entera con JavaScript, y ChatGPT y las demás IA no pueden leer lo que hacéis",
+    movil:"he visto que vuestra web no está adaptada al móvil, que es desde donde busca taller casi todo el mundo",
+    antigua:"he visto que a vuestra web le faltan cosas básicas para que Google y las IA os recomienden",
+    plantilla:"he visto que vuestra web es una plantilla de una página, la misma que usan otros talleres",
+    geo:"he visto que vuestra web no tiene lo que necesitan ChatGPT y Google para recomendar un taller",
+    sin:"no he encontrado ninguna web vuestra, y hoy la gente busca taller en Google o preguntando a ChatGPT"
+  }[x.tipo];
+  return "Hola, buenos días. ¿Hablo con el responsable de "+x.n+"?\n\n"+
+  "Soy Carlos, de Indexa Labs. Hago páginas web para talleres de Madrid. Os llamo porque "+gancho+".\n\n"+
+  "He preparado un modelo de prueba de web para talleres, con precios, presupuesto orientativo y cita online, que se personaliza a vuestro gusto. ¿Os lo mando por WhatsApp o por email y lo veis con calma?\n\n"+
+  "(Si dicen que sí: apunta el número o email y envíales el email de arriba.)\n"+
+  "(Si dicen que no: «Perfecto, gracias por vuestro tiempo». Y marca la casilla.)\n"+
+  "(Mejor llamar a primera hora o después de comer: de 8:30 a 9:30 o de 15:00 a 16:00.)";
+}
+
+function guardar(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function leer(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function campo(label,valor,rows,cls,id){
+  var c=rows?'<textarea readonly rows="'+rows+'" class="'+(cls||'')+'" data-id="'+id+'">'+esc(valor)+'</textarea>':'<input type="text" readonly value="'+esc(valor)+'">';
+  return '<div class="campo">'+(label?'<label>'+label+'</label>':'')+'<div class="fila">'+c+'<button class="copiar" type="button">Copiar</button></div></div>';
+}
+
+function pintar(){
+  var cont=document.getElementById("lista"); cont.innerHTML="";
+  L.forEach(function(x,i){
+    var t=TIPOS[x.tipo], canales=[];
+    if(x.email) canales.push('<div class="canal"><h3>Email <a class="btn mail" href="mailto:'+x.email+'" target="_blank" rel="noopener">Abrir email ↗</a></h3><div class="dato">'+esc(x.email)+(x.nota_email?' · '+esc(x.nota_email):'')+'</div>'+
+      campo("Asunto",asunto(x))+campo("",email(x),18,"msg-email",x.id)+'</div>');
+    if(x.ig) canales.push('<div class="canal"><h3>Instagram <a class="btn ig" href="https://instagram.com/'+x.ig+'" target="_blank" rel="noopener">Abrir @'+x.ig+' ↗</a></h3><div class="dato">Mensaje directo. Pega el mensaje corto:</div>'+campo("",dm(x),13,"msg-dm",x.id)+'</div>');
+    if(x.fb) canales.push('<div class="canal"><h3>Facebook <a class="btn fb" href="'+x.fb+'" target="_blank" rel="noopener">Abrir página ↗</a></h3><div class="dato">Pulsa «Enviar mensaje» en su página y pega el mensaje corto'+(x.ig?' (el mismo que el de Instagram: usa solo uno de los dos)':'')+':</div>'+(x.ig?'':campo("",dm(x),13,"msg-dm",x.id))+'</div>');
+    var a=document.createElement("article"); a.id="r-"+x.id;
+    a.innerHTML=
+    '<div class="cab"><div class="num">'+(i+1)+'</div>'+
+      '<div class="info"><h2>'+esc(x.n)+'</h2><div class="meta">'+esc(x.cocina)+' · '+esc(x.dir)+' · <a href="'+mapa(x)+'" target="_blank" rel="noopener">Ficha de Google ↗</a>'+(x.web?' · <a href="'+x.web+'" target="_blank" rel="noopener">Web actual ↗</a>':'')+'</div></div>'+
+      '<div class="lado">'+(x.nota?'<div class="nota">'+x.nota+'<small>'+x.res+' reseñas</small></div>':'')+'<span class="tipo '+t[1]+'">'+t[0]+'</span></div></div>'+
+    '<div class="visto"><b>Lo que he visto</b>'+esc(x.visto)+'</div>'+
+    (x.aviso?'<div class="aviso">⚠ '+esc(x.aviso)+'</div>':'')+
+    (canales.length?'<div style="margin-top:14px;font-weight:700">Escríbeles por aquí (elige un solo canal):</div>'+canales.join(""):'')+
+    '<details class="llamar"'+(canales.length?'':' open')+'><summary>'+(canales.length?'Si no contestan en 5 días: ':'No tienen email ni redes: ')+(x.tel?'llama al '+esc(x.tel)+' o ':'busca su teléfono en la «Ficha de Google» o ')+'pásate por '+esc(x.dir)+'</summary>'+
+      (x.tel?'<p style="margin:8px 0 0"><a class="btn" href="tel:'+telLink(x.tel)+'">Llamar ↗</a></p>':'')+campo("Guion de llamada",guion(x),9,"",x.id)+'</details>'+
+    '<div class="estado" style="margin-top:12px">'+
+      '<label class="hecho"><input type="checkbox" data-k="escrito:'+x.id+'"> Ya les he escrito</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="llamado:'+x.id+'"> Ya les he llamado</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="interesa:'+x.id+'"> Les interesa</label>'+
+      '<label class="hecho"><input type="checkbox" data-k="no:'+x.id+'"> No les interesa</label>'+
+    '</div>';
+    cont.appendChild(a);
+  });
+  cont.querySelectorAll(".hecho input").forEach(function(c){
+    c.checked=leer(c.dataset.k)==="1";
+    c.addEventListener("change",function(){guardar(c.dataset.k,c.checked?"1":"0");estado()});
+  });
+  estado();
+}
+function estado(){
+  var n={escrito:0,llamado:0,interesa:0,no:0};
+  L.forEach(function(x){
+    var f={}; Object.keys(n).forEach(function(k){f[k]=leer(k+":"+x.id)==="1"; if(f[k])n[k]++});
+    document.getElementById("r-"+x.id).classList.toggle("ok",f.no||((f.escrito||f.llamado)&&!f.interesa));
+  });
+  document.getElementById("resumen").innerHTML='<span><b>'+L.length+'</b> locales</span><span><b>'+n.escrito+'</b> escritos</span><span><b>'+n.llamado+'</b> llamados</span><span><b>'+n.interesa+'</b> interesados</span><span><b>'+n.no+'</b> no interesados</span>';
+}
+function actualizarMensajes(){
+  document.querySelectorAll("textarea.msg-email,textarea.msg-dm").forEach(function(t){
+    var x=L.filter(function(r){return r.id===t.dataset.id})[0];
+    t.value=t.classList.contains("msg-email")?email(x):dm(x);
+  });
+}
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button.copiar"); if(!b) return;
+  var c=b.parentElement.querySelector("textarea,input");
+  var ok=function(){b.textContent="¡Copiado!";b.classList.add("copiado");setTimeout(function(){b.textContent="Copiar";b.classList.remove("copiado")},1800)};
+  var fallback=function(){c.focus();c.select();try{document.execCommand("copy")}catch(_){}ok()};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.value).then(ok,fallback)}else fallback();
+});
+var di=document.getElementById("demo-url");
+di.value=leer("demo-url-taller")||"https://caarlosverde.github.io/indexalabs/demos/taller/";
+di.addEventListener("input",function(){guardar("demo-url-taller",di.value.trim());actualizarMensajes()});
+pintar();
+</script>
+</body>
+</html>

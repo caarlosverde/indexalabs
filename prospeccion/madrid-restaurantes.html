@@ -960,7 +960,7 @@ var TIPOS = {rota:["Web caída","t-rota"], ajena:["Web de un directorio","t-rota
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function demo(){var v=document.getElementById("demo-url").value.trim();return v||"[enlace a la web de ejemplo]"}
 function telLink(t){return "+34"+String(t).split("·")[0].replace(/\D/g,"")}
-function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir+", Guadalajara")}
+function mapa(x){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.n+", "+x.dir+", Madrid")}
 
 var MEJORAS =
   "• Carta y menú del día siempre al día, fáciles de leer en el móvil y con alérgenos.\n"+
